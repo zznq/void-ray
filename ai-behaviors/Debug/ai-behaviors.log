@@ -1,0 +1,34 @@
+﻿Build started 11/23/2011 10:47:19 PM.
+     1>Project "C:\Projects\ai-behaviors\ai-behaviors\ai-behaviors.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\ai-behaviors.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameController.cpp Ship.cpp main.cpp
+         main.cpp
+         Ship.cpp
+     1>c:\projects\ai-behaviors\ai-behaviors\ship.cpp(3): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\projects\ai-behaviors\ai-behaviors\ship.cpp(3): warning C4305: 'argument' : truncation from 'double' to 'float'
+         Generating Code...
+         Skipping... (no relevant changes detected)
+         GameController.cpp
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Projects\ai-behaviors\ai-behaviors\Debug\ai-behaviors.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\ai-behaviors.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Projects\ai-behaviors\ai-behaviors\Debug\ai-behaviors.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Projects\ai-behaviors\ai-behaviors\Debug\ai-behaviors.lib" /MACHINE:X86 "Debug\ai-behaviors.exe.embed.manifest.res"
+         Debug\GameController.obj
+         Debug\main.obj
+         Debug\Ship.obj
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\ai-behaviors.exe.embed.manifest" /manifest "Debug\ai-behaviors.exe.intermediate.manifest"
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         ai-behaviors.vcxproj -> C:\Projects\ai-behaviors\ai-behaviors\Debug\ai-behaviors.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\ai-behaviors.unsuccessfulbuild".
+         Touching "Debug\ai-behaviors.lastbuildstate".
+     1>Done Building Project "C:\Projects\ai-behaviors\ai-behaviors\ai-behaviors.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.43
