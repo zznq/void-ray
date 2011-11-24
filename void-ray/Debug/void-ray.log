@@ -1,0 +1,36 @@
+﻿Build started 11/24/2011 8:54:49 AM.
+     1>Project "C:\Projects\void-ray\void-ray\void-ray.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\void-ray.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameController.cpp main.cpp Ship.cpp
+         Ship.cpp
+     1>c:\projects\void-ray\void-ray\ship.cpp(3): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>c:\projects\void-ray\void-ray\ship.cpp(3): warning C4305: 'argument' : truncation from 'double' to 'float'
+         main.cpp
+         GameController.cpp
+         Generating Code...
+       ManifestResourceCompile:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\void-ray.exe.embed.manifest.res" Debug\void-ray_manifest.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Projects\void-ray\void-ray\Debug\void-ray.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\void-ray.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Projects\void-ray\void-ray\Debug\void-ray.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Projects\void-ray\void-ray\Debug\void-ray.lib" /MACHINE:X86 "Debug\void-ray.exe.embed.manifest.res"
+         Debug\GameController.obj
+         Debug\main.obj
+         Debug\Ship.obj
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\void-ray.exe.embed.manifest" /manifest "Debug\void-ray.exe.intermediate.manifest"
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\void-ray.exe.embed.manifest.res" Debug\void-ray_manifest.rc 
+       LinkEmbedManifest:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Projects\void-ray\void-ray\Debug\void-ray.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\void-ray.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Projects\void-ray\void-ray\Debug\void-ray.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Projects\void-ray\void-ray\Debug\void-ray.lib" /MACHINE:X86 "Debug\void-ray.exe.embed.manifest.res"
+         Debug\GameController.obj
+         Debug\main.obj
+         Debug\Ship.obj
+         void-ray.vcxproj -> C:\Projects\void-ray\void-ray\Debug\void-ray.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\void-ray.unsuccessfulbuild".
+         Touching "Debug\void-ray.lastbuildstate".
+     1>Done Building Project "C:\Projects\void-ray\void-ray\void-ray.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.52
