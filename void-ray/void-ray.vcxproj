@@ -10,6 +10,16 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\GameController.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Ship.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\GameController.h" />
+    <ClInclude Include="src\Ship.h" />
+    <ClInclude Include="src\util\Vector3.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{80E14A8A-6991-473A-96E6-835FCD259571}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -74,16 +84,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="GameController.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Ship.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="GameController.h" />
-    <ClInclude Include="glut.h" />
-    <ClInclude Include="Ship.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

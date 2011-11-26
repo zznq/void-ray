@@ -15,24 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameController.cpp">
+    <ClCompile Include="src\GameController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Ship.cpp">
+    <ClCompile Include="src\Ship.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameController.h">
+    <ClInclude Include="src\GameController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="glut.h">
+    <ClInclude Include="src\Ship.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ship.h">
+    <ClInclude Include="src\util\Vector3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
