@@ -1,0 +1,11 @@
+/*
+ *  GLUT_Prefix.pch
+ *  void-ray
+ *
+ *  Created by Joe Buszkiewic on 11/28/11.
+ *  Copyright 2011 Mondo Robot. All rights reserved.
+ *
+ */
+
+#include <GLUT/glut.h>
+

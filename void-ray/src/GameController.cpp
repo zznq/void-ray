@@ -1,5 +1,5 @@
 #include "GameController.h"
-#include "glut.h"
+#include <GLUT/glut.h>
 #include "Ship.h"
 
 void GameController::DrawShip(Ship *s){

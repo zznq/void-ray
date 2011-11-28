@@ -1,8 +1,11 @@
-#include "GameController.h"
-#include "glut.h"
+#include <stdlib.h>
 
-#include <GL\glu.h>
-#include <GL\gl.h>
+#include <GLUT/glut.h>
+#include <OpenGL/glext.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+
+#include "GameController.h"
 
 void Initialize();
 void MouseHandler(int button, int state, int x, int y);
@@ -24,21 +27,21 @@ int main(int argc, char **argv)
   controller = new GameController();
 
   // Setup the basic GLUT stuff
-  glutInit(&argc, argv);
+  glutInit(&argc, (char **)argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
   // Create the window
-  glutInitWindowSize(1024, 768);
   glutInitWindowPosition(100, 150);
-  glutCreateWindow("BOGLGP Chapter 1");
+  glutInitWindowSize(1024, 768);
+  glutCreateWindow("void-ray");
 
   Initialize();
 
   // Register the event callback functions
-  glutDisplayFunc(Display); 
   glutReshapeFunc(Reshape);
-  glutMouseFunc(MouseHandler);
+  glutDisplayFunc(Display);
   glutKeyboardFunc(KeyboardHandler);
+  glutMouseFunc(MouseHandler);
   glutIdleFunc(Animate);
 
   // At this point, control is relinquished to the GLUT event handler.
@@ -80,13 +83,13 @@ void MouseHandler(int button, int state, int x, int y)
 	/*
 	GLint viewport[4];
 	GLdouble mvmatrix[16], projmatrix[16];
-	GLint realy;  /*  OpenGL y coordinate position  * /
-	GLdouble wx, wy, wz;  /*  returned world x, y, z coords  * /
+	GLint realy;  //  OpenGL y coordinate position
+	GLdouble wx, wy, wz;  //  returned world x, y, z coords
 
 	glGetIntegerv (GL_VIEWPORT, viewport);
     glGetDoublev (GL_MODELVIEW_MATRIX, mvmatrix);
     glGetDoublev (GL_PROJECTION_MATRIX, projmatrix);
-/*  note viewport[3] is height of window in pixels  * /
+	// note viewport[3] is height of window in pixels  * /
     realy = viewport[3] - (GLint) y - 1;
     
     gluUnProject ((GLdouble) x, (GLdouble) realy, 0.0,
@@ -122,7 +125,7 @@ void MouseHandler(int button, int state, int x, int y)
 	{
 	case GLUT_LEFT_BUTTON:
 		{
-			//exit(0);
+			exit(0);
 		} break;
 	default:
 		break;
@@ -165,7 +168,7 @@ void MainMenuHandler(int option)
   {
   case 0:
     {
-      exit(0);
+      //exit(0);
     } break;
   default:
     break;
