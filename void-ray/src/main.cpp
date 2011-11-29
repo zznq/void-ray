@@ -1,9 +1,16 @@
 #include <stdlib.h>
 
-#include <GLUT/glut.h>
-#include <OpenGL/glext.h>
-#include <OpenGL/gl.h>
-#include <OpenGL/glu.h>
+#ifdef __APPLE__
+	#include <GLUT/glut.h>
+	#include <OpenGL/gl.h>
+	#include <OpenGL/glu.h>
+#elif defined __linux__
+	//Add Linux specific OPENGL/GLUT headers
+#else
+	#include "glut.h"
+	#include <GL\gl.h>
+	#include <GL\glu.h>
+#endif
 
 #include "GameController.h"
 
