@@ -8,4 +8,11 @@ double const Ship::SHIP_WIDTH_OFFSET = 0.0;
 Ship::Ship()
 {
 	this->position = new Vector3(1.0f, -1.0f, 0.0f);
+	this->target = new Vector3(0.0f, 0.0f, 0.0f);
+}
+
+void Ship::Update()
+{
+	//We want to slowly move towards the target here
+	
 }

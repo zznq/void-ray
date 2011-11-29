@@ -44,22 +44,41 @@ void GameController::Render()
 
   DrawShip(ship);
   DrawShip(ship2);
-  
-
-  // draw a polygon
-  /*glBegin(GL_POLYGON);
-    glColor3f(1.0, 1.0, 1.0);
-    glVertex3f(-1.0, 2.0, 0.0);
-    glColor3f(1.0, 1.0, 0.0);
-    glVertex3f(-3.0, -0.5, 0.0);
-    glColor3f(0.0, 1.0, 1.0);
-    glVertex3f(-1.5, -3.0, 0.0);
-    glColor3f(0.0, 0.0, 0.0);
-    glVertex3f(1.0, -2.0, 0.0);
-    glColor3f(1.0, 0.0, 1.0);
-    glVertex3f(1.0, 1.0, 0.0);
-  glEnd();*/
 
   // draw everything and swap the display buffer
   glutSwapBuffers();
+}
+
+void GameController::MouseHandler(int button, int state, int x, int y)
+{
+	//glLoadIdentity();
+
+	GLint viewport[4];
+	GLdouble mvmatrix[16], projmatrix[16];
+	GLint realy, realx;  // OpenGL y coordinate position
+	GLdouble wx, wy, wz;  // returned world x, y, z coords
+
+	glGetIntegerv (GL_VIEWPORT, viewport);
+    glGetDoublev (GL_MODELVIEW_MATRIX, mvmatrix);
+    glGetDoublev (GL_PROJECTION_MATRIX, projmatrix);
+	
+	//note viewport[3] is height of window in pixels
+    realy = viewport[3] - (GLint) y - 1;
+    //not working!
+    gluUnProject ((GLdouble) x, (GLdouble) realy, 0.0f,
+        mvmatrix, projmatrix, viewport, &wx, &wy, &wz);
+	
+	ship->target = new Vector3((float)wx, (float)wy, 0.0);
+	switch (button)
+	{
+	case GLUT_LEFT_BUTTON:
+		{
+			//exit(0);
+		} break;
+	default:
+		break;
+	}
+
+	// force a screen redraw
+	glutPostRedisplay();
 }

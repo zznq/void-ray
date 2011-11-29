@@ -77,60 +77,8 @@ void Initialize()
 *****************************************************************************/
 void MouseHandler(int button, int state, int x, int y)
 {
-	/*
-	GLint viewport[4];
-	GLdouble mvmatrix[16], projmatrix[16];
-	GLint realy;  /*  OpenGL y coordinate position  * /
-	GLdouble wx, wy, wz;  /*  returned world x, y, z coords  * /
-
-	glGetIntegerv (GL_VIEWPORT, viewport);
-    glGetDoublev (GL_MODELVIEW_MATRIX, mvmatrix);
-    glGetDoublev (GL_PROJECTION_MATRIX, projmatrix);
-/*  note viewport[3] is height of window in pixels  * /
-    realy = viewport[3] - (GLint) y - 1;
-    
-    gluUnProject ((GLdouble) x, (GLdouble) realy, 0.0,
-        mvmatrix, projmatrix, viewport, &wx, &wy, &wz);
-    
-    gluUnProject ((GLdouble) x, (GLdouble) realy, 1.0,
-        mvmatrix, projmatrix, viewport, &wx, &wy, &wz);
-
-	glLoadIdentity();
-
-	
-	glGetIntegerv(GL_VIEWPORT, viewport);  
-	
-	GLdouble modelview[16];
-	glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
-
-	GLdouble projection[16];
-	glGetDoublev(GL_PROJECTION_MATRIX, projection); 
-
-	GLfloat winX, winY, winZ;
-	GLdouble posX, posY, posZ;
-
-	winX = (float)x;
-	winY = (float)y;
-
-	winY = (float)viewport[3] - winY;
-
-	glReadPixels(winX, winY, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
-
-	gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
-	*/
-	switch (button)
-	{
-	case GLUT_LEFT_BUTTON:
-		{
-			//exit(0);
-		} break;
-	default:
-		break;
-	}
-
-	// force a screen redraw
-	glutPostRedisplay();
-} // end MouseHandler()
+	controller->MouseHandler(button, state, x, y);	
+}
 
 
 /****************************************************************************
