@@ -1,0 +1,258 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DD76F6A0486A84900D96B5E /* void-ray.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* void-ray.1 */; };
+		D844B5E31484123700697A6B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D844B5E21484123700697A6B /* Cocoa.framework */; };
+		D844B5E51484123D00697A6B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D844B5E41484123D00697A6B /* GLUT.framework */; };
+		D844B5E71484124300697A6B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D844B5E61484124300697A6B /* OpenGL.framework */; };
+		D8C15DA4148408CB00FDFD35 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15D9D148408CB00FDFD35 /* GameController.cpp */; };
+		D8C15DA5148408CB00FDFD35 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15D9F148408CB00FDFD35 /* main.cpp */; };
+		D8C15DA6148408CB00FDFD35 /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15DA0148408CB00FDFD35 /* Ship.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F6A0486A84900D96B5E /* void-ray.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8DD76F6C0486A84900D96B5E /* void-ray */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "void-ray"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859E8B029090EE04C91782 /* void-ray.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "void-ray.1"; sourceTree = "<group>"; };
+		D844B5E21484123700697A6B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		D844B5E41484123D00697A6B /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
+		D844B5E61484124300697A6B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		D8C15D9D148408CB00FDFD35 /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameController.cpp; path = ../../src/GameController.cpp; sourceTree = SOURCE_ROOT; };
+		D8C15D9E148408CB00FDFD35 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameController.h; path = ../../src/GameController.h; sourceTree = SOURCE_ROOT; };
+		D8C15D9F148408CB00FDFD35 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../src/main.cpp; sourceTree = SOURCE_ROOT; };
+		D8C15DA0148408CB00FDFD35 /* Ship.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ship.cpp; path = ../../src/Ship.cpp; sourceTree = SOURCE_ROOT; };
+		D8C15DA1148408CB00FDFD35 /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ship.h; path = ../../src/Ship.h; sourceTree = SOURCE_ROOT; };
+		D8C15DA3148408CB00FDFD35 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
+		D8C15DC414840D8C00FDFD35 /* GLUT_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUT_Prefix.pch; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D844B5E31484123700697A6B /* Cocoa.framework in Frameworks */,
+				D844B5E51484123D00697A6B /* GLUT.framework in Frameworks */,
+				D844B5E71484124300697A6B /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* void-ray */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+				D844B5E21484123700697A6B /* Cocoa.framework */,
+				D844B5E41484123D00697A6B /* GLUT.framework */,
+				D844B5E61484124300697A6B /* OpenGL.framework */,
+			);
+			name = "void-ray";
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D8C15D9D148408CB00FDFD35 /* GameController.cpp */,
+				D8C15D9E148408CB00FDFD35 /* GameController.h */,
+				D8C15D9F148408CB00FDFD35 /* main.cpp */,
+				D8C15DA0148408CB00FDFD35 /* Ship.cpp */,
+				D8C15DA1148408CB00FDFD35 /* Ship.h */,
+				D8C15DA2148408CB00FDFD35 /* util */,
+				D8C15DC414840D8C00FDFD35 /* GLUT_Prefix.pch */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* void-ray */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				C6859E8B029090EE04C91782 /* void-ray.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+		D8C15DA2148408CB00FDFD35 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				D8C15DA3148408CB00FDFD35 /* Vector3.h */,
+			);
+			name = util;
+			path = ../../src/util;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* void-ray */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "void-ray" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "void-ray";
+			productInstallPath = "$(HOME)/bin";
+			productName = "void-ray";
+			productReference = 8DD76F6C0486A84900D96B5E /* void-ray */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "void-ray" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* void-ray */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* void-ray */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8C15DA4148408CB00FDFD35 /* GameController.cpp in Sources */,
+				D8C15DA5148408CB00FDFD35 /* main.cpp in Sources */,
+				D8C15DA6148408CB00FDFD35 /* Ship.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = GLUT_Prefix.pch;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GENERATE_PKGINFO_FILE = YES;
+				INSTALL_PATH = /Users/Joe/Applications;
+				MACH_O_TYPE = mh_execute;
+				PRODUCT_NAME = "void-ray";
+				WARNING_CFLAGS = (
+					"-Wno-unknown-pragmas",
+					"-Wno-four-char-constants",
+					"-Wmost",
+				);
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/bin;
+				PRODUCT_NAME = "void-ray";
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = "compiler-default";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				PREBINDING = YES;
+				SDKROOT = "";
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "void-ray" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "void-ray" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

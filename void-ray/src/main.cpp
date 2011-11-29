@@ -1,8 +1,18 @@
-#include "GameController.h"
-#include "glut.h"
+#include <stdlib.h>
 
-#include <GL\glu.h>
-#include <GL\gl.h>
+#ifdef __APPLE__
+	#include <GLUT/glut.h>
+	#include <OpenGL/gl.h>
+	#include <OpenGL/glu.h>
+#elif defined __linux__
+	//Add Linux specific OPENGL/GLUT headers
+#else
+	#include "glut.h"
+	#include <GL/gl.h>
+	#include <GL/glu.h>
+#endif
+
+#include "GameController.h"
 
 void Initialize();
 void MouseHandler(int button, int state, int x, int y);
@@ -24,21 +34,21 @@ int main(int argc, char **argv)
   controller = new GameController();
 
   // Setup the basic GLUT stuff
-  glutInit(&argc, argv);
+  glutInit(&argc, (char **)argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
   // Create the window
-  glutInitWindowSize(1024, 768);
   glutInitWindowPosition(100, 150);
-  glutCreateWindow("BOGLGP Chapter 1");
+  glutInitWindowSize(1024, 768);
+  glutCreateWindow("void-ray");
 
   Initialize();
 
   // Register the event callback functions
-  glutDisplayFunc(Display); 
   glutReshapeFunc(Reshape);
-  glutMouseFunc(MouseHandler);
+  glutDisplayFunc(Display);
   glutKeyboardFunc(KeyboardHandler);
+  glutMouseFunc(MouseHandler);
   glutIdleFunc(Animate);
 
   // At this point, control is relinquished to the GLUT event handler.
@@ -113,7 +123,7 @@ void MainMenuHandler(int option)
   {
   case 0:
     {
-      exit(0);
+      //exit(0);
     } break;
   default:
     break;

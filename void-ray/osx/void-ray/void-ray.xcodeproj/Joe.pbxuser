@@ -1,0 +1,269 @@
+// !$*UTF8*$!
+{
+	08FB7793FE84155DC02AAC07 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeExecutable = D8C15D911484088E00FDFD35 /* void-ray */;
+		activeTarget = 8DD76F620486A84900D96B5E /* void-ray */;
+		addToTargets = (
+		);
+		codeSenseManager = D8C15D9B1484089300FDFD35 /* Code sense */;
+		executables = (
+			D8C15D911484088E00FDFD35 /* void-ray */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					678,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					790,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					750,
+					60,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 344217235;
+			PBXWorkspaceStateSaveDate = 344217235;
+		};
+		perUserProjectItems = {
+			D8245ECB148459C8001715D5 /* PBXTextBookmark */ = D8245ECB148459C8001715D5 /* PBXTextBookmark */;
+			D8245ECC148459C8001715D5 /* PBXTextBookmark */ = D8245ECC148459C8001715D5 /* PBXTextBookmark */;
+			D8245ECD148459C8001715D5 /* PBXTextBookmark */ = D8245ECD148459C8001715D5 /* PBXTextBookmark */;
+			D8245ECE148459C8001715D5 /* PBXTextBookmark */ = D8245ECE148459C8001715D5 /* PBXTextBookmark */;
+			D8245ECF148459C8001715D5 /* PBXTextBookmark */ = D8245ECF148459C8001715D5 /* PBXTextBookmark */;
+			D8245ED0148459C8001715D5 /* PBXTextBookmark */ = D8245ED0148459C8001715D5 /* PBXTextBookmark */;
+			D8245ED1148459C8001715D5 /* PBXTextBookmark */ = D8245ED1148459C8001715D5 /* PBXTextBookmark */;
+			D8245ED2148459C8001715D5 /* PBXTextBookmark */ = D8245ED2148459C8001715D5 /* PBXTextBookmark */;
+		};
+		sourceControlManager = D8C15D9A1484089300FDFD35 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	8DD76F620486A84900D96B5E /* void-ray */ = {
+		activeExec = 0;
+		executables = (
+			D8C15D911484088E00FDFD35 /* void-ray */,
+		);
+	};
+	D8245ECB148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15DA3148408CB00FDFD35 /* Vector3.h */;
+		name = "Vector3.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 617;
+		vrLoc = 0;
+	};
+	D8245ECC148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15DC414840D8C00FDFD35 /* GLUT_Prefix.pch */;
+		name = "GLUT_Prefix.pch: 10";
+		rLen = 0;
+		rLoc = 165;
+		rType = 0;
+		vrLen = 167;
+		vrLoc = 0;
+	};
+	D8245ECD148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15D9E148408CB00FDFD35 /* GameController.h */;
+		name = "GameController.h: 11";
+		rLen = 0;
+		rLoc = 158;
+		rType = 0;
+		vrLen = 299;
+		vrLoc = 0;
+	};
+	D8245ECE148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15D9D148408CB00FDFD35 /* GameController.cpp */;
+		name = "GameController.cpp: 7";
+		rLen = 0;
+		rLoc = 133;
+		rType = 0;
+		vrLen = 936;
+		vrLoc = 0;
+	};
+	D8245ECF148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15D9F148408CB00FDFD35 /* main.cpp */;
+		name = "main.cpp: 14";
+		rLen = 0;
+		rLoc = 250;
+		rType = 0;
+		vrLen = 830;
+		vrLoc = 0;
+	};
+	D8245ED0148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15DA0148408CB00FDFD35 /* Ship.cpp */;
+		name = "Ship.cpp: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 260;
+		vrLoc = 0;
+	};
+	D8245ED1148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15DA1148408CB00FDFD35 /* Ship.h */;
+		name = "Ship.h: 3";
+		rLen = 0;
+		rLoc = 32;
+		rType = 0;
+		vrLen = 278;
+		vrLoc = 0;
+	};
+	D8245ED2148459C8001715D5 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = D8C15DA1148408CB00FDFD35 /* Ship.h */;
+		name = "Ship.h: 5";
+		rLen = 0;
+		rLoc = 59;
+		rType = 0;
+		vrLen = 278;
+		vrLoc = 0;
+	};
+	D8C15D911484088E00FDFD35 /* void-ray */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "void-ray";
+		savedGlobals = {
+		};
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	D8C15D9A1484089300FDFD35 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	D8C15D9B1484089300FDFD35 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	D8C15D9D148408CB00FDFD35 /* GameController.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 910}}";
+			sepNavSelRange = "{133, 0}";
+			sepNavVisRange = "{0, 936}";
+		};
+	};
+	D8C15D9E148408CB00FDFD35 /* GameController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 444}}";
+			sepNavSelRange = "{158, 0}";
+			sepNavVisRange = "{0, 299}";
+		};
+	};
+	D8C15D9F148408CB00FDFD35 /* main.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 3016}}";
+			sepNavSelRange = "{250, 0}";
+			sepNavVisRange = "{0, 830}";
+			sepNavWindowFrame = "{{15, 266}, {1596, 1147}}";
+		};
+	};
+	D8C15DA0148408CB00FDFD35 /* Ship.cpp */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 444}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 260}";
+		};
+	};
+	D8C15DA1148408CB00FDFD35 /* Ship.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 444}}";
+			sepNavSelRange = "{59, 0}";
+			sepNavVisRange = "{0, 278}";
+		};
+	};
+	D8C15DA3148408CB00FDFD35 /* Vector3.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 1625}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 617}";
+		};
+	};
+	D8C15DC414840D8C00FDFD35 /* GLUT_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {968, 444}}";
+			sepNavSelRange = "{165, 0}";
+			sepNavVisRange = "{0, 167}";
+		};
+	};
+}

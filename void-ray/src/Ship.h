@@ -1,7 +1,7 @@
 #ifndef AI_SHIP
 #define AI_SHIP
 
-#include "util\Vector3.h"
+#include "util/Vector3.h"
 
 class Ship{
 private:

@@ -1,5 +1,13 @@
 #include "GameController.h"
-#include "glut.h"
+
+#ifdef __APPLE__
+	#include <GLUT/glut.h>
+#elif defined __linux__
+//Add Linux specific GLUT headers
+#else
+	#include "glut.h"
+#endif
+
 #include "Ship.h"
 
 void GameController::DrawShip(Ship *s){

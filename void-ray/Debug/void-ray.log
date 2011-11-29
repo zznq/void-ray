@@ -1,11 +1,14 @@
-﻿Build started 11/28/2011 12:44:11 AM.
+﻿Build started 11/28/2011 7:51:51 PM.
      1>Project "C:\Projects\void-ray\void-ray\void-ray.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\void-ray.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt src\GameController.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt src\GameController.cpp src\Ship.cpp src\main.cpp
+         main.cpp
+         Ship.cpp
          GameController.cpp
-     1>c:\projects\void-ray\void-ray\src\gamecontroller.cpp(58): warning C4101: 'realx' : unreferenced local variable
+     1>c:\projects\void-ray\void-ray\src\gamecontroller.cpp(66): warning C4101: 'realx' : unreferenced local variable
+         Generating Code...
        ManifestResourceCompile:
          All outputs are up-to-date.
        Link:
@@ -26,4 +29,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.37
+Time Elapsed 00:00:00.42
