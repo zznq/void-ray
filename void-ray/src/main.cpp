@@ -51,6 +51,7 @@ int main(int argc, char **argv)
   glutMouseFunc(MouseHandler);
   glutIdleFunc(Animate);
 
+  controller->Start();
   // At this point, control is relinquished to the GLUT event handler.
   // Control is returned as events occur, via the callback functions.
   glutMainLoop();   
@@ -170,7 +171,8 @@ void Reshape(int width, int height)
 *****************************************************************************/
 void Display()
 {
-  controller->Render();
+	controller->Update();
+	controller->Render();
 } // end Display()
 
 

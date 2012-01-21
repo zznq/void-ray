@@ -71,6 +71,11 @@ class Vector3 {
 		x *= a.x; y *= a.y; z *= a.z;
 		return *this;
 	}
+
+	Vector3 &operator *=(const float a) {
+		x *= a; y *= a; z *= a;
+		return *this;
+	}
 	
 	Vector3 &operator /=(float a) {
 		float oneOverA = 1.0f / a;
@@ -97,6 +102,10 @@ class Vector3 {
 
 inline float vectorMag(const Vector3 &a) {
 	return sqrt(a.x*a.x + a.y*a.y + a.z*a.z);
+}
+
+inline float vectorMagSq(const Vector3 &a) {
+	return (a.x*a.x + a.y*a.y + a.z*a.z);
 }
 
 inline Vector3 crossProduct(const Vector3 &a, const Vector3 &b) {

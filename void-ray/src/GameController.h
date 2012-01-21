@@ -2,18 +2,22 @@
 #define GAME_CONTROLLER
 
 #include "Ship.h"
+#include "util/PrecisionTimer.h"
 
 class GameController{
 private:
+	PrecisionTimer timer;
 	void DrawShip(Ship *s);
 public:
+	//Class Members
 	Ship *ship;
-	Ship *ship2;
-	GameController() { ship = new Ship(); ship2 = new Ship(); ship2->position->x = 0.0f; ship2->position->y = 0.0f; }
+	GameController() { timer = PrecisionTimer(); ship = new Ship(); }
+
+	void Start();
+	void Update();
+
 	/* GLUT Callback functions */
 	void Render();
 	void MouseHandler(int button, int state, int x, int y);
-
-	void Update();
 };
 #endif
