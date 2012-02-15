@@ -1,17 +1,18 @@
 #ifndef GAME_CONTROLLER
 #define GAME_CONTROLLER
 
+#include "MovingEntity.h"
 #include "Ship.h"
 #include "util/PrecisionTimer.h"
 
 class GameController{
 private:
-	PrecisionTimer timer;
-	void DrawShip(Ship *s);
+	//PrecisionTimer timer;
+	void DrawEntity(MovingEntity *s);
 public:
 	//Class Members
-	Ship *ship;
-	GameController() { timer = PrecisionTimer(); ship = new Ship(); }
+	MovingEntity *ship;
+	GameController() { /*timer = PrecisionTimer();*/ ship = new Ship(); }
 
 	void Start();
 	void Update();

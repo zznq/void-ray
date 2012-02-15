@@ -14,6 +14,7 @@
 		D8C15DA4148408CB00FDFD35 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15D9D148408CB00FDFD35 /* GameController.cpp */; };
 		D8C15DA5148408CB00FDFD35 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15D9F148408CB00FDFD35 /* main.cpp */; };
 		D8C15DA6148408CB00FDFD35 /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15DA0148408CB00FDFD35 /* Ship.cpp */; };
+		D8E9768414EB80F300C2CBA4 /* SteeringBehaviors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8E9768314EB80F300C2CBA4 /* SteeringBehaviors.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,9 @@
 		D8C15DA1148408CB00FDFD35 /* Ship.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ship.h; path = ../../src/Ship.h; sourceTree = SOURCE_ROOT; };
 		D8C15DA3148408CB00FDFD35 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		D8C15DC414840D8C00FDFD35 /* GLUT_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLUT_Prefix.pch; sourceTree = "<group>"; };
+		D8E9768214EB7EFC00C2CBA4 /* SteeringBehaviors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SteeringBehaviors.h; path = ../../src/SteeringBehaviors.h; sourceTree = "<group>"; };
+		D8E9768314EB80F300C2CBA4 /* SteeringBehaviors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SteeringBehaviors.cpp; path = ../../src/SteeringBehaviors.cpp; sourceTree = "<group>"; };
+		D8E9768514EB832700C2CBA4 /* MovingEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingEntity.h; path = ../../src/MovingEntity.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,9 @@
 				D8C15DA1148408CB00FDFD35 /* Ship.h */,
 				D8C15DA2148408CB00FDFD35 /* util */,
 				D8C15DC414840D8C00FDFD35 /* GLUT_Prefix.pch */,
+				D8E9768214EB7EFC00C2CBA4 /* SteeringBehaviors.h */,
+				D8E9768314EB80F300C2CBA4 /* SteeringBehaviors.cpp */,
+				D8E9768514EB832700C2CBA4 /* MovingEntity.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -136,6 +143,9 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "void-ray" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -163,6 +173,7 @@
 				D8C15DA4148408CB00FDFD35 /* GameController.cpp in Sources */,
 				D8C15DA5148408CB00FDFD35 /* main.cpp in Sources */,
 				D8C15DA6148408CB00FDFD35 /* Ship.cpp in Sources */,
+				D8E9768414EB80F300C2CBA4 /* SteeringBehaviors.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +186,6 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G4;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -214,8 +224,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				ONLY_ACTIVE_ARCH = NO;
-				PREBINDING = YES;
-				SDKROOT = "";
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -226,8 +235,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

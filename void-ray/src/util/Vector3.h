@@ -53,7 +53,10 @@ class Vector3 {
 	}
 	
 	Vector3 operator /(float a) const {
-		float oneOverA = 1.0f / a; //TODO: No check for divide by 0
+        if(a == 0)
+            return Vector3(0.0, 0.0, 0.0);
+        
+		float oneOverA = 1.0f / a;
 		return Vector3(x * oneOverA, y * oneOverA, z * oneOverA);
 	}
 	
@@ -95,6 +98,7 @@ class Vector3 {
 		}
 	}
 	
+    //Dot Product?
 	float operator *(const Vector3 &a) const {
 		return x * a.x + y * a.y + z * a.z;
 	}

@@ -1,3 +1,4 @@
+#include <cmath>
 #include "Ship.h"
 
 double const Ship::SHIP_HALF_HEIGHT = 0.4;
@@ -19,6 +20,8 @@ Ship::Ship()
 	this->_maxForce = 150.0;
 	this->_maxTurnRate = 150.0;
 	this->_timeElapsed = 0.0;
+    
+    this->behaviors = new SteeringBehaviors(this);
 }
 
 void Ship::Update(double time_elapsed)
@@ -28,12 +31,9 @@ void Ship::Update(double time_elapsed)
 	//this->_timeElapsed = time_elapsed;
 	this->_timeElapsed = .001;
 
-	//Calculate steering
-	Vector3 desiredVelocity = (this->target - this->position);
-	desiredVelocity.normalize();
-	desiredVelocity *= this->_maxSpeed;
+    //int radians = acos(this->_velocity * this->_heading);
 
-	Vector3 steeringForce = desiredVelocity - this->_velocity;
+	Vector3 steeringForce = this->behaviors->Calculate();
 
 	Vector3 acceleration = steeringForce / this->_mass;
 
@@ -45,4 +45,33 @@ void Ship::Update(double time_elapsed)
 		this->_velocity.normalize();
 		this->_heading = this->_velocity;
 	}
+}
+
+void Ship::Render(){
+    float globalz = 0.0f;
+    
+    float topy = Ship::SHIP_HEIGHT_OFFSET + (Ship::SHIP_HALF_HEIGHT);
+    float bottomy = Ship::SHIP_HEIGHT_OFFSET - (Ship::SHIP_HALF_HEIGHT);
+    
+    float leftx = Ship::SHIP_WIDTH_OFFSET - (Ship::SHIP_HALF_WIDTH);
+    float rightx = Ship::SHIP_WIDTH_OFFSET + (Ship::SHIP_HALF_WIDTH);
+    
+    float tipx = 0.0f + this->position.x;
+    float tipy = topy + this->position.y;
+    
+    float rightflankx = rightx + this->position.x;
+    float rightflanky = bottomy + this->position.y;
+    
+    float leftflankx = leftx + this->position.x;
+    float leftflanky = bottomy + this->position.y;
+    
+    // draw a triangle
+    glBegin(GL_TRIANGLES);
+    //glColor3f(1.0, 0.0, 0.0);
+    glVertex3f(tipx, tipy, globalz);
+    //glColor3f(0.0, 1.0, 0.0);
+    glVertex3f(rightflankx, rightflanky, globalz);
+    //glColor3f(0.0, 0.0, 1.0);
+    glVertex3f(leftflankx, leftflanky, globalz);
+    glEnd();
 }

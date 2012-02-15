@@ -1,3 +1,4 @@
+/*
 #ifndef PRECISION_TIMER_H
 #define PRECISION_TIMER_H
 //-----------------------------------------------------------------------
@@ -14,14 +15,14 @@
 //
 //-----------------------------------------------------------------------
 
-/* make sure it is safe to use LARGE_INTEGER and LONGLONG types 
+/ * make sure it is safe to use LARGE_INTEGER and LONGLONG types 
 #ifndef LARGE_INTEGER
 	typedef __int64 LARGE_INTEGER;
 #endif
 
 #ifndef LONGLONG
 	typedef __int64 LONGLONG;
-#endif*/
+#endif* /
 
 
 
@@ -167,5 +168,5 @@ inline double PrecisionTimer::TimeElapsed()
 }
 
 #endif
-
+*/
   
