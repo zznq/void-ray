@@ -15,7 +15,7 @@ public:
 	GameController() { /*timer = PrecisionTimer();*/ ship = new Ship(); }
 
 	void Start();
-	void Update();
+	void Update(double elapsed_time);
 
 	/* GLUT Callback functions */
 	void Render();

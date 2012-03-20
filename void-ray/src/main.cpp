@@ -1,178 +1,145 @@
 #include <stdlib.h>
 
-#ifdef __APPLE__
-	#include <GLUT/glut.h>
-	#include <OpenGL/gl.h>
-	#include <OpenGL/glu.h>
-#elif defined __linux__
-	//Add Linux specific OPENGL/GLUT headers
-#else
-	#include "glut.h"
-	#include <GL/gl.h>
-	#include <GL/glu.h>
-#endif
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 
 #include "GameController.h"
 
-void Initialize();
-void MouseHandler(int button, int state, int x, int y);
-void KeyboardHandler(unsigned char key, int x, int y);
-void MainMenuHandler(int option);
-void Animate();
-void Reshape(int width, int height);
-void Display();
-
 GameController *controller;
+
+#define WIDTH 640
+#define HEIGHT 480
+#define WINDOW_TITLE "void ray"
+
+SDL_Surface *screen;
+
+void Initialize();
+
+#define TICK_INTERVAL    30
+
+double TimerUpdate(void)
+{
+    static Uint32 last_time = 0;
+    Uint32 now;
+    
+    now = SDL_GetTicks();
+    if ( last_time <= now ) {
+        if(now - last_time < TICK_INTERVAL)
+            return(0);
+    }
+    
+    Uint32 new_time = now - last_time;
+    last_time = now;
+    
+    return new_time / 1000.0;
+}
+
+void render() {
+    glClearColor(0,0,0,0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    controller->Update(TimerUpdate());
+	controller->Render();
+    
+    /*
+    glBegin(GL_TRIANGLES);
+    {
+        glColor3f(1,0,0);
+        glVertex2f(0,0);
+        
+        glColor3f(0,1,0);
+        glVertex2f(.5,0);
+        
+        glColor3f(0,0,1);
+        glVertex2f(.5,.5);
+    }
+    glEnd();
+     */
+}
 
 /****************************************************************************
  main()
-
- Setup GLUT and OpenGL, drop into the event loop
 *****************************************************************************/
-int main(int argc, char **argv)
-{
-  controller = new GameController();
+int main(int argc, char *argv[]) {
 
-  // Setup the basic GLUT stuff
-  glutInit(&argc, (char **)argv);
-  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+    controller = new GameController();
 
-  // Create the window
-  glutInitWindowPosition(100, 150);
-  glutInitWindowSize(1024, 768);
-  glutCreateWindow("void-ray");
+    Initialize();
+    
+    bool done = false;
+    while(!done) 
+    {
+        SDL_Event event;
+        // Rotates the triangle (this could be replaced with custom
+        // processing code)
+        // animate();
+        
+        // Respond to any events that occur
+        while(SDL_PollEvent(&event))
+        {
+            switch(event.type) 
+            {
+                case SDL_VIDEORESIZE:
+                    screen = SDL_SetVideoMode(event.resize.w, 
+                                              event.resize.h, 0,
+                                              SDL_OPENGL | SDL_RESIZABLE);
+                    if(screen)
+                    {
+                        // reshape(screen->w, screen->h);
+                    } 
+                    else 
+                    {
+                        ; // Oops, we couldn't resize for some reason. 
+                        // This should never happen
+                    }
+                    break;
+                    
+                case SDL_QUIT:
+                    done = true;
+                    break;		
+                    
+                    // ## INSERT CODE TO HANDLE ANY OTHER EVENTS HERE ##
+            }
+        }
+        
+        // Check for escape
+        Uint8 *keys = SDL_GetKeyState(NULL);
+        if( keys[SDLK_ESCAPE] ) {
+            done = true;
+        }
+        
+        // Draw the screen
+        render();
+        
+        SDL_GL_SwapBuffers();
+    }
+    
+    SDL_Quit();
+    return 0;
 
-  Initialize();
-
-  // Register the event callback functions
-  glutReshapeFunc(Reshape);
-  glutDisplayFunc(Display);
-  glutKeyboardFunc(KeyboardHandler);
-  glutMouseFunc(MouseHandler);
-  glutIdleFunc(Animate);
-
-  controller->Start();
-  // At this point, control is relinquished to the GLUT event handler.
-  // Control is returned as events occur, via the callback functions.
-  glutMainLoop();   
+    //controller->Start();
    
-  return 0;
-} // end main()
-
-
-/****************************************************************************
- Initialize()
-
- One time setup, including creating menus, creating a light, setting the
- shading mode and clear color, and loading textures.
-*****************************************************************************/
-void Initialize()
-{
-  // set up the only meny
-  int mainMenu;
-
-  mainMenu = glutCreateMenu(MainMenuHandler);
-
-  glutSetMenu(mainMenu);
-  glutAddMenuEntry("Exit", 0);
-  glutAttachMenu(GLUT_RIGHT_BUTTON);
-
-  glEnable(GL_DEPTH_TEST);
-} // end Initialize()
-
-
-/****************************************************************************
- MouseHandler()
- 
- Handle mouse events. For this simple demo, just exit on a left click.
-*****************************************************************************/
-void MouseHandler(int button, int state, int x, int y)
-{
-	controller->MouseHandler(button, state, x, y);	
+    return 0;
 }
 
-
-/****************************************************************************
- KeyboardHandler()
-
- Keyboard handler. Again, we'll just exit when q is pressed.
-*****************************************************************************/
-void KeyboardHandler(unsigned char key, int x, int y)
-{
-  switch (key)
-  {
-  case 'q':  // exit
+void Initialize() {
+    // Initialize
+    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
+    
+    // Enable double-buffering
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    
+    // Create a OpenGL window
+    screen = SDL_SetVideoMode(WIDTH, HEIGHT, 0, SDL_OPENGL | 
+                              SDL_RESIZABLE);
+    if(!screen) 
     {
-      exit(0);
-    } break;
-  default:
-    {
-    } break;
-  }
-  glutPostRedisplay();
-} // end KeyboardHandler()
-
-
-/****************************************************************************
- MainMenuHandler()
-
- Main menu callback.
-*****************************************************************************/
-void MainMenuHandler(int option)
-{
-  switch(option)
-  {
-  case 0:
-    {
-      //exit(0);
-    } break;
-  default:
-    break;
-  }
-  glutPostRedisplay();
-} // end MainMenuHandler()
-
-
-/****************************************************************************
- Animate()
-
- Rotate the cube by 4 degrees and force a redisplay.
-*****************************************************************************/
-void Animate()
-{
-  glutPostRedisplay();
-} // end Animate()
-
-
-/****************************************************************************
- Reshape()
-
- Reset the viewport for window changes
-*****************************************************************************/
-void Reshape(int width, int height)
-{
-  if (height == 0)
-    return;
-
-  glViewport(0, 0, (GLsizei) width, (GLsizei) height);
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluPerspective(90.0, width/height, 1.0, 100.0);
-
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
-} // end Reshape
-
-
-/****************************************************************************
- Display()
-
- Clear and redraw the scene.
-*****************************************************************************/
-void Display()
-{
-	controller->Update();
-	controller->Render();
-} // end Display()
+        printf("Couldn't set %dx%d GL video mode: %s\n", WIDTH,
+               HEIGHT, SDL_GetError());
+        SDL_Quit();
+        exit(2);
+    }
+    SDL_WM_SetCaption(WINDOW_TITLE, WINDOW_TITLE); 
+}
 
 

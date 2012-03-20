@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		8DD76F6A0486A84900D96B5E /* void-ray.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* void-ray.1 */; };
 		D844B5E31484123700697A6B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D844B5E21484123700697A6B /* Cocoa.framework */; };
-		D844B5E51484123D00697A6B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D844B5E41484123D00697A6B /* GLUT.framework */; };
-		D844B5E71484124300697A6B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D844B5E61484124300697A6B /* OpenGL.framework */; };
+		D85E4AC215072691009AAB88 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D85E4AC115072691009AAB88 /* OpenGL.framework */; };
+		D85E4B6715072700009AAB88 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = D85E4B6615072700009AAB88 /* SDLMain.m */; };
+		D893E3BA1505D816004589C2 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D893E3B91505D816004589C2 /* SDL.framework */; };
 		D8C15DA4148408CB00FDFD35 /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15D9D148408CB00FDFD35 /* GameController.cpp */; };
 		D8C15DA5148408CB00FDFD35 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15D9F148408CB00FDFD35 /* main.cpp */; };
 		D8C15DA6148408CB00FDFD35 /* Ship.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8C15DA0148408CB00FDFD35 /* Ship.cpp */; };
@@ -34,8 +35,10 @@
 		8DD76F6C0486A84900D96B5E /* void-ray */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "void-ray"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* void-ray.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "void-ray.1"; sourceTree = "<group>"; };
 		D844B5E21484123700697A6B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		D844B5E41484123D00697A6B /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
-		D844B5E61484124300697A6B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		D85E4AC115072691009AAB88 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		D85E4B6515072700009AAB88 /* SDLMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
+		D85E4B6615072700009AAB88 /* SDLMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
+		D893E3B91505D816004589C2 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL.framework; path = Library/Frameworks/SDL.framework; sourceTree = SDKROOT; };
 		D8C15D9D148408CB00FDFD35 /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameController.cpp; path = ../../src/GameController.cpp; sourceTree = SOURCE_ROOT; };
 		D8C15D9E148408CB00FDFD35 /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameController.h; path = ../../src/GameController.h; sourceTree = SOURCE_ROOT; };
 		D8C15D9F148408CB00FDFD35 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../src/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -53,9 +56,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D85E4AC215072691009AAB88 /* OpenGL.framework in Frameworks */,
+				D893E3BA1505D816004589C2 /* SDL.framework in Frameworks */,
 				D844B5E31484123700697A6B /* Cocoa.framework in Frameworks */,
-				D844B5E51484123D00697A6B /* GLUT.framework in Frameworks */,
-				D844B5E71484124300697A6B /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,12 +68,12 @@
 		08FB7794FE84155DC02AAC07 /* void-ray */ = {
 			isa = PBXGroup;
 			children = (
+				D85E4AC115072691009AAB88 /* OpenGL.framework */,
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
+				D893E3B91505D816004589C2 /* SDL.framework */,
 				D844B5E21484123700697A6B /* Cocoa.framework */,
-				D844B5E41484123D00697A6B /* GLUT.framework */,
-				D844B5E61484124300697A6B /* OpenGL.framework */,
 			);
 			name = "void-ray";
 			sourceTree = "<group>";
@@ -78,6 +81,8 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				D85E4B6515072700009AAB88 /* SDLMain.h */,
+				D85E4B6615072700009AAB88 /* SDLMain.m */,
 				D8C15D9D148408CB00FDFD35 /* GameController.cpp */,
 				D8C15D9E148408CB00FDFD35 /* GameController.h */,
 				D8C15D9F148408CB00FDFD35 /* main.cpp */,
@@ -174,6 +179,7 @@
 				D8C15DA5148408CB00FDFD35 /* main.cpp in Sources */,
 				D8C15DA6148408CB00FDFD35 /* Ship.cpp in Sources */,
 				D8E9768414EB80F300C2CBA4 /* SteeringBehaviors.cpp in Sources */,
+				D85E4B6715072700009AAB88 /* SDLMain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,14 +191,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_OPENMP_SUPPORT = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G4;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = GLUT_Prefix.pch;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GENERATE_PKGINFO_FILE = YES;
 				INSTALL_PATH = /Users/Joe/Applications;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../..\"",
+					"\"$(SRCROOT)/../../src\"",
+				);
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = "void-ray";
 				WARNING_CFLAGS = (
@@ -209,8 +222,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_OPENMP_SUPPORT = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INSTALL_PATH = /usr/local/bin;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../..\"",
+					"\"$(SRCROOT)/../../src\"",
+				);
 				PRODUCT_NAME = "void-ray";
 			};
 			name = Release;
@@ -218,24 +238,29 @@
 		1DEB923608733DC60010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = "compiler-default";
-				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 			};
 			name = Debug;
 		};
 		1DEB923708733DC60010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				SDKROOT = macosx;
+				VALID_ARCHS = i386;
 			};
 			name = Release;
 		};
