@@ -1,552 +1,0 @@
-Tvoid-ray
-v7
-r0
-t344217828.499947
-cCheck dependencies
-cProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal x86_64 c++ com.apple.compilers.gcc.4_2
-cProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal i386 c++ com.apple.compilers.gcc.4_2
-cProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal ppc c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/GameController.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/main.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/Ship.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/GameController.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/main.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/Ship.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/GameController.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp normal ppc c++ com.apple.compilers.gcc.4_2
-cLd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray normal x86_64
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/main.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp normal ppc c++ com.apple.compilers.gcc.4_2
-cCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/Ship.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp normal ppc c++ com.apple.compilers.gcc.4_2
-cLd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray normal i386
-cLd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray normal ppc
-cCreateUniversalBinary /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray normal "x86_64 i386 ppc"
-
-N/Developer/SDKs/MacOSX10.6.sdk
-c000000004D24E19300000000000000EE
-t1294262675
-s238
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/GLUT.framework/Headers/glut.h
-c000000004C23CCCC000000000000578C
-t1277414604
-s22412
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
-c000000004BD2501F0000000000025B59
-t1272074271
-s154457
-
-N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glu.h
-c000000004BD2501F0000000000003F84
-t1272074271
-s16260
-
-N/Developer/SDKs/MacOSX10.6.sdk/usr/include/math.h
-c000000004A5C14A000000000000004F1
-t1247548576
-s1265
-
-N/System/Library/Frameworks/Cocoa.framework/Cocoa
-c000000004C8170CF000000000000A5E0
-t1283551439
-s42464
-
-N/System/Library/Frameworks/GLUT.framework/GLUT
-c000000004C81710D00000000001A2920
-t1283551501
-s1714464
-
-N/System/Library/Frameworks/GLUT.framework/Headers/glut.h
-c000000004C23CCCC000000000000578C
-t1277414604
-s22412
-
-N/System/Library/Frameworks/OpenGL.framework/Headers/gl.h
-c000000004BD2501F0000000000025B59
-t1272074271
-s154457
-
-N/System/Library/Frameworks/OpenGL.framework/Headers/glext.h
-c000000004BD2501F0000000000042ACF
-t1272074271
-s273103
-
-N/System/Library/Frameworks/OpenGL.framework/Headers/glu.h
-c000000004BD2501F0000000000003F84
-t1272074271
-s16260
-
-N/System/Library/Frameworks/OpenGL.framework/OpenGL
-c000000004E288FAA0000000000043360
-t1311281066
-s275296
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp
-c000000004ED4215C0000000000000707
-t1322525020
-s1799
-i"GameController.h"
-i<GLUT/glut.h>
-i"Ship.h"
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp
-c000000004ED3D0370000000000000104
-t1322504247
-s260
-i"Ship.h"
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp
-c000000004ED4215F00000000000015A4
-t1322525023
-s5540
-i<stdlib.h>
-i<GLUT/glut.h>
-i<OpenGL/glext.h>
-i<OpenGL/gl.h>
-i<OpenGL/glu.h>
-i"GameController.h"
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch
-c000000004ED3D61500000000000000A7
-t1322505749
-s167
-i<GLUT/glut.h>
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray
-t1322525028
-s61392
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/GameController.o
-t1322525028
-s6636
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/Ship.o
-t1322525028
-s5892
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/main.o
-t1322525028
-s10896
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray
-t1322525028
-s17564
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray.LinkFileList
-c000000004ED3DAFD0000000000000172
-t1322507005
-s370
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/GameController.o
-t1322525028
-s7032
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/Ship.o
-t1322525028
-s6208
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/main.o
-t1322525028
-s11552
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray
-t1322525028
-s16336
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray.LinkFileList
-c000000004ED3DAFD000000000000016F
-t1322507005
-s367
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/GameController.o
-t1322525028
-s6556
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/Ship.o
-t1322525028
-s6240
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/main.o
-t1322525028
-s11480
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray
-t1322525028
-s18080
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray.LinkFileList
-c000000004ED3D1D10000000000000178
-t1322504657
-s376
-
-N/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/main.cpp
-c000000004ED3D10E000000000000008F
-t1322504462
-s143
-i<iostream>
-
-N/Users/Joe/Projects/void-ray/void-ray/src/GameController.h
-c000000004ED3DB9B000000000000012B
-t1322507163
-s299
-i"Ship.h"
-
-N/Users/Joe/Projects/void-ray/void-ray/src/Ship.h
-c000000004ED421620000000000000116
-t1322525026
-s278
-i"util\Vector3.h"
-
-N/Users/Joe/Projects/void-ray/void-ray/src/glut.h
-c000000004ED3D037000000000000694A
-t1322504247
-s26954
-i<windows.h>
-i<GL/gl.h>
-i<GL/glu.h>
-
-N/Users/Joe/Projects/void-ray/void-ray/src/util/Vector3.h
-c000000004ED3D0370000000000000984
-t1322504247
-s2436
-i<math.h>
-
-N/usr/include/math.h
-c000000004A5C14A000000000000004F1
-t1247548576
-s1265
-
-N/usr/include/stdlib.h
-c000000004BBD2CE90000000000002DF5
-t1270689001
-s11765
-
-N/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-avfuvdxbsluigshaeblizoesajrt/GLUT_Prefix.pch.gch
-t2
-s0
-
-N/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch.gch
-t1322507005
-s4567568
-
-N/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch.gch
-t1322507005
-s4801040
-
-N/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch.gch
-t1322506551
-s4817424
-
-N/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-hfmrkeufhsjerjgggstoicnnhmpr/GLUT_Prefix.pch.gch
-t1322505750
-s4817424
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies344217828#344217828#0(0"0(0#1#0"8613977952#0"0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/GameController.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s344217828.021892
-e344217828.091390
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/i386/GameController.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@87"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp344217828#344217828#0(0"0(0#0#79"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp8615582336#1174"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/i386 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/GameController.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/Ship.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s344217828.089066
-e344217828.140327
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/i386/Ship.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@77"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp344217828#344217828#0(0"0(0#0#69"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp8615860928#1154"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/i386 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/Ship.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/main.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp normal i386 c++ com.apple.compilers.gcc.4_2
-s344217828.087092
-e344217828.179121
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/i386/main.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp
-xnormal
-xi386
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@77"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp344217828#344217828#0(0"0(0#0#69"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp8613575936#1154"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/i386 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/main.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/GameController.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp normal ppc c++ com.apple.compilers.gcc.4_2
-s344217828.091520
-e344217828.169070
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/GameController.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp
-xnormal
-xppc
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@87"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp344217828#344217828#0(0"0(0#0#79"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp8613319264#1181"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -mtune=G4 -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/ppc -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/GameController.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/Ship.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp normal ppc c++ com.apple.compilers.gcc.4_2
-s344217828.169300
-e344217828.273381
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/Ship.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp
-xnormal
-xppc
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@77"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp344217828#344217828#0(0"0(0#0#69"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp8615222784#1161"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -mtune=G4 -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/ppc -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/Ship.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/main.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp normal ppc c++ com.apple.compilers.gcc.4_2
-s344217828.140449
-e344217828.250901
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/main.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp
-xnormal
-xppc
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@77"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp344217828#344217828#0(0"0(0#0#69"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp8615745600#1161"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -mtune=G4 -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/ppc -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/main.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/GameController.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
-s344217828.018530
-e344217828.086908
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/GameController.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@87"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp344217828#344217828#0(0"0(0#0#79"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp8613151808#1180"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/x86_64 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/GameController.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/GameController.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/Ship.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
-s344217828.020612
-e344217828.088949
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/Ship.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@77"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp344217828#344217828#0(0"0(0#0#69"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp8614049664#1160"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/x86_64 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/Ship.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/Ship.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/main.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
-s344217828.019665
-e344217828.119100
-r1
-xCompileC
-xbuild/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/main.o
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@77"Compile /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp344217828#344217828#0(0"0(0#0#69"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp8613536256#1160"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++ -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/x86_64 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -include /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/../../src/main.cpp -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/main.o0#
-
-CCompileC build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/main.o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/main.cpp normal x86_64 c++ com.apple.compilers.gcc.4_2
-r0
-
-CCreateUniversalBinary /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray normal "x86_64 i386 ppc"
-s344217828.497227
-e344217828.499919
-r1
-xCreateUniversalBinary
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray
-xnormal
-xx86_64 i386 ppc
-lSLF07#2@67"CreateUniversalBinary build/Debug/void-ray normal "x86_64 i386 ppc"344217828#344217828#0(0"0(0#0#66"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/x86_64 i386 ppc8613152576#531"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    /usr/bin/lipo -create /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray -output /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray0#
-
-CLd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray normal x86_64
-s344199387.632878
-e344199387.648612
-r0
-xLd
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray
-xnormal
-xx86_64
-oUndefined symbols:
-o  "_glutInitWindowSize", referenced from:
-o      _main in main.o
-o  "_glEnable", referenced from:
-o      Initialize()     in main.o
-o      Initialize()     in main.o
-o  "_glEnd", referenced from:
-o      GameController::DrawShip(Ship*)      in GameController.o
-o  "_glutInitWindowPosition", referenced from:
-o      _main in main.o
-o  "_glutMouseFunc", referenced from:
-o      _main in main.o
-o  "_glShadeModel", referenced from:
-o      Initialize()     in main.o
-o  "_glFrontFace", referenced from:
-o      Initialize()     in main.o
-o  "_glViewport", referenced from:
-o      Reshape(int, int)in main.o
-o  "_glutDisplayFunc", referenced from:
-o      _main in main.o
-o  "_glLoadIdentity", referenced from:
-o      GameController::Render()      in GameController.o
-o      Reshape(int, int)in main.o
-o      Reshape(int, int)in main.o
-o  "_glColor3f", referenced from:
-o      Initialize()     in main.o
-o  "_glMatrixMode", referenced from:
-o      Reshape(int, int)in main.o
-o      Reshape(int, int)in main.o
-o  "_glutInitDisplayMode", referenced from:
-o      _main in main.o
-o  "_gluPerspective", referenced from:
-o      Reshape(int, int)in main.o
-o  "_glBegin", referenced from:
-o      GameController::DrawShip(Ship*)      in GameController.o
-o  "_glPolygonOffset", referenced from:
-o      Initialize()     in main.o
-o  "_glutIdleFunc", referenced from:
-o      _main in main.o
-o  "_glutCreateWindow", referenced from:
-o      _main in main.o
-o  "_glVertex3f", referenced from:
-o      GameController::DrawShip(Ship*)      in GameController.o
-o      GameController::DrawShip(Ship*)      in GameController.o
-o      GameController::DrawShip(Ship*)      in GameController.o
-o  "_glutMainLoop", referenced from:
-o      _main in main.o
-o  "_glutReshapeFunc", referenced from:
-o      _main in main.o
-o  "_glutInit", referenced from:
-o      _main in main.o
-o  "_glutKeyboardFunc", referenced from:
-o      _main in main.o
-o  "_glClearColor", referenced from:
-o      Initialize()     in main.o
-o  "_glutSwapBuffers", referenced from:
-o      GameController::Render()      in GameController.o
-o  "_glutPostRedisplay", referenced from:
-o      Animate()    in main.o
-o      MainMenuHandler(int)  in main.o
-o      KeyboardHandler(unsigned char, int, int)in main.o
-o      MouseHandler(int, int, int, int)in main.o
-o  "_glClear", referenced from:
-o      GameController::Render()      in GameController.o
-o  "_gluLookAt", referenced from:
-o      GameController::Render()      in GameController.o
-old: symbol(s) not found
-ocollect2: ld returned 1 exit status
-lSLF07#2@76"Link /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray344199387#344199387#0(2485"Undefined symbols:  "_glutInitWindowSize", referenced from:      _main in main.o  "_glEnable", referenced from:      Initialize()     in main.o      Initialize()     in main.o  "_glEnd", referenced from:      GameController::DrawShip(Ship*)      in GameController.o  "_glutInitWindowPosition", referenced from:      _main in main.o  "_glutMouseFunc", referenced from:      _main in main.o  "_glShadeModel", referenced from:      Initialize()     in main.o  "_glFrontFace", referenced from:      Initialize()     in main.o  "_glViewport", referenced from:      Reshape(int, int)in main.o  "_glutDisplayFunc", referenced from:      _main in main.o  "_glLoadIdentity", referenced from:      GameController::Render()      in GameController.o      Reshape(int, int)in main.o      Reshape(int, int)in main.o  "_glColor3f", referenced from:      Initialize()     in main.o  "_glMatrixMode", referenced from:      Reshape(int, int)in main.o      Reshape(int, int)in main.o  "_glutInitDisplayMode", referenced from:      _main in main.o  "_gluPerspective", referenced from:      Reshape(int, int)in main.o  "_glBegin", referenced from:      GameController::DrawShip(Ship*)      in GameController.o  "_glPolygonOffset", referenced from:      Initialize()     in main.o  "_glutIdleFunc", referenced from:      _main in main.o  "_glutCreateWindow", referenced from:      _main in main.o  "_glVertex3f", referenced from:      GameController::DrawShip(Ship*)      in GameController.o      GameController::DrawShip(Ship*)      in GameController.o      GameController::DrawShip(Ship*)      in GameController.o  "_glutMainLoop", referenced from:      _main in main.o  "_glutReshapeFunc", referenced from:      _main in main.o  "_glutInit", referenced from:      _main in main.o  "_glutKeyboardFunc", referenced from:      _main in main.o  "_glClearColor", referenced from:      Initialize()     in main.o  "_glutSwapBuffers", referenced from:      GameController::Render()      in GameController.o  "_glutPostRedisplay", referenced from:      Animate()    in main.o      MainMenuHandler(int)  in main.o      KeyboardHandler(unsigned char, int, int)in main.o      MouseHandler(int, int, int, int)in main.o  "_glClear", referenced from:      GameController::Render()      in GameController.o  "_gluLookAt", referenced from:      GameController::Render()      in GameController.old: symbol(s) not foundcollect2: ld returned 1 exit status67(4@39""_glutInitWindowSize", referenced from:344199387#19#42#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#61#22#0(6@0"344199387#0#0#0#0#0"0(4@29""_glEnable", referenced from:344199387#83#32#0(6@0"344199387#0#0#0#0#0"0(13@26"Initialize()     in main.o344199387#115#33#0(6@0"344199387#0#0#0#0#0"0(13@26"Initialize()     in main.o344199387#148#33#0(6@0"344199387#0#0#0#0#0"0(4@26""_glEnd", referenced from:344199387#181#29#0(6@0"344199387#0#0#0#0#0"0(13@56"GameController::DrawShip(Ship*)      in GameController.o344199387#210#63#0(6@0"344199387#0#0#0#0#0"0(4@43""_glutInitWindowPosition", referenced from:344199387#273#46#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#319#22#0(6@0"344199387#0#0#0#0#0"0(4@34""_glutMouseFunc", referenced from:344199387#341#37#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#378#22#0(6@0"344199387#0#0#0#0#0"0(4@33""_glShadeModel", referenced from:344199387#400#36#0(6@0"344199387#0#0#0#0#0"0(13@26"Initialize()     in main.o344199387#436#33#0(6@0"344199387#0#0#0#0#0"0(4@32""_glFrontFace", referenced from:344199387#469#35#0(6@0"344199387#0#0#0#0#0"0(13@26"Initialize()     in main.o344199387#504#33#0(6@0"344199387#0#0#0#0#0"0(4@31""_glViewport", referenced from:344199387#537#34#0(6@0"344199387#0#0#0#0#0"0(13@26"Reshape(int, int)in main.o344199387#571#33#0(6@0"344199387#0#0#0#0#0"0(4@36""_glutDisplayFunc", referenced from:344199387#604#39#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#643#22#0(6@0"344199387#0#0#0#0#0"0(4@35""_glLoadIdentity", referenced from:344199387#665#38#0(6@0"344199387#0#0#0#0#0"0(13@49"GameController::Render()      in GameController.o344199387#703#56#0(6@0"344199387#0#0#0#0#0"0(13@26"Reshape(int, int)in main.o344199387#759#33#0(6@0"344199387#0#0#0#0#0"0(13@26"Reshape(int, int)in main.o344199387#792#33#0(6@0"344199387#0#0#0#0#0"0(4@30""_glColor3f", referenced from:344199387#825#33#0(6@0"344199387#0#0#0#0#0"0(13@26"Initialize()     in main.o344199387#858#33#0(6@0"344199387#0#0#0#0#0"0(4@33""_glMatrixMode", referenced from:344199387#891#36#0(6@0"344199387#0#0#0#0#0"0(13@26"Reshape(int, int)in main.o344199387#927#33#0(6@0"344199387#0#0#0#0#0"0(13@26"Reshape(int, int)in main.o344199387#960#33#0(6@0"344199387#0#0#0#0#0"0(4@40""_glutInitDisplayMode", referenced from:344199387#993#43#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#1036#22#0(6@0"344199387#0#0#0#0#0"0(4@35""_gluPerspective", referenced from:344199387#1058#38#0(6@0"344199387#0#0#0#0#0"0(13@26"Reshape(int, int)in main.o344199387#1096#33#0(6@0"344199387#0#0#0#0#0"0(4@28""_glBegin", referenced from:344199387#1129#31#0(6@0"344199387#0#0#0#0#0"0(13@56"GameController::DrawShip(Ship*)      in GameController.o344199387#1160#63#0(6@0"344199387#0#0#0#0#0"0(4@36""_glPolygonOffset", referenced from:344199387#1223#39#0(6@0"344199387#0#0#0#0#0"0(13@26"Initialize()     in main.o344199387#1262#33#0(6@0"344199387#0#0#0#0#0"0(4@33""_glutIdleFunc", referenced from:344199387#1295#36#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#1331#22#0(6@0"344199387#0#0#0#0#0"0(4@37""_glutCreateWindow", referenced from:344199387#1353#40#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#1393#22#0(6@0"344199387#0#0#0#0#0"0(4@31""_glVertex3f", referenced from:344199387#1415#34#0(6@0"344199387#0#0#0#0#0"0(13@56"GameController::DrawShip(Ship*)      in GameController.o344199387#1449#63#0(6@0"344199387#0#0#0#0#0"0(13@56"GameController::DrawShip(Ship*)      in GameController.o344199387#1512#63#0(6@0"344199387#0#0#0#0#0"0(13@56"GameController::DrawShip(Ship*)      in GameController.o344199387#1575#63#0(6@0"344199387#0#0#0#0#0"0(4@33""_glutMainLoop", referenced from:344199387#1638#36#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#1674#22#0(6@0"344199387#0#0#0#0#0"0(4@36""_glutReshapeFunc", referenced from:344199387#1696#39#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#1735#22#0(6@0"344199387#0#0#0#0#0"0(4@29""_glutInit", referenced from:344199387#1757#32#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#1789#22#0(6@0"344199387#0#0#0#0#0"0(4@37""_glutKeyboardFunc", referenced from:344199387#1811#40#0(6@0"344199387#0#0#0#0#0"0(13@15"_main in main.o344199387#1851#22#0(6@0"344199387#0#0#0#0#0"0(4@33""_glClearColor", referenced from:344199387#1873#36#0(6@0"344199387#0#0#0#0#0"0(13@26"Initialize()     in main.o344199387#1909#33#0(6@0"344199387#0#0#0#0#0"0(4@36""_glutSwapBuffers", referenced from:344199387#1942#39#0(6@0"344199387#0#0#0#0#0"0(13@49"GameController::Render()      in GameController.o344199387#1981#56#0(6@0"344199387#0#0#0#0#0"0(4@38""_glutPostRedisplay", referenced from:344199387#2037#41#0(6@0"344199387#0#0#0#0#0"0(13@22"Animate()    in main.o344199387#2078#29#0(6@0"344199387#0#0#0#0#0"0(13@31"MainMenuHandler(int)  in main.o344199387#2107#38#0(6@0"344199387#0#0#0#0#0"0(13@49"KeyboardHandler(unsigned char, int, int)in main.o344199387#2145#56#0(6@0"344199387#0#0#0#0#0"0(13@41"MouseHandler(int, int, int, int)in main.o344199387#2201#48#0(6@0"344199387#0#0#0#0#0"0(4@28""_glClear", referenced from:344199387#2249#31#0(6@0"344199387#0#0#0#0#0"0(13@49"GameController::Render()      in GameController.o344199387#2280#56#0(6@0"344199387#0#0#0#0#0"0(4@30""_gluLookAt", referenced from:344199387#2336#33#0(6@0"344199387#0#0#0#0#0"0(13@49"GameController::Render()      in GameController.o344199387#2369#56#0(6@0"344199387#0#0#0#0#0"0(13@19"Symbol(s) not found344199387#2425#24#0(6@0"344199387#0#0#0#0#0"0(13@35"Collect2: ld returned 1 exit status344199387#2449#36#0(6@0"344199387#0#0#0#0#0"0(0#0#0"8605190464#463"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    /Developer/usr/bin/g++-4.2 -arch x86_64 -L/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -filelist /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray.LinkFileList -prebind -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/void-ray1#
-
-CLd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray normal i386
-s344217828.179225
-e344217828.493732
-r1
-xLd
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray
-xnormal
-xi386
-lSLF07#2@126"Link /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray344217828#344217828#0(0"0(0#0#0"8613996480#560"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    /Developer/usr/bin/g++-4.2 -arch i386 -L/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -filelist /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray.LinkFileList -framework Cocoa -framework GLUT -framework OpenGL -prebind -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/i386/void-ray0#
-
-CLd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray normal ppc
-s344217828.273476
-e344217828.496457
-r1
-xLd
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray
-xnormal
-xppc
-lSLF07#2@125"Link /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray344217828#344217828#0(0"0(0#0#0"8613928160#557"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    /Developer/usr/bin/g++-4.2 -arch ppc -L/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -filelist /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray.LinkFileList -framework Cocoa -framework GLUT -framework OpenGL -prebind -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/ppc/void-ray0#
-
-CLd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray normal x86_64
-s344217828.119213
-e344217828.497148
-r1
-xLd
-x/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray
-xnormal
-xx86_64
-lSLF07#2@128"Link /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray344217828#344217828#0(0"0(0#0#0"8615656160#566"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    /Developer/usr/bin/g++-4.2 -arch x86_64 -L/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -filelist /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray.LinkFileList -framework Cocoa -framework GLUT -framework OpenGL -prebind -o /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/Objects-normal/x86_64/void-ray0#
-
-CProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-avfuvdxbsluigshaeblizoesajrt/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal x86_64 c++ com.apple.compilers.gcc.4_2
-s344198456.417858
-e344198456.422691
-r0
-xProcessPCH++
-x/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-avfuvdxbsluigshaeblizoesajrt/GLUT_Prefix.pch.gch
-xGLUT_Prefix.pch
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.gcc.4_2
-oi686-apple-darwin10-gcc-4.2.1: /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch: No such file or directory
-oi686-apple-darwin10-gcc-4.2.1: warning: '-x c++-header' after last input file has no effect
-oi686-apple-darwin10-gcc-4.2.1: no input files
-lSLF07#2@26"Precompile GLUT_Prefix.pch344198456#344198456#0(322"i686-apple-darwin10-gcc-4.2.1: /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch: No such file or directoryi686-apple-darwin10-gcc-4.2.1: warning: '-x c++-header' after last input file has no effecti686-apple-darwin10-gcc-4.2.1: no input filesCommand /Developer/usr/bin/gcc-4.2 failed with exit code 11(4@58"Command /Developer/usr/bin/gcc-4.2 failed with exit code 1344198456#18446744073709551615#0#0(1@0"0(0#0#66"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch8611358624#1037"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++-header -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/x86_64 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch -o /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-avfuvdxbsluigshaeblizoesajrt/GLUT_Prefix.pch.gch1#
-
-CProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal ppc c++ com.apple.compilers.gcc.4_2
-s344199805.339603
-e344199805.657839
-r1
-xProcessPCH++
-x/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch.gch
-xGLUT_Prefix.pch
-xnormal
-xppc
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@26"Precompile GLUT_Prefix.pch344199805#344199805#0(0"0(0#0#66"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch8609710752#1041"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++-header -arch ppc -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -mtune=G4 -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/ppc -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch -o /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-bjrsnhxowdcjsrcgjarjbwdtvmqx/GLUT_Prefix.pch.gch0#
-
-CProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal i386 c++ com.apple.compilers.gcc.4_2
-s344199805.338697
-e344199805.535977
-r1
-xProcessPCH++
-x/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch.gch
-xGLUT_Prefix.pch
-xnormal
-xi386
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@26"Precompile GLUT_Prefix.pch344199805#344199805#0(0"0(0#0#66"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch8612631904#1033"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++-header -arch i386 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/i386 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch -o /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-chgmjrvbvwpivkgtozflwjzagdnw/GLUT_Prefix.pch.gch0#
-
-CProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal x86_64 c++ com.apple.compilers.gcc.4_2
-s344199351.589423
-e344199351.732045
-r1
-xProcessPCH++
-x/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch.gch
-xGLUT_Prefix.pch
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@26"Precompile GLUT_Prefix.pch344199351#344199351#0(0"0(0#0#66"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch8176117419587694592#1037"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++-header -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/x86_64 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch -o /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-dryykqhdygwqwzcqmxbwfshmuoiu/GLUT_Prefix.pch.gch0#
-
-CProcessPCH++ /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-hfmrkeufhsjerjgggstoicnnhmpr/GLUT_Prefix.pch.gch GLUT_Prefix.pch normal x86_64 c++ com.apple.compilers.gcc.4_2
-s344198550.303073
-e344198550.449091
-r1
-xProcessPCH++
-x/var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-hfmrkeufhsjerjgggstoicnnhmpr/GLUT_Prefix.pch.gch
-xGLUT_Prefix.pch
-xnormal
-xx86_64
-xc++
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@26"Precompile GLUT_Prefix.pch344198550#344198550#0(0"0(0#0#66"/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch8612964448#1037"    cd /Users/Joe/Projects/void-ray/void-ray/osx/void-ray    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c++-header -arch x86_64 -fmessage-length=0 -pipe -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -mfix-and-continue -fvisibility-inlines-hidden -gdwarf-2 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/void-ray.hmap -Wno-unknown-pragmas -Wno-four-char-constants -Wmost -F/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/Debug/include -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources/x86_64 -I/Users/Joe/Projects/void-ray/void-ray/osx/void-ray/build/void-ray.build/Debug/void-ray.build/DerivedSources -c /Users/Joe/Projects/void-ray/void-ray/osx/void-ray/GLUT_Prefix.pch -o /var/folders/47/47gnNOwxGDaXH3YCNmc6p++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/GLUT_Prefix-hfmrkeufhsjerjgggstoicnnhmpr/GLUT_Prefix.pch.gch0#
-
