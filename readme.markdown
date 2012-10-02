@@ -9,7 +9,7 @@ Also, Void Ray is using SDL as a cross platform timer, window manager, and resou
 
 Next Steps:
 
-* Encapsolate rendering code to a generic class and away from Entity based classes.
+* Encapsolate rendering code to a generic class and away from Entity based classes
 * Fix the current steering behavior
 * Add addtional steering behaviors
 * Read the next chapter
