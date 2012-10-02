@@ -1,7 +1,7 @@
 #include <stdlib.h>
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
+#include <SDL.h>
+#include <SDL_opengl.h>
 
 #include "GameController.h"
 
@@ -40,21 +40,6 @@ void render() {
     
     controller->Update(TimerUpdate());
 	controller->Render();
-    
-    /*
-    glBegin(GL_TRIANGLES);
-    {
-        glColor3f(1,0,0);
-        glVertex2f(0,0);
-        
-        glColor3f(0,1,0);
-        glVertex2f(.5,0);
-        
-        glColor3f(0,0,1);
-        glVertex2f(.5,.5);
-    }
-    glEnd();
-     */
 }
 
 /****************************************************************************
@@ -62,17 +47,14 @@ void render() {
 *****************************************************************************/
 int main(int argc, char *argv[]) {
 
-    controller = new GameController();
-
     Initialize();
+
+	controller = new GameController(screen);
     
     bool done = false;
     while(!done) 
     {
         SDL_Event event;
-        // Rotates the triangle (this could be replaced with custom
-        // processing code)
-        // animate();
         
         // Respond to any events that occur
         while(SDL_PollEvent(&event))
@@ -116,10 +98,6 @@ int main(int argc, char *argv[]) {
     
     SDL_Quit();
     return 0;
-
-    //controller->Start();
-   
-    return 0;
 }
 
 void Initialize() {
@@ -139,7 +117,9 @@ void Initialize() {
         SDL_Quit();
         exit(2);
     }
-    SDL_WM_SetCaption(WINDOW_TITLE, WINDOW_TITLE); 
+    SDL_WM_SetCaption(WINDOW_TITLE, WINDOW_TITLE);
+
+	glEnable( GL_TEXTURE_2D );
 }
 
 

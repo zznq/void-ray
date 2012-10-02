@@ -3,21 +3,17 @@
 
 #include "MovingEntity.h"
 #include "Ship.h"
-#include "util/PrecisionTimer.h"
 
 class GameController{
 private:
-	//PrecisionTimer timer;
 	void DrawEntity(MovingEntity *s);
 public:
 	//Class Members
 	MovingEntity *ship;
-	GameController() { /*timer = PrecisionTimer();*/ ship = new Ship(); }
+	GameController(SDL_Surface* screen) { ship = new Ship(screen); }
 
-	void Start();
 	void Update(double elapsed_time);
 
-	/* GLUT Callback functions */
 	void Render();
 	void MouseHandler(int button, int state, int x, int y);
 };

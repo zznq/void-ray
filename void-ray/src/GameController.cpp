@@ -2,13 +2,8 @@
 
 #include "Ship.h"
 
-
-void GameController::Start(){
-	//this->timer.Start();
-}
-
 void GameController::Update(double elapsed_time){
-	this->ship->Update(elapsed_time); //this->timer.TimeElapsed());
+	this->ship->Update(elapsed_time);
 }
 
 void GameController::DrawEntity(MovingEntity *s){
