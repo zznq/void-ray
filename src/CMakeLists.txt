@@ -12,7 +12,6 @@ add_executable(VOIDRAY main.cpp GameController.cpp MovingEntity.h Ship.cpp Steer
 
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
-
 find_package(OpenGL REQUIRED)
 
 include_directories(${SDL_image_INCLUDE_DIR} ${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIRS})

@@ -103,24 +103,33 @@ void Ship::Render(){
 
 		// Bind the texture to which subsequent calls refer to
 		glBindTexture( GL_TEXTURE_2D, texture );
-		 
-		glBegin( GL_QUADS );
-			//Top-left vertex (corner)
-			glTexCoord2i( 0, 0 );
-			glVertex3f( this->position.x + 0.0f, this->position.y + 0.128f, globalz );
-		 
-			//Top-right vertex (corner)
-			glTexCoord2i( 1, 0 );
-			glVertex3f( this->position.x + 0.128f, this->position.y + 0.128f, globalz );
-		 
-			//Bottom-right vertex (corner)
-			glTexCoord2i( 1, 1 );
-			glVertex3f( this->position.x + 0.128f, this->position.y + 0.0f, globalz );
-		 
-			//Bottom-left vertex (corner)
-			glTexCoord2i( 0, 1 );
-			glVertex3f( this->position.x + 0.0f, this->position.y + 0.0f, globalz );
-		glEnd();
+
+		GLfloat squareTexCoord[] = {
+			0, 0,
+			1, 0,
+			1, 1,
+			0, 1
+		};
+
+		GLfloat vertices[] = {
+			this->position.x + 0.000f, this->position.y + 0.128f, globalz,
+			this->position.x + 0.128f, this->position.y + 0.128f, globalz,
+			this->position.x + 0.128f, this->position.y + 0.000f, globalz,
+			this->position.x + 0.000f, this->position.y + 0.000f, globalz
+		};
+
+		// activate and specify pointer to vertex array
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+		glTexCoordPointer(2, GL_FLOAT, 0, squareTexCoord);
+		glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+		glDrawArrays(GL_QUADS, 0, 4);
+
+		// deactivate vertex arrays after drawing
+		glDisableClientState(GL_VERTEX_ARRAY);
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
 		SDL_FreeSurface(temp);
 		SDL_FreeSurface(image);
