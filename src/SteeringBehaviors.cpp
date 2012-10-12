@@ -19,11 +19,11 @@ Vector3 SteeringBehaviors::Seek(Vector3 target){
 }
 
 Vector3 SteeringBehaviors::Flee(Vector3 target){
-    
+    return this->Seek(this->_vehicle->target);
 }
 
 Vector3 SteeringBehaviors::Arrive(Vector3 target) {
-    
+    return this->Seek(this->_vehicle->target);
 }
 
 Vector3 SteeringBehaviors::Calculate(){
@@ -31,5 +31,5 @@ Vector3 SteeringBehaviors::Calculate(){
 }
 
 Vector3 SteeringBehaviors::ForwardComponent(){
-    
+    return this->Seek(this->_vehicle->target);
 }
