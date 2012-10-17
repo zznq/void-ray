@@ -6,7 +6,7 @@ void GameController::Update(double elapsed_time){
 	this->ship->Update(elapsed_time);
 }
 
-void GameController::DrawEntity(MovingEntity *s){
+void GameController::DrawEntity(Entity *s){
     s->Render();
 }
 

@@ -9,12 +9,13 @@
 #ifndef void_ray_MovingEntity_h
 #define void_ray_MovingEntity_h
 
+#include "Entity.hpp"
 #include "util/Vector3.h"
 #include "SteeringBehaviors.h"
 
 class SteeringBehaviors;
 
-class MovingEntity {
+class MovingEntity : public Entity {
     
 protected:
     SteeringBehaviors *behaviors;
@@ -29,16 +30,13 @@ protected:
 	double _timeElapsed;
     
 public:
-    Vector3 position;
 	Vector3 target;
     
     double maxSpeed() { return this->_maxSpeed; }
     Vector3 velocity() { return this->_velocity; }
 
 	MovingEntity() {};
-    
-    virtual void Update(double time_elapsed) {};
-    virtual void Render() {};
+	MovingEntity(Entity* parent) : Entity(parent) {};
 };
 
 #endif
