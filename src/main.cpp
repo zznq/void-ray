@@ -1,56 +1,21 @@
 #include <stdlib.h>
-
 #include <SDL.h>
-#include <SDL_opengl.h>
-#undef main
 
 #include "GameController.h"
 
-GameController *controller;
-
-#define WIDTH 640
-#define HEIGHT 480
-#define WINDOW_TITLE "void ray"
-
-SDL_Surface *screen;
-
-void Initialize();
-
 #define TICK_INTERVAL    30
 
-double TimerUpdate(void)
-{
-    static Uint32 last_time = 0;
-    Uint32 now;
-    
-    now = SDL_GetTicks();
-    if ( last_time <= now ) {
-        if(now - last_time < TICK_INTERVAL)
-            return(0);
-    }
-    
-    Uint32 new_time = now - last_time;
-    last_time = now;
-    
-    return new_time / 1000.0;
-}
+GameController *controller;
 
-void render() {
-    glClearColor(0,0,0,0);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    controller->Update(TimerUpdate());
-	controller->Render();
-}
+void render();
+double TimerUpdate(void);
 
+#undef main
 /****************************************************************************
  main()
 *****************************************************************************/
 int main(int argc, char *argv[]) {
-
-    Initialize();
-
-	controller = new GameController(screen);
+	controller = new GameController();
     
     bool done = false;
     while(!done) 
@@ -63,7 +28,7 @@ int main(int argc, char *argv[]) {
             switch(event.type) 
             {
                 case SDL_VIDEORESIZE:
-                    screen = SDL_SetVideoMode(event.resize.w, 
+                    /*screen = SDL_SetVideoMode(event.resize.w, 
                                               event.resize.h, 0,
                                               SDL_OPENGL | SDL_RESIZABLE);
                     if(screen)
@@ -74,7 +39,7 @@ int main(int argc, char *argv[]) {
                     {
                         ; // Oops, we couldn't resize for some reason. 
                         // This should never happen
-                    }
+                    }*/
                     break;
                     
                 case SDL_QUIT:
@@ -101,26 +66,24 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void Initialize() {
-    // Initialize
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
+double TimerUpdate(void)
+{
+    static Uint32 last_time = 0;
+    Uint32 now;
     
-    // Enable double-buffering
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    
-    // Create a OpenGL window
-    screen = SDL_SetVideoMode(WIDTH, HEIGHT, 0, SDL_OPENGL | 
-                              SDL_RESIZABLE);
-    if(!screen) 
-    {
-        printf("Couldn't set %dx%d GL video mode: %s\n", WIDTH,
-               HEIGHT, SDL_GetError());
-        SDL_Quit();
-        exit(2);
+    now = SDL_GetTicks();
+    if ( last_time <= now ) {
+        if(now - last_time < TICK_INTERVAL)
+            return(0);
     }
-    SDL_WM_SetCaption(WINDOW_TITLE, WINDOW_TITLE);
-
-	glEnable( GL_TEXTURE_2D );
+    
+    Uint32 new_time = now - last_time;
+    last_time = now;
+    
+    return new_time / 1000.0;
 }
 
-
+void render() {
+    controller->Update(TimerUpdate());
+	controller->Render();
+}

@@ -12,6 +12,8 @@ void GameController::DrawEntity(Entity *s){
 
 void GameController::Render()
 {
+	RenderManager::Instance()->ClearColorBitBuffer();
+
     DrawEntity(ship);
 }
 

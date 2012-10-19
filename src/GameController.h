@@ -1,6 +1,7 @@
 #ifndef GAME_CONTROLLER
 #define GAME_CONTROLLER
 
+#include "RenderManager.h"
 #include "Entity.hpp"
 #include "Ship.h"
 
@@ -10,7 +11,11 @@ private:
 public:
 	//Class Members
 	Entity *ship;
-	GameController(SDL_Surface* screen) { ship = new Ship(screen); }
+	GameController() {
+		RenderManager::Instance()->Initialize();
+
+		ship = new Ship;
+	};
 
 	void Update(double elapsed_time);
 
