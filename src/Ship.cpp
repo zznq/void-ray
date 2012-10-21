@@ -1,13 +1,18 @@
 #include <cmath>
 #include "Ship.h"
-#include "RenderManager.h"
 
-double const Ship::SHIP_HALF_HEIGHT = 0.2;
-double const Ship::SHIP_HEIGHT_OFFSET = 0.1;
-double const Ship::SHIP_HALF_WIDTH = 0.1;
-double const Ship::SHIP_WIDTH_OFFSET = 0.0;
+#include "util/Vector3.h"
+#include "SteeringBehaviors.h"
+
+/*
+static double const Ship::SHIP_HALF_HEIGHT = 0.2;
+static double const Ship::SHIP_HEIGHT_OFFSET = 0.1;
+static double const Ship::SHIP_HALF_WIDTH = 0.1;
+static double const Ship::SHIP_WIDTH_OFFSET = 0.0;
+*/
 
 Ship::Ship()
+	: Sprite("resources/wreck_out_ship.png")
 {
 	this->position = Vector3(0.0f, 0.0f, 0.0f);
 	this->target = Vector3(0.0f, 0.0f, -5.0f);
@@ -43,18 +48,31 @@ void Ship::Update(double time_elapsed)
 		this->_velocity.normalize();
 		this->_heading = this->_velocity;
 	}
-}
 
-void Ship::Render(){
-	
+	/*s
+	this->_vertices[0] = this->position.x + 0.000f;
+	this->_vertices[1] = this->position.y + 0.128f;
+	this->_vertices[2] = 0.0f;
+	this->_vertices[3] = this->position.x + 0.128f;
+	this->_vertices[4] = this->position.y + 0.128f;
+	this->_vertices[5] = 0.0f;
+	this->_vertices[6] = this->position.x + 0.128f;
+	this->_vertices[7] = this->position.y + 0.000f;
+	this->_vertices[8] = 0.0f;
+	this->_vertices[9] = this->position.x + 0.000f;
+	this->_vertices[10] = this->position.y + 0.000f;
+	this->_vertices[11] = 0.0f;
+	*/
 	float vertices[] = {
 		this->position.x + 0.000f, this->position.y + 0.128f, 0.0f,
 		this->position.x + 0.128f, this->position.y + 0.128f, 0.0f,
 		this->position.x + 0.128f, this->position.y + 0.000f, 0.0f,
 		this->position.x + 0.000f, this->position.y + 0.000f, 0.0f
 	};
+	std::vector<float> _v (vertices, vertices + 12);
+	this->_vertices = _v;
+}
 
-	char path[] = "resources/wreck_out_ship.png";
-
-	RenderManager::Instance()->DrawImage(path, vertices);
+void Ship::Render(){
+	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
 }

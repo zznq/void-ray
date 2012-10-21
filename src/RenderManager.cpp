@@ -1,18 +1,11 @@
 #include "RenderManager.h"
 
 #include <SDL/SDL_image.h>
+#include <map>
 
 #define WIDTH 640
 #define HEIGHT 480
 #define WINDOW_TITLE "void ray"
-
-RenderManager* RenderManager::Instance() {
-	static RenderManager* instance;
-	if(!instance) 
-		instance = new RenderManager;
-
-	return instance;
-}
 
 void RenderManager::Initialize() {
     // Initialize
@@ -22,9 +15,9 @@ void RenderManager::Initialize() {
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     
     // Create a OpenGL window
-    this->_screen = SDL_SetVideoMode(WIDTH, HEIGHT, 0, SDL_OPENGL | 
+    static SDL_Surface* _screen = SDL_SetVideoMode(WIDTH, HEIGHT, 0, SDL_OPENGL | 
                               SDL_RESIZABLE);
-    if(!this->_screen)
+    if(!_screen)
     {
         printf("Couldn't set %dx%d GL video mode: %s\n", WIDTH,
                HEIGHT, SDL_GetError());
@@ -41,8 +34,9 @@ void RenderManager::ClearColorBitBuffer() {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void RenderManager::DrawImage(char* path, GLfloat vertices[]) 
+void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
 {
+//	static map<path, GLuint> textures;
 	SDL_Surface* temp = NULL;
 	SDL_Surface* image = NULL;
 
@@ -50,7 +44,7 @@ void RenderManager::DrawImage(char* path, GLfloat vertices[])
 	GLenum texture_format;
 	GLint  nOfColors;
 
-	if((temp = IMG_Load(path)) != NULL) {
+	if((temp = IMG_Load(path.c_str())) != NULL) {
 		image = SDL_DisplayFormatAlpha(temp);
 		if(image == NULL){
 			printf("Error Converting To Alpha : %s \n", SDL_GetError());
@@ -114,6 +108,6 @@ void RenderManager::DrawImage(char* path, GLfloat vertices[])
 		SDL_FreeSurface(temp);
 		SDL_FreeSurface(image);
 	} else {
-		printf("Error Loading Image : %s \n", path);
+		printf("Error Loading Image : %s \n", path.c_str());
 	}
 }

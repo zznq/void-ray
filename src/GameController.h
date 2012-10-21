@@ -12,7 +12,7 @@ public:
 	//Class Members
 	Entity *ship;
 	GameController() {
-		RenderManager::Instance()->Initialize();
+		RenderManager::Initialize();
 
 		ship = new Ship;
 	};

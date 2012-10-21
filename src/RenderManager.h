@@ -4,16 +4,16 @@
 #include <SDL.h>
 #include <SDL/SDL_opengl.h>
 
+#include <string>
+
 class RenderManager {
-private:
-	SDL_Surface* _screen;
+protected:
+	static SDL_Surface* _screen;//?
 public:
-	static RenderManager* Instance();	
+	static void Initialize();
 
-	void Initialize();
-
-	void ClearColorBitBuffer();
-	void DrawImage(char* path, GLfloat vertices[]);
+	static void ClearColorBitBuffer();
+	static void DrawImage(const std::string& path, const GLfloat vertices[]);
 };
 
 #endif

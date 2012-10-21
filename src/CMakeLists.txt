@@ -8,7 +8,7 @@ include_directories(${VOIDRAY_SOURCE_DIR}/util)
 
 link_directories(${VOIDRAY_BINARY_DIR}/util)
 
-add_executable(VOIDRAY main.cpp GameController.cpp Entity.hpp MovingEntity.h Ship.cpp SteeringBehaviors.cpp RenderManager.cpp)
+add_executable(VOIDRAY RenderManager.cpp Entity.hpp MovingEntity.h SteeringBehaviors.cpp Sprite.h Ship.cpp GameController.cpp main.cpp)
 
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
@@ -16,4 +16,4 @@ find_package(OpenGL REQUIRED)
 
 include_directories(${SDL_image_INCLUDE_DIR} ${SDL_INCLUDE_DIR} ${OPENGL_INCLUDE_DIRS})
 
-target_link_libraries(VOIDRAY Utils SDL ${OPENGL_LIBRARIES} SDL_image)
+target_link_libraries(VOIDRAY SDL ${OPENGL_LIBRARIES} SDL_image)
