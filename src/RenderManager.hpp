@@ -8,7 +8,8 @@
 
 class RenderManager {
 protected:
-	static SDL_Surface* _screen;//?
+	static SDL_Surface* _screen;
+	static GLenum GetTextureFormat(SDL_Surface* surface, GLint nOfColors);
 public:
 	static void Initialize();
 

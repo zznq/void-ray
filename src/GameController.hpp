@@ -1,9 +1,9 @@
 #ifndef GAME_CONTROLLER
 #define GAME_CONTROLLER
 
-#include "RenderManager.h"
+#include "RenderManager.hpp"
 #include "Entity.hpp"
-#include "Ship.h"
+#include "Ship.hpp"
 
 class GameController{
 private:

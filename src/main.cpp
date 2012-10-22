@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <SDL.h>
 
-#include "GameController.h"
+#include "GameController.hpp"
 
 #define TICK_INTERVAL    30
 

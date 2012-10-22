@@ -1,6 +1,4 @@
-#include "GameController.h"
-
-#include "Ship.h"
+#include "GameController.hpp"
 
 void GameController::Update(double elapsed_time){
 	this->ship->Update(elapsed_time);

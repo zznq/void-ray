@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#include "SteeringBehaviors.h"
+#include "SteeringBehaviors.hpp"
 
 Vector3 SteeringBehaviors::Seek(Vector3 target){
 

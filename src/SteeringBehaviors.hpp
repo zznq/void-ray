@@ -9,15 +9,15 @@
 #ifndef void_ray_SteeringBehaviors_h
 #define void_ray_SteeringBehaviors_h
 
-#include "util/Vector3.h"
-#include "MovingEntity.h"
+#include "util/Vector3.hpp"
+#include "Entity.hpp"
 
-class MovingEntity;
+class Entity;
 
-class SteeringBehaviors{
-    MovingEntity *_vehicle;
+class SteeringBehaviors {
+    Entity *_vehicle;
 public:
-    SteeringBehaviors(MovingEntity* vehicle) : _vehicle(vehicle) {}
+    SteeringBehaviors(Entity* vehicle) : _vehicle(vehicle) {}
     
     Vector3 Seek(Vector3 target);
     Vector3 Flee(Vector3 target);

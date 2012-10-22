@@ -3,10 +3,10 @@
 
 #include <string>
 #include <vector>
-#include "MovingEntity.h"
-#include "RenderManager.h"
+#include "Entity.hpp"
+#include "RenderManager.hpp"
 
-class Sprite : public MovingEntity {
+class Sprite : public Entity {
 protected:
 	std::string _path;
 	std::vector<float> _vertices;
