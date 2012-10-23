@@ -1,18 +1,22 @@
 #include "GameController.hpp"
 
 void GameController::Update(double elapsed_time){
-	this->ship->Update(elapsed_time);
-}
-
-void GameController::DrawEntity(Entity *s){
-    s->Render();
+	for(std::vector<Entity*>::iterator it = this->objects.begin(); it != this->objects.end(); ++it) {
+		if((*it)) {
+			(*it)->Update(elapsed_time);
+		}
+	}
 }
 
 void GameController::Render()
 {
 	RenderManager::ClearColorBitBuffer();
 
-    DrawEntity(ship);
+	for(std::vector<Entity*>::iterator it = this->objects.begin(); it != this->objects.end(); ++it) {
+		if((*it)) {
+			(*it)->Render();
+		}
+	}
 }
 
 void GameController::MouseHandler(int button, int state, int x, int y)

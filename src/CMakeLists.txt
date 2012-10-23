@@ -8,7 +8,7 @@ include_directories(${VOIDRAY_SOURCE_DIR}/util)
 
 link_directories(${VOIDRAY_BINARY_DIR}/util)
 
-add_executable(VOIDRAY RenderManager.cpp Entity.hpp SteeringBehaviors.cpp Sprite.hpp Ship.cpp GameController.cpp main.cpp)
+add_executable(VOIDRAY RenderManager.cpp Entity.hpp SteeringBehaviors.cpp Sprite.hpp Ship.cpp Target.cpp GameController.cpp main.cpp)
 
 find_package(SDL REQUIRED)
 find_package(SDL_image REQUIRED)
