@@ -35,13 +35,23 @@ public:
 
 	Entity* parent;    
 
-	std::vector<Entity> children;
+	std::vector<Entity*> children;
 
     Entity() {};
 	Entity(Entity* parent) { 
 		this->parent = parent;
 		//Add myself to the children list of my new parent
 		this->parent->AddChild(this);
+	};
+
+	~Entity() {
+		for(std::vector<Entity*>::iterator it = this->children.begin(); it != this->children.end(); ++it) {
+			if((*it)) {
+				delete (*it);
+			}
+		}
+
+		delete parent;
 	};
     
 	void AddChild(Entity* child) { this->children.push_back(child); };

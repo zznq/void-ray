@@ -1,5 +1,13 @@
 #include "GameController.hpp"
 
+GameController::~GameController() {
+	for(std::vector<Entity*>::iterator it = this->objects.begin(); it != this->objects.end(); ++it) {
+		if((*it)) {
+			delete (*it);
+		}
+	}
+}
+
 void GameController::Update(double elapsed_time){
 	for(std::vector<Entity*>::iterator it = this->objects.begin(); it != this->objects.end(); ++it) {
 		if((*it)) {

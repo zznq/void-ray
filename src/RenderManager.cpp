@@ -35,6 +35,42 @@ void RenderManager::ClearColorBitBuffer() {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
+void RenderManager::MoveAndRotate(Vector3 translation, float angle, int angleBits) {
+	glMatrixMode(GL_MODELVIEW);
+
+	RenderManager::LoadIdentity();
+
+	if((angleBits & 1) == 1){ 
+		RenderManager::Roll(angle);
+	} else if((angleBits & 2) == 2) {
+		RenderManager::Pitch(angle);
+	} else if((angleBits & 4) == 4) {
+		RenderManager::Yaw(angle);
+	}
+
+	RenderManager::Translate(translation);
+}
+
+void RenderManager::Translate(Vector3 translation) {
+	glTranslatef(translation.x, translation.y, translation.z);
+}
+
+void RenderManager::Roll(float angle) {
+	glRotatef(angle, 0, 0, 1);
+}
+
+void RenderManager::Pitch(float angle) {
+	glRotatef(angle, 0, 1, 0);
+}
+
+void RenderManager::Yaw(float angle) {
+	glRotatef(angle, 1, 0, 0);
+}
+
+void RenderManager::LoadIdentity() {
+	glLoadIdentity();
+}
+
 void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
 {
 	SDL_Surface* temp = NULL;

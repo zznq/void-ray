@@ -14,12 +14,12 @@
 Ship::Ship()
 	: Sprite("resources/wreck_out_ship.png")
 {
-	this->position = Vector3(-1.0f, 0.95f, 0.0f);
+	this->position = Vector3(-0.5f, 0.5f, 0.0f);
 	this->target = Vector3(0.0f, 0.0f, 0.0f);
 
-	this->_velocity = Vector3(1.0f, 1.0f, -5.0f);
-	this->_heading = Vector3(1.0f, -1.5f, -5.0f);
-	this->_side = Vector3(0.0f, 0.0f, -5.0f);
+	this->_velocity = Vector3(1.0f, 1.0f, 0.0f);
+	this->_heading = Vector3(1.0f, -1.5f, 0.0f);
+	this->_side = Vector3(0.0f, 0.0f, 0.0f);
 
 	this->_mass = 1;
 	this->_maxSpeed = 1;
@@ -28,6 +28,15 @@ Ship::Ship()
 	this->_timeElapsed = 0.0;
     
     this->behaviors = new SteeringBehaviors(this);
+
+	float vertices[] = {
+		-0.064f,  0.064f, 0.0f,
+		 0.064f,  0.064f, 0.0f,
+		 0.064f, -0.064f, 0.0f,
+		-0.064f, -0.064f, 0.0f
+	};
+	std::vector<float> _v (vertices, vertices + 12);
+	this->_vertices = _v;
 }
 
 void Ship::Update(double time_elapsed)
@@ -44,11 +53,13 @@ void Ship::Update(double time_elapsed)
 
 	this->position += (this->_velocity * this->_timeElapsed);
 
+	printf("Postion is: x %f y: %f z: %f\n", this->position.x, this->position.y, this->position.z);
 	if(vectorMagSq(this->_velocity) > 0.00000001){
 		this->_velocity.normalize();
 		this->_heading = this->_velocity;
 	}
 
+	/*
 	float vertices[] = {
 		this->position.x + 0.000f, this->position.y + 0.128f, 0.0f,
 		this->position.x + 0.128f, this->position.y + 0.128f, 0.0f,
@@ -57,8 +68,10 @@ void Ship::Update(double time_elapsed)
 	};
 	std::vector<float> _v (vertices, vertices + 12);
 	this->_vertices = _v;
+	*/
 }
 
 void Ship::Render(){
+	RenderManager::MoveAndRotate(this->position, 0, 0);
 	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
 }

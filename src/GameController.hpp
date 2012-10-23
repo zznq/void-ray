@@ -23,6 +23,8 @@ public:
 		objects.push_back(new Target);
 	};
 
+	~GameController();
+
 	void Update(double elapsed_time);
 
 	void Render();

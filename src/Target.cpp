@@ -22,27 +22,29 @@ Target::Target()
 	this->_heading = Vector3(1.0f, -1.5f, -5.0f);
 	this->_side = Vector3(0.0f, 0.0f, -5.0f);
 
-	this->_mass = 1;
-	this->_maxSpeed = 1;
-	this->_maxForce = 10.0;
-	this->_maxTurnRate = 150.0;
 	this->_timeElapsed = 0.0;
 
     this->behaviors = new SteeringBehaviors(this);
-}
+	
+	/*x,y,z*/
 
-void Target::Update(double time_elapsed)
-{
 	float vertices[] = {
-		this->position.x + 0.000f, this->position.y + 0.128f, 0.0f,
-		this->position.x + 0.128f, this->position.y + 0.128f, 0.0f,
-		this->position.x + 0.128f, this->position.y + 0.000f, 0.0f,
-		this->position.x + 0.000f, this->position.y + 0.000f, 0.0f
+		-0.062f,  0.056f, 0.0f,
+		 0.062f,  0.056f, 0.0f,
+		 0.062f, -0.056f, 0.0f,
+		-0.062f, -0.056f, 0.0f
 	};
 	std::vector<float> _v (vertices, vertices + 12);
 	this->_vertices = _v;
 }
 
+void Target::Update(double time_elapsed)
+{
+	this->_timeElapsed = time_elapsed;
+}
+
 void Target::Render(){
+	RenderManager::MoveAndRotate(this->position, 0, 0);
+	
 	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
 }
