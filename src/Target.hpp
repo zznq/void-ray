@@ -7,7 +7,6 @@ class Target : public Sprite {
 public:
 	Target();
 	void Update(double time_elapsed);
-	void Render();
 };
 
 #endif

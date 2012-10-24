@@ -11,16 +11,23 @@ protected:
 	std::string _path;
 	std::vector<float> _vertices;
 public:
-	Sprite(std::string path) {
+	Sprite(std::string path, float vScale) {
+		float vertices[] = {
+			-vScale,  vScale, 0.0f,
+			 vScale,  vScale, 0.0f,
+			 vScale, -vScale, 0.0f,
+			-vScale, -vScale, 0.0f
+		};
+		std::vector<float> _v (vertices, vertices + 12);
+		this->_vertices = _v;
+
 		this->_path =  path;
-	}
+	};
 
 	virtual ~Sprite() {
     }
 	virtual void Update(double time_elapsed) {};
-    virtual void Render() {
-		RenderManager::DrawImage(this->_path, &this->_vertices[0]);
-	};
+    virtual void Render();
 };
 
 #endif

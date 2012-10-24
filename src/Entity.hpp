@@ -10,6 +10,7 @@
 #define void_ray_Entity_h
 
 #include <vector>
+#include <cstddef>
 
 #include "util/Vector3.hpp"
 #include "SteeringBehaviors.hpp"
@@ -37,7 +38,9 @@ public:
 
 	std::vector<Entity*> children;
 
-    Entity() {};
+    Entity() {
+		this->parent = NULL;
+	};
 	Entity(Entity* parent) { 
 		this->parent = parent;
 		//Add myself to the children list of my new parent
@@ -50,8 +53,6 @@ public:
 				delete (*it);
 			}
 		}
-
-		delete parent;
 	};
     
 	void AddChild(Entity* child) { this->children.push_back(child); };
@@ -62,6 +63,7 @@ public:
 	Vector3 target;    
     double maxSpeed() { return this->_maxSpeed; }
     Vector3 velocity() { return this->_velocity; }
+	Vector3 getPosition();
 };
 
 #endif

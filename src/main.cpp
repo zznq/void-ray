@@ -2,13 +2,13 @@
 #include <SDL.h>
 
 #include "GameController.hpp"
+#include "Timer.hpp"
 
 #define TICK_INTERVAL    30
 
 GameController *controller;
 
 void render();
-double TimerUpdate(void);
 
 #undef main
 /****************************************************************************
@@ -17,7 +17,9 @@ double TimerUpdate(void);
 int main(int argc, char *argv[]) {
 	controller = new GameController();
     
-    bool done = false;
+	Timer::Initialize(true);
+    
+	bool done = false;
     while(!done) 
     {
         SDL_Event event;
@@ -66,24 +68,8 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-double TimerUpdate(void)
-{
-    static Uint32 last_time = 0;
-    Uint32 now;
-    
-    now = SDL_GetTicks();
-    if ( last_time <= now ) {
-        if(now - last_time < TICK_INTERVAL)
-            return(0);
-    }
-    
-    Uint32 new_time = now - last_time;
-    last_time = now;
-    
-    return new_time / 1000.0;
-}
-
-void render() {
-    controller->Update(TimerUpdate());
+void render() { 
+	controller->Update(Timer::TimerUpdate());
+	
 	controller->Render();
 }

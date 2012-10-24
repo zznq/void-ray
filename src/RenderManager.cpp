@@ -10,7 +10,7 @@ SDL_Surface* RenderManager::_screen = NULL;
 
 void RenderManager::Initialize() {
     // Initialize
-    SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER);
+    SDL_Init(SDL_INIT_VIDEO);
     
     // Enable double-buffering
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
@@ -25,9 +25,21 @@ void RenderManager::Initialize() {
         SDL_Quit();
         exit(2);
     }
+
     SDL_WM_SetCaption(WINDOW_TITLE, WINDOW_TITLE);
 
-	glEnable( GL_TEXTURE_2D );
+	glViewport(0, 0, WIDTH, HEIGHT);
+	 
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	 
+	glOrtho(-WIDTH/2, WIDTH/2, -HEIGHT/2, HEIGHT/2, 1, -1);
+	 
+	glMatrixMode(GL_MODELVIEW);
+	 
+	glEnable(GL_TEXTURE_2D);
+	 
+	glLoadIdentity();
 }
 
 void RenderManager::ClearColorBitBuffer() {
@@ -76,6 +88,8 @@ void RenderManager::DrawPoint(float x, float y) {
 		glColor3f(1.0f, 0.0f, 0.0f);
 		glVertex2f(x, y);
 	glEnd();
+
+	RenderManager::ClearColorBitBuffer();
 }
 
 void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
@@ -92,13 +106,16 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 		printf("Error Loading Image : %s \n", path.c_str());
 		return;	
 	}
-	
+
+	Uint32 colorkey = SDL_MapRGB(temp->format, 0, 0, 0);
+	// now tell SDL to remeber our choice
+	SDL_SetColorKey(temp, SDL_SRCCOLORKEY, colorkey);
+
 	image = SDL_DisplayFormatAlpha(temp);
 	if(image == NULL){
 		printf("Error Converting To Alpha : %s \n", SDL_GetError());
 		return;
 	}
-
 
 	nOfColors = image->format->BytesPerPixel;
 	
@@ -128,6 +145,9 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 		0, 1
 	};
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
 	// activate and specify pointer to vertex array
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -140,6 +160,7 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glDisable(GL_BLEND);
 
 	SDL_FreeSurface(temp);
 	SDL_FreeSurface(image);
