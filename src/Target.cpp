@@ -29,10 +29,10 @@ Target::Target()
 	/*x,y,z*/
 
 	float vertices[] = {
-		-0.062f,  0.056f, 0.0f,
-		 0.062f,  0.056f, 0.0f,
-		 0.062f, -0.056f, 0.0f,
-		-0.062f, -0.056f, 0.0f
+		-0.064f,  0.064f, 0.0f,
+		 0.064f,  0.064f, 0.0f,
+		 0.064f, -0.064f, 0.0f,
+		-0.064f, -0.064f, 0.0f
 	};
 	std::vector<float> _v (vertices, vertices + 12);
 	this->_vertices = _v;
@@ -46,5 +46,5 @@ void Target::Update(double time_elapsed)
 void Target::Render(){
 	RenderManager::MoveAndRotate(this->position, 0, 0);
 	
-	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
+	Sprite::Render();
 }

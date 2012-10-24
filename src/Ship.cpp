@@ -73,5 +73,6 @@ void Ship::Update(double time_elapsed)
 
 void Ship::Render(){
 	RenderManager::MoveAndRotate(this->position, 0, 0);
-	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
+
+	Sprite::Render();
 }

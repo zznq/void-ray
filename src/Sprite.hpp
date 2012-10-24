@@ -18,7 +18,9 @@ public:
 	virtual ~Sprite() {
     }
 	virtual void Update(double time_elapsed) {};
-    virtual void Render() { };
+    virtual void Render() {
+		RenderManager::DrawImage(this->_path, &this->_vertices[0]);
+	};
 };
 
 #endif
