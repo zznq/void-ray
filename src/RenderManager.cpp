@@ -107,9 +107,9 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 		return;	
 	}
 
-	Uint32 colorkey = SDL_MapRGB(temp->format, 0, 0, 0);
+	/*Uint32 colorkey = SDL_MapRGB(temp->format, 0, 0, 0);
 	// now tell SDL to remeber our choice
-	SDL_SetColorKey(temp, SDL_SRCCOLORKEY, colorkey);
+	SDL_SetColorKey(temp, SDL_SRCCOLORKEY, colorkey);*/
 
 	image = SDL_DisplayFormatAlpha(temp);
 	if(image == NULL){

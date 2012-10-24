@@ -12,7 +12,7 @@
 */
 
 Target::Target()
-	: Sprite("resources/target_black.png", 16)
+	: Sprite("resources/target.png", 16)
 {
 	this->position = Vector3(0.0f, 0.0f, 0.0f);
 

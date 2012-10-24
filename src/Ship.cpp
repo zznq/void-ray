@@ -5,7 +5,7 @@
 #include "SteeringBehaviors.hpp"
 
 Ship::Ship()
-	: Sprite("resources/wreck_out_ship_black.png", 24)
+	: Sprite("resources/wreck_out_ship.png", 24)
 {
 	this->position = Vector3(-150.f, 150.f, 0.0f);
 	this->target = Vector3(0.0f, 0.0f, 0.0f);
