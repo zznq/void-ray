@@ -71,6 +71,13 @@ void RenderManager::LoadIdentity() {
 	glLoadIdentity();
 }
 
+void RenderManager::DrawPoint(float x, float y) {
+	glBegin(GL_POINTS);
+		glColor3f(1.0f, 0.0f, 0.0f);
+		glVertex2f(x, y);
+	glEnd();
+}
+
 void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
 {
 	SDL_Surface* temp = NULL;

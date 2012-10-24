@@ -13,16 +13,18 @@ protected:
 	static GLenum GetTextureFormat(SDL_Surface* surface, GLint nOfColors);
 public:
 	static void Initialize();
+	static void MoveAndRotate(Vector3 translation, float angle, int angleBits);
 
+	/* openGL Matrix Transform call wrappers */
+	static void Translate(Vector3 translation);
+	static void Roll(float angle);
+	static void Pitch(float angle);
+	static void Yaw(float angle);
+	static void LoadIdentity();
+
+	/* openGL function call wrappers */
 	static void ClearColorBitBuffer();
-	static void RenderManager::Translate(Vector3 translation);
-
-	static void RenderManager::Roll(float angle);
-	static void RenderManager::Pitch(float angle);
-	static void RenderManager::Yaw(float angle);
-	static void RenderManager::LoadIdentity();
-
-	static void RenderManager::MoveAndRotate(Vector3 translation, float angle, int angleBits);
+	static void DrawPoint(float x, float y);
 	static void DrawImage(const std::string& path, const GLfloat vertices[]);
 };
 
