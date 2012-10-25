@@ -12,7 +12,12 @@ protected:
 	static SDL_Surface* _screen;
 	static GLenum GetTextureFormat(SDL_Surface* surface, GLint nOfColors);
 public:
-	static void Initialize();
+	static const int ROTATENONE = 0x00;
+	static const int ROTATEX 	= 0x01;
+	static const int ROTATEY 	= 0x10;
+	static const int ROTATEZ 	= 0x11;
+
+	static void Initialize(int width, int height,std::string window_title);
 	static void MoveAndRotate(Vector3 translation, float angle, int angleBits);
 
 	/* openGL Matrix Transform call wrappers */

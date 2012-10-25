@@ -1,8 +1,11 @@
+#define _USE_MATH_DEFINES
 #include <cmath>
 
 #include "util/Vector3.hpp"
 #include "Ship.hpp"
 #include "SteeringBehaviors.hpp"
+//3.14159265359
+#define ToDegrees (180 / M_PI)
 
 Ship::Ship()
 	: Sprite("resources/wreck_out_ship.png", 24)
@@ -19,6 +22,7 @@ Ship::Ship()
 	this->_maxForce = 10.0;
 	this->_maxTurnRate = 150.0;
 	this->_timeElapsed = 0.0;
+	this->_rotation = 0.0;
     
     this->behaviors = new SteeringBehaviors(this);
 }
@@ -27,7 +31,12 @@ void Ship::Update(double time_elapsed)
 {
 	this->_timeElapsed = time_elapsed;
 
-    //int radians = acos(this->_velocity * this->_heading);
+	float deltay = this->target.y - this->position.y;
+	float deltax = this->target.x - this->position.x;
+
+    float radians = atan2(deltay, deltax);
+
+	this->_rotation = (radians * ToDegrees) - 90;
 
 	Vector3 steeringForce = this->behaviors->Calculate();
 
@@ -41,4 +50,17 @@ void Ship::Update(double time_elapsed)
 		this->_velocity.normalize();
 		this->_heading = this->_velocity;
 	}
+}
+
+void Ship::UpdateTarget(int x, int y) {
+	this->target.x = (float)x;
+	this->target.y = (float)y;
+}
+
+void Ship::Render() {
+	Vector3 pos = this->getPosition();
+
+	RenderManager::MoveAndRotate(this->getPosition(), this->_rotation, RenderManager::ROTATEZ);
+
+	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
 }

@@ -1,14 +1,12 @@
-#include "RenderManager.hpp"
-
 #include <SDL/SDL_image.h>
 
-#define WIDTH 640
-#define HEIGHT 480
-#define WINDOW_TITLE "void ray"
+#include "RenderManager.hpp"
+
+
 
 SDL_Surface* RenderManager::_screen = NULL;
 
-void RenderManager::Initialize() {
+void RenderManager::Initialize(int width, int height,std::string window_title) {
     // Initialize
     SDL_Init(SDL_INIT_VIDEO);
     
@@ -16,24 +14,24 @@ void RenderManager::Initialize() {
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     
     // Create a OpenGL window
-    RenderManager::_screen = SDL_SetVideoMode(WIDTH, HEIGHT, 0, SDL_OPENGL | 
+    RenderManager::_screen = SDL_SetVideoMode(width, height, 0, SDL_OPENGL | 
                               SDL_RESIZABLE);
     if(!RenderManager::_screen)
     {
-        printf("Couldn't set %dx%d GL video mode: %s\n", WIDTH,
-               HEIGHT, SDL_GetError());
+        printf("Couldn't set %dx%d GL video mode: %s\n", width,
+               height, SDL_GetError());
         SDL_Quit();
         exit(2);
     }
 
-    SDL_WM_SetCaption(WINDOW_TITLE, WINDOW_TITLE);
+    SDL_WM_SetCaption(window_title.c_str(), window_title.c_str());
 
-	glViewport(0, 0, WIDTH, HEIGHT);
+	glViewport(0, 0, width, height);
 	 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	 
-	glOrtho(-WIDTH/2, WIDTH/2, -HEIGHT/2, HEIGHT/2, 1, -1);
+	glOrtho(-width/2, width/2, -height/2, height/2, 1, -1);
 	 
 	glMatrixMode(GL_MODELVIEW);
 	 
@@ -47,26 +45,27 @@ void RenderManager::ClearColorBitBuffer() {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void RenderManager::MoveAndRotate(Vector3 translation, float angle, int angleBits) {
+void RenderManager::MoveAndRotate(Vector3 translation, float angle, int angleAxis) {
 	glMatrixMode(GL_MODELVIEW);
 
 	RenderManager::LoadIdentity();
 
-	if((angleBits & 1) == 1){ 
+	RenderManager::Translate(translation);
+
+	if(angleAxis == ROTATEZ){ 
 		RenderManager::Roll(angle);
-	} else if((angleBits & 2) == 2) {
+	} else if(angleAxis == ROTATEY) {
 		RenderManager::Pitch(angle);
-	} else if((angleBits & 4) == 4) {
+	} else if(angleAxis == ROTATEX) {
 		RenderManager::Yaw(angle);
 	}
-
-	RenderManager::Translate(translation);
 }
 
 void RenderManager::Translate(Vector3 translation) {
 	glTranslatef(translation.x, translation.y, translation.z);
 }
 
+// Rotation in Degrees
 void RenderManager::Roll(float angle) {
 	glRotatef(angle, 0, 0, 1);
 }

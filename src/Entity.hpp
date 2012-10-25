@@ -29,6 +29,7 @@ protected:
 	double _maxForce;
 	double _maxTurnRate;
 	double _timeElapsed;
+	float _rotation; //rotation angle in degres about the z axis
 
 public:
     Vector3 position;
@@ -64,6 +65,7 @@ public:
     double maxSpeed() { return this->_maxSpeed; }
     Vector3 velocity() { return this->_velocity; }
 	Vector3 getPosition();
+	virtual void UpdateTarget(int x, int y) {}
 };
 
 #endif

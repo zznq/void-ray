@@ -7,6 +7,10 @@
 #include "Ship.hpp"
 #include "Target.hpp"
 
+#define WIDTH 640
+#define HEIGHT 480
+#define WINDOW_TITLE "void ray"
+
 class GameController{
 private:
 	void DrawEntity(Entity s);
@@ -15,7 +19,7 @@ public:
 	std::vector<Entity*> objects;
 
 	GameController() {
-		RenderManager::Initialize();
+		RenderManager::Initialize(WIDTH, HEIGHT, WINDOW_TITLE);
 
 		objects.push_back(new Target);
 		objects.push_back(new Ship);
@@ -27,5 +31,8 @@ public:
 
 	void Render();
 	void MouseHandler(int button, int state, int x, int y);
+
+	//This is temperary, eventually we will have a messageing system
+	void UpdateTarget(int x, int y);
 };
 #endif

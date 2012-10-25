@@ -27,6 +27,15 @@ void GameController::Render()
 	}
 }
 
+void GameController::UpdateTarget(int x, int y)
+{		
+	for(std::vector<Entity*>::iterator it = this->objects.begin(); it != this->objects.end(); ++it) 	{
+		if((*it)) {
+			(*it)->UpdateTarget(x - (WIDTH /2), (HEIGHT /2) - y);
+		}
+	}
+}
+
 void GameController::MouseHandler(int button, int state, int x, int y)
 {
 }

@@ -29,6 +29,12 @@ int main(int argc, char *argv[]) {
         {
             switch(event.type) 
             {
+				case SDL_MOUSEBUTTONUP:
+					
+					if(event.button.state == SDL_RELEASED) {
+						controller->UpdateTarget(event.button.x, event.button.y);
+					}
+					break;
                 case SDL_VIDEORESIZE:
                     /*screen = SDL_SetVideoMode(event.resize.w, 
                                               event.resize.h, 0,

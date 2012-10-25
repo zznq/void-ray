@@ -31,3 +31,8 @@ void Target::Update(double time_elapsed)
 {
 	this->_timeElapsed = time_elapsed;
 }
+
+void Target::UpdateTarget(int x, int y) {
+	this->position.x = (float)x;
+	this->position.y = (float)y;
+}

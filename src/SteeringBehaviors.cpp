@@ -5,7 +5,6 @@
 //  Created by Joe Buszkiewic on 2/14/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
-
 #include "SteeringBehaviors.hpp"
 
 Vector3 SteeringBehaviors::Seek(Vector3 target){
