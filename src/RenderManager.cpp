@@ -91,6 +91,29 @@ void RenderManager::DrawPoint(float x, float y) {
 	RenderManager::ClearColorBitBuffer();
 }
 
+void RenderManager::DrawLine(const GLfloat vertices[]){
+
+	glEnable(GL_LINE_SMOOTH);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glColor3f(1.0f, 0.0f, 0.0f);
+
+	glVertexPointer(2, GL_FLOAT, 0, vertices);
+
+	// activate and specify pointer to vertex array
+	glEnableClientState(GL_VERTEX_ARRAY);
+
+	glDrawArrays(GL_LINES, 0, 2);
+
+	// deactivate vertex arrays after drawing
+	glDisableClientState(GL_VERTEX_ARRAY);
+
+	RenderManager::ClearColorBitBuffer();
+
+	//glColor3f(0.0f, 0.0f, 0.0f);
+}
+
 void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
 {
 	SDL_Surface* temp = NULL;

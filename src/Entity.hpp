@@ -22,6 +22,7 @@ protected:
     SteeringBehaviors *behaviors;
     
 	Vector3 _velocity;
+	//Confused about how to set/use this
 	Vector3 _heading;
 	Vector3 _side;
 	double _mass;

@@ -12,9 +12,12 @@ Ship::Ship()
 {
 	this->position = Vector3(-150.f, 150.f, 0.0f);
 	this->target = Vector3(0.0f, 0.0f, 0.0f);
+	
 
 	this->_velocity = Vector3(1.0f, 1.0f, 0.0f);
-	this->_heading = Vector3(1.0f, -1.5f, 0.0f);
+	this->_heading = Vector3(0.0f, -1.0f, 0.0f);
+	this->_heading.normalize();
+
 	this->_side = Vector3(0.0f, 0.0f, 0.0f);
 
 	this->_mass = .1;
@@ -25,19 +28,20 @@ Ship::Ship()
 	this->_rotation = 0.0;
     
     this->behaviors = new SteeringBehaviors(this);
+	UpdateTarget(0,0);
 }
 
 void Ship::Update(double time_elapsed)
 {
 	this->_timeElapsed = time_elapsed;
 
-	float deltay = this->target.y - this->position.y;
-	float deltax = this->target.x - this->position.x;
+	float _distance = distance(this->target, this->position);
 
-    float radians = atan2(deltay, deltax);
-
-	this->_rotation = (radians * ToDegrees) - 90;
-
+	if(_distance < 0.5) {
+		this->position = this->target;
+		return;
+	}
+	
 	Vector3 steeringForce = this->behaviors->Calculate();
 
 	Vector3 acceleration = steeringForce / this->_mass;
@@ -48,13 +52,33 @@ void Ship::Update(double time_elapsed)
 
 	if(vectorMagSq(this->_velocity) > 0.00000001){
 		this->_velocity.normalize();
-		this->_heading = this->_velocity;
+		//this->_heading = this->_velocity;
 	}
 }
 
 void Ship::UpdateTarget(int x, int y) {
+	
 	this->target.x = (float)x;
 	this->target.y = (float)y;
+
+	/******************
+	Rotation
+	******************/
+	// Target - Position
+	/*Vector3 tp = this->target - this->position;
+	tp.normalize();
+
+	float radians = acos(this->_heading * tp);
+
+	printf("Radians(acos): %f\n", radians);
+	*/
+
+	float deltay = this->target.y - this->position.y;
+	float deltax = this->target.x - this->position.x;
+
+    float radians = atan2(deltay, deltax);
+	this->_rotation = (radians * ToDegrees) - 90;
+	
 }
 
 void Ship::Render() {

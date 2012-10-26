@@ -30,6 +30,7 @@ public:
 	/* openGL function call wrappers */
 	static void ClearColorBitBuffer();
 	static void DrawPoint(float x, float y);
+	static void DrawLine(const GLfloat vertices[]);
 	static void DrawImage(const std::string& path, const GLfloat vertices[]);
 };
 
