@@ -3,8 +3,6 @@
 
 #include <vector>
 
-typedef float* TransformMatrix;
-
 class Transform {
 protected:
 	static float identity[];
@@ -18,17 +16,17 @@ protected:
 public:
 	Transform();
 
-	std::vector<float> transform;
+	std::vector<float> viewMatrix;
 
 	void translate(float x, float y, float z);
 	void rotate(float x, float y, float z);
 	void scale(float x, float y, float z);
 
-/*
-	float* toGLMatrix();
+	void operator *=(const std::vector<float, std::allocator<float>> &a);
 
-	std::vector<float> &operator *=(const std::vector<float> &a);
-*/
+	void reset();
+	void print();
+	void print(std::vector<float> const mat);
 };
 
 #endif

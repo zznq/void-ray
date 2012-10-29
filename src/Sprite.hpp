@@ -11,7 +11,7 @@ protected:
 	std::string _path;
 	std::vector<float> _vertices;
 public:
-	Sprite(std::string path, float vScale) {
+	Sprite(std::string path, float vScale) : Entity() {
 		float vertices[] = {
 			-vScale,  vScale, 0.0f,
 			 vScale,  vScale, 0.0f,

@@ -4,13 +4,6 @@
 #include "Target.hpp"
 #include "SteeringBehaviors.hpp"
 
-/*
-	Top Right: (0.95f, 0.95f, 0.0f)
-	Top Left: (-1.0f, 0.95f, 0.0f)
-	Bottom Left: (-1.0f, -1.0, 0.0f)
-	Bottom Right (0.95f, -1.0, 0.0f)
-*/
-
 Target::Target()
 	: Sprite("resources/target.png", 16)
 {

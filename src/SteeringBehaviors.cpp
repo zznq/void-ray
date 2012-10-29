@@ -17,7 +17,11 @@ Vector3 SteeringBehaviors::Seek(Vector3 target){
 }
 
 Vector3 SteeringBehaviors::Flee(Vector3 target){
-    return this->Seek(this->_vehicle->target);
+     Vector3 desiredVelocity = (_vehicle->position - target);
+	desiredVelocity.normalize();
+	desiredVelocity *= _vehicle->maxSpeed();
+    
+	return desiredVelocity - _vehicle->velocity();
 }
 
 Vector3 SteeringBehaviors::Arrive(Vector3 target) {

@@ -13,6 +13,7 @@
 #include <cstddef>
 
 #include "util/Vector3.hpp"
+#include "util/Transform.hpp"
 #include "SteeringBehaviors.hpp"
 
 class SteeringBehaviors;
@@ -35,18 +36,22 @@ protected:
 public:
     Vector3 position;
 	Vector3 scale;
+	Transform transform;
 
-	Entity* parent;    
+	Entity* parent;
 
 	std::vector<Entity*> children;
 
     Entity() {
 		this->parent = NULL;
+		this->transform = Transform();
 	};
+
 	Entity(Entity* parent) { 
 		this->parent = parent;
 		//Add myself to the children list of my new parent
 		this->parent->AddChild(this);
+		this->transform = Transform();
 	};
 
 	~Entity() {

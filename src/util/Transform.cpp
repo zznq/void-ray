@@ -67,24 +67,65 @@ std::vector<float> Transform::getScaleMatrix(const float scaleX, const float sca
 
 
 Transform::Transform() {
-	this->transform = std::vector<float>(Transform::identity, Transform::identity + 16);
+	this->reset();
 }
 
 void Transform::translate(const float x, const float y, const float z){
-	//this->transform *= Transform::getTranslateMatrix(x, y, z);
+	*this *= Transform::getTranslateMatrix(x, y, z);
 }
 
 void Transform::rotate(const float x, const float y, const float z){
-	//this->transform *= Transform::getTranslateMatrix(x, y, z);
-	//this->transform *= Transform::getTranslateMatrix(x, y, z);
-	//this->transform *= Transform::getTranslateMatrix(x, y, z);
+	*this *=  Transform::getTranslateMatrix(x, y, z);
+	*this *=  Transform::getTranslateMatrix(x, y, z);
+	*this *=  Transform::getTranslateMatrix(x, y, z);
 }
 
 void Transform::scale(const float x, const float y, const float z){
-	//this->transform *= Transform::getScaleMatrix(x, y, z);
+	*this *= Transform::getScaleMatrix(x, y, z);
 }
 
-/*
-std::vector<float> Transform::&operator *=(const std::vector<float> &a){
+void Transform::operator *=(const std::vector<float, std::allocator<float>> &a){
+	float newMat[16];
+
+	for(int row = 0; row < 4; row++) {
+		for(int col = 0; col < 4; col++) {
+			newMat[(row * 4) + col] = 0;
+			for(int k = 0; k < 4; k++) {
+				newMat[(row * 4) + col] += (this->viewMatrix[(row * 4) + k] * a[col + (k * 4)]);
+				/*printf("newMat[%d] -> %f * %f = %f\n", 
+							(row * 4) + col, 
+							this->viewMatrix[(row * 4) + k], 
+							a[col + (k * 4)], 
+							(this->viewMatrix[(row * 4) + k] * a[col + (k * 4)]));
+							*/
+			}
+
+			/*
+			printf("newMat[%d] -> %f\n", 
+							(row * 4) + col, 
+							newMat[(row * 4) + col]);
+							*/
+		}
+	}
+
+	this->viewMatrix = std::vector<float> (newMat, newMat + 16);
 }
-*/
+
+void Transform::reset(){ 
+	this->viewMatrix = std::vector<float>(Transform::identity, Transform::identity + 16);
+}
+
+void Transform::print(std::vector<float> const mat){
+	printf("----- MATRIX Print Out --------\n");
+
+	for(int row = 0; row < 4; row++){
+		for(int col = 0; col < 4; col++) {
+			printf("%f ", mat[(row * 4) + col]);
+		}
+		printf("\n");
+	}
+}
+
+void Transform::print(){
+	this->print(this->viewMatrix);
+}

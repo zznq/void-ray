@@ -50,6 +50,10 @@ void Ship::Update(double time_elapsed)
 
 	this->position += (this->_velocity * this->_timeElapsed);
 
+	this->transform.reset();
+	this->transform.translate(this->position.x, this->position.y, this->position.z);
+	this->transform.print();
+
 	if(vectorMagSq(this->_velocity) > 0.00000001){
 		this->_velocity.normalize();
 		//this->_heading = this->_velocity;
