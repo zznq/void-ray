@@ -7,9 +7,9 @@
 Target::Target()
 	: Sprite("resources/target.png", 16)
 {
-	this->position = Vector3(0.0f, 0.0f, 0.0f);
-
+	this->_position = Vector3(0.0f, 0.0f, 0.0f);
 	this->target = Vector3(0.0f, 0.0f, 0.0f);
+	this->_rotation = Vector3(0.0f, 0.0f, 0.0f);
 
 	this->_velocity = Vector3(0.0f, 0.0f, 0.0f);
 	this->_heading = Vector3(0.0f, 0.0f, 0.0f);
@@ -20,12 +20,7 @@ Target::Target()
     this->behaviors = new SteeringBehaviors(this);
 }
 
-void Target::Update(double time_elapsed)
-{
-	this->_timeElapsed = time_elapsed;
-}
-
 void Target::UpdateTarget(int x, int y) {
-	this->position.x = (float)x;
-	this->position.y = (float)y;
+	this->_position.x = (float)x;
+	this->_position.y = (float)y;
 }

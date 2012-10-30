@@ -6,13 +6,14 @@
 #include "SteeringBehaviors.hpp"
 //3.14159265359
 #define ToDegrees (180 / M_PI)
+#define QuarterTurn (M_PI / 2)
 
 Ship::Ship()
 	: Sprite("resources/wreck_out_ship.png", 24)
 {
-	this->position = Vector3(-150.f, 150.f, 0.0f);
+	this->_position = Vector3(-150.f, 150.f, 0.0f);
 	this->target = Vector3(0.0f, 0.0f, 0.0f);
-	
+	this->_rotation = Vector3(0.0f, 0.0f, 0.0f);
 
 	this->_velocity = Vector3(1.0f, 1.0f, 0.0f);
 	this->_heading = Vector3(0.0f, -1.0f, 0.0f);
@@ -25,7 +26,7 @@ Ship::Ship()
 	this->_maxForce = 10.0;
 	this->_maxTurnRate = 150.0;
 	this->_timeElapsed = 0.0;
-	this->_rotation = 0.0;
+
     
     this->behaviors = new SteeringBehaviors(this);
 	UpdateTarget(0,0);
@@ -35,10 +36,10 @@ void Ship::Update(double time_elapsed)
 {
 	this->_timeElapsed = time_elapsed;
 
-	float _distance = distance(this->target, this->position);
+	float _distance = distance(this->target, this->_position);
 
 	if(_distance < 0.5) {
-		this->position = this->target;
+		this->_position = this->target;
 		return;
 	}
 	
@@ -48,11 +49,7 @@ void Ship::Update(double time_elapsed)
 
 	this->_velocity += (acceleration * this->_timeElapsed);
 
-	this->position += (this->_velocity * this->_timeElapsed);
-
-	this->transform.reset();
-	this->transform.translate(this->position.x, this->position.y, this->position.z);
-	this->transform.print();
+	this->_position += (this->_velocity * this->_timeElapsed);
 
 	if(vectorMagSq(this->_velocity) > 0.00000001){
 		this->_velocity.normalize();
@@ -77,18 +74,9 @@ void Ship::UpdateTarget(int x, int y) {
 	printf("Radians(acos): %f\n", radians);
 	*/
 
-	float deltay = this->target.y - this->position.y;
-	float deltax = this->target.x - this->position.x;
+	float deltay = this->target.y - this->_position.y;
+	float deltax = this->target.x - this->_position.x;
 
     float radians = atan2(deltay, deltax);
-	this->_rotation = (radians * ToDegrees) - 90;
-	
-}
-
-void Ship::Render() {
-	Vector3 pos = this->getPosition();
-
-	RenderManager::MoveAndRotate(this->getPosition(), this->_rotation, RenderManager::ROTATEZ);
-
-	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
+	this->_rotation.z = radians - QuarterTurn;
 }

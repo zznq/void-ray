@@ -28,6 +28,8 @@ public:
 	static void LoadIdentity();
 
 	/* openGL function call wrappers */
+	static void LoadMatrix(const GLfloat viewMatrix[], bool colMajor);
+	static void PrintModelView();
 	static void ClearColorBitBuffer();
 	static void DrawPoint(float x, float y);
 	static void DrawLine(const GLfloat vertices[]);

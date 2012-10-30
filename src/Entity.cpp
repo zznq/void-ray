@@ -1,10 +1,17 @@
 #include "Entity.hpp"
 #include <stdio.h>
+#include <vector>
 
-Vector3 Entity::getPosition() {
+float* Entity::getViewModelMatrix() {
+	this->transform.reset();
+	
 	if(this->parent != NULL) {
-		return this->parent->getPosition() + this->position;
-	} else {
-		return this->position;		
+		float* parent = this->parent->getViewModelMatrix();
+		this->transform.viewMatrix = std::vector<float> (parent, parent + 16);
 	}
+ 
+	this->transform.translate(this->_position.x, this->_position.y, this->_position.z);
+	this->transform.rotate(this->_rotation.x, this->_rotation.y, this->_rotation.z);
+
+	return &this->transform.viewMatrix[0];
 }

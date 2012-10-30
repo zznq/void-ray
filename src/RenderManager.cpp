@@ -45,6 +45,60 @@ void RenderManager::ClearColorBitBuffer() {
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
+/*
+RM -> CM
+0  -> 0
+1  -> 4
+2  -> 8
+3  -> 12
+4  -> 1
+5  -> 5
+6  -> 9
+7  -> 13
+8  -> 2
+9  -> 6
+10 -> 10
+11 -> 14
+12 -> 3
+13 -> 7
+14 -> 11
+15 -> 15
+*/
+void RenderManager::LoadMatrix(const GLfloat viewMatrix[], bool colMajor) {
+	glMatrixMode(GL_MODELVIEW);
+	
+	RenderManager::LoadIdentity();
+
+	//RenderManager:: PrintModelView();
+
+	if(!colMajor) {
+		float newMatrix[16];
+
+		newMatrix[0] = viewMatrix[0];
+		newMatrix[4] = viewMatrix[1];
+		newMatrix[8] = viewMatrix[2];
+		newMatrix[12] = viewMatrix[3];
+	    newMatrix[1] = viewMatrix[4];
+		newMatrix[5] = viewMatrix[5];
+		newMatrix[9] = viewMatrix[6];
+		newMatrix[13] = viewMatrix[7];
+		newMatrix[2] = viewMatrix[8];
+		newMatrix[6] = viewMatrix[9];
+		newMatrix[10] = viewMatrix[10];
+		newMatrix[14] = viewMatrix[11];
+		newMatrix[3] = viewMatrix[12];
+		newMatrix[7] = viewMatrix[13];
+		newMatrix[11] = viewMatrix[14];
+		newMatrix[15] = viewMatrix[15];
+	
+		glLoadMatrixf(newMatrix);
+	} else {
+		glLoadMatrixf(viewMatrix);
+	}
+
+	//RenderManager:: PrintModelView();
+}
+
 void RenderManager::MoveAndRotate(Vector3 translation, float angle, int angleAxis) {
 	glMatrixMode(GL_MODELVIEW);
 
@@ -52,12 +106,28 @@ void RenderManager::MoveAndRotate(Vector3 translation, float angle, int angleAxi
 
 	RenderManager::Translate(translation);
 
-	if(angleAxis == ROTATEZ){ 
+	/*if(angleAxis == ROTATEZ){ 
 		RenderManager::Roll(angle);
 	} else if(angleAxis == ROTATEY) {
 		RenderManager::Pitch(angle);
 	} else if(angleAxis == ROTATEX) {
 		RenderManager::Yaw(angle);
+	}*/
+
+	RenderManager:: PrintModelView();
+}
+
+void RenderManager:: PrintModelView() {
+	GLfloat	 params[16];
+	glGetFloatv(GL_MODELVIEW_MATRIX, params);
+ 
+	printf("----- GL MATRIX Print Out --------\n");
+
+	for(int col = 0; col < 4; col++){
+		for(int row = 0; row < 4; row++) {
+			printf("%d => %f ", (row * 4) + col, params[(row * 4) + col]);
+		}
+		printf("\n");
 	}
 }
 

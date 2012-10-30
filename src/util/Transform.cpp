@@ -1,4 +1,6 @@
 #include <math.h>
+//Include for printf
+#include <stdio.h>
 
 #include "Transform.hpp"
 
@@ -32,7 +34,7 @@ std::vector<float> Transform::getXRotationMatrix(const float angle){
 	return std::vector<float>(rotate, rotate + 16);
 }
 
-std::vector<float> Transform::getYRotationMatrix(const float angle){
+std::vector<float> Transform::getZRotationMatrix(const float angle){
 	float rotate[16] = {
 		cos(angle), -sin(angle), 0, 0,
 		sin(angle), cos(angle),  0, 0,
@@ -43,7 +45,7 @@ std::vector<float> Transform::getYRotationMatrix(const float angle){
 	return std::vector<float>(rotate, rotate + 16);
 }
 
-std::vector<float> Transform::getZRotationMatrix(const float angle){
+std::vector<float> Transform::getYRotationMatrix(const float angle){
 	float rotate[16] = {
 		cos(angle),  0, sin(angle), 0,
 		0, 		     1, 0,          0,
@@ -70,21 +72,31 @@ Transform::Transform() {
 	this->reset();
 }
 
-void Transform::translate(const float x, const float y, const float z){
+void Transform::translate(const float x, const float y, const float z) {
 	*this *= Transform::getTranslateMatrix(x, y, z);
 }
 
-void Transform::rotate(const float x, const float y, const float z){
-	*this *=  Transform::getTranslateMatrix(x, y, z);
-	*this *=  Transform::getTranslateMatrix(x, y, z);
-	*this *=  Transform::getTranslateMatrix(x, y, z);
+bool Transform::EpsilonEqual(const float left, const float right, const float epsilon) {
+    return fabsf( left - right ) < epsilon;
 }
 
-void Transform::scale(const float x, const float y, const float z){
+void Transform::rotate(const float x, const float y, const float z) {
+	if(!Transform::EpsilonEqual(z, 0, 0.001)) {
+		*this *=  Transform::getZRotationMatrix(z);
+	}
+	if(!Transform::EpsilonEqual(x, 0, 0.001)) {
+		*this *=  Transform::getXRotationMatrix(x);
+	}
+	if(!Transform::EpsilonEqual(y, 0, 0.001)) {
+		*this *=  Transform::getYRotationMatrix(y);
+	}
+}
+
+void Transform::scale(const float x, const float y, const float z) {
 	*this *= Transform::getScaleMatrix(x, y, z);
 }
 
-void Transform::operator *=(const std::vector<float, std::allocator<float>> &a){
+void Transform::operator *=(const std::vector<float, std::allocator<float> > &a) {
 	float newMat[16];
 
 	for(int row = 0; row < 4; row++) {

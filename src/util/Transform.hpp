@@ -13,6 +13,7 @@ protected:
 	static std::vector<float> getZRotationMatrix(const float angle);
 	static std::vector<float> getScaleMatrix(const float scaleX, const float scaleY, const float scaleZ);
 
+	static bool EpsilonEqual(const float left, const float right, const float epsilon);
 public:
 	Transform();
 
@@ -22,7 +23,7 @@ public:
 	void rotate(float x, float y, float z);
 	void scale(float x, float y, float z);
 
-	void operator *=(const std::vector<float, std::allocator<float>> &a);
+	void operator *=(const std::vector<float, std::allocator<float> > &a);
 
 	void reset();
 	void print();

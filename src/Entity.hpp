@@ -14,6 +14,7 @@
 
 #include "util/Vector3.hpp"
 #include "util/Transform.hpp"
+#include "RenderManager.hpp"
 #include "SteeringBehaviors.hpp"
 
 class SteeringBehaviors;
@@ -23,7 +24,7 @@ protected:
     SteeringBehaviors *behaviors;
     
 	Vector3 _velocity;
-	//Confused about how to set/use this
+	//Confused about how to set/use heading
 	Vector3 _heading;
 	Vector3 _side;
 	double _mass;
@@ -31,11 +32,12 @@ protected:
 	double _maxForce;
 	double _maxTurnRate;
 	double _timeElapsed;
-	float _rotation; //rotation angle in degres about the z axis
 
 public:
-    Vector3 position;
-	Vector3 scale;
+	Vector3 _rotation;
+	Vector3 _position;
+	Vector3 _scale;
+
 	Transform transform;
 
 	Entity* parent;
@@ -65,12 +67,15 @@ public:
 	void AddChild(Entity* child) { this->children.push_back(child); };
 
     virtual void Update(double time_elapsed) {};
-    virtual void Render() {};
+    virtual void Render() {
+		RenderManager::LoadMatrix(this->getViewModelMatrix(), false);	
+	};
 
 	Vector3 target;    
     double maxSpeed() { return this->_maxSpeed; }
     Vector3 velocity() { return this->_velocity; }
-	Vector3 getPosition();
+	float* getViewModelMatrix();
+
 	virtual void UpdateTarget(int x, int y) {}
 };
 

@@ -2,19 +2,16 @@ cmake_minimum_required(VERSION 2.8)
 
 project(VOIDRAY)
 
-add_subdirectory(util)
-
-include_directories(${VOIDRAY_SOURCE_DIR}/util)
-
-link_directories(${VOIDRAY_BINARY_DIR}/util)
-
 add_executable(VOIDRAY 
+				util/Vector3.hpp util/Vector3.cpp
+				util/Transform.hpp util/Transform.cpp
 				RenderManager.hpp RenderManager.cpp
 				Timer.hpp Timer.cpp
 				SteeringBehaviors.hpp SteeringBehaviors.cpp				
 				Entity.hpp Entity.cpp 
 				Sprite.hpp Sprite.cpp
-				Ship.hpp Ship.cpp
+				Ship.hpp Ship.cpp				
+				ShipFlame.hpp ShipFlame.cpp
 				Target.hpp Target.cpp
 				GameController.hpp GameController.cpp
 				main.cpp)

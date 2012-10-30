@@ -7,7 +7,6 @@ class Ship : public Sprite {
 public:
 	Ship();
 	void Update(double time_elapsed);
-	void Render();
 	void UpdateTarget(int x, int y);
 };
 
