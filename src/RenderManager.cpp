@@ -2,8 +2,6 @@
 
 #include "RenderManager.hpp"
 
-
-
 SDL_Surface* RenderManager::_screen = NULL;
 
 void RenderManager::Initialize(int width, int height,std::string window_title) {
@@ -14,8 +12,7 @@ void RenderManager::Initialize(int width, int height,std::string window_title) {
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
     
     // Create a OpenGL window
-    RenderManager::_screen = SDL_SetVideoMode(width, height, 0, SDL_OPENGL | 
-                              SDL_RESIZABLE);
+    RenderManager::_screen = SDL_SetVideoMode(width, height, 0, SDL_OPENGL);
     if(!RenderManager::_screen)
     {
         printf("Couldn't set %dx%d GL video mode: %s\n", width,

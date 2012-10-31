@@ -1,8 +1,8 @@
-#include "Entity.hpp"
+#include "BaseEntity.hpp"
 #include <stdio.h>
 #include <vector>
 
-float* Entity::getViewModelMatrix() {
+float* BaseEntity::getViewModelMatrix() {
 	this->transform.reset();
 	
 	if(this->parent != NULL) {

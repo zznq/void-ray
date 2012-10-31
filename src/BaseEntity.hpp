@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#ifndef void_ray_Entity_h
-#define void_ray_Entity_h
+#ifndef void_ray_BaseEntity_h
+#define void_ray_BaseEntity_h
 
 #include <vector>
 #include <cstddef>
@@ -19,7 +19,12 @@
 
 class SteeringBehaviors;
 
-class Entity {
+class BaseEntity {
+private:
+	int _id;
+	
+	//used by the constructor to give each entity a unique ID
+	int NextValidID(){static int NextID = 0; return NextID++;}
 protected:
     SteeringBehaviors *behaviors;
     
@@ -33,6 +38,7 @@ protected:
 	double _maxTurnRate;
 	double _timeElapsed;
 
+	enum { default_entity_type };
 public:
 	Vector3 _rotation;
 	Vector3 _position;
@@ -40,34 +46,35 @@ public:
 
 	Transform transform;
 
-	Entity* parent;
+	BaseEntity* parent;
 
-	std::vector<Entity*> children;
+	std::vector<BaseEntity*> children;
 
-    Entity() {
+    BaseEntity() : _id(NextValidID()) {
 		this->parent = NULL;
 		this->transform = Transform();
 	};
 
-	Entity(Entity* parent) { 
+	BaseEntity(BaseEntity* parent) : _id(NextValidID()) { 
 		this->parent = parent;
 		//Add myself to the children list of my new parent
 		this->parent->AddChild(this);
 		this->transform = Transform();
 	};
 
-	~Entity() {
-		for(std::vector<Entity*>::iterator it = this->children.begin(); it != this->children.end(); ++it) {
+	~BaseEntity() {
+		for(std::vector<BaseEntity*>::iterator it = this->children.begin(); it != this->children.end(); ++it) {
 			if((*it)) {
 				delete (*it);
 			}
 		}
 	};
     
-	void AddChild(Entity* child) { this->children.push_back(child); };
+	void AddChild(BaseEntity* child) { this->children.push_back(child); };
 
     virtual void Update(double time_elapsed) {};
     virtual void Render() {
+		
 		RenderManager::LoadMatrix(this->getViewModelMatrix(), false);	
 	};
 
@@ -77,6 +84,8 @@ public:
 	float* getViewModelMatrix();
 
 	virtual void UpdateTarget(int x, int y) {}
+
+	double MaxForce() { return this->_maxForce; }
 };
 
 #endif

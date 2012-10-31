@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "RenderManager.hpp"
-#include "Entity.hpp"
+#include "BaseEntity.hpp"
 #include "Ship.hpp"
 #include "ShipFlame.hpp"
 #include "Target.hpp"
@@ -14,10 +14,10 @@
 
 class GameController{
 private:
-	void DrawEntity(Entity s);
+	void DrawEntity(BaseEntity s);
 public:
 	//Class Members
-	std::vector<Entity*> objects;
+	std::vector<BaseEntity*> objects;
 
 	GameController() {
 		RenderManager::Initialize(WIDTH, HEIGHT, WINDOW_TITLE);
@@ -25,10 +25,10 @@ public:
 		objects.push_back(new Target);
 		Ship* s = new Ship; 
 		
-		ShipFlame* sf1 = new ShipFlame(s, 14);
-		ShipFlame* sf2 = new ShipFlame(s, -14);
-		objects.push_back(sf1);
-		objects.push_back(sf2);
+		//ShipFlame* sf1 = new ShipFlame(s, 14);
+		//ShipFlame* sf2 = new ShipFlame(s, -14);
+		//objects.push_back(sf1);
+		//objects.push_back(sf2);
 		objects.push_back(s);
 	};
 

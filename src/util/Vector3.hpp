@@ -13,7 +13,7 @@ class Vector3 {
 	public:
 	float x,y,z;
 	
-	Vector3() {}
+	Vector3() : x(0), y(0), z(0) {}
 	
 	Vector3(const Vector3 &a) : x(a.x), y(a.y), z(a.z) {}
 	
@@ -24,6 +24,8 @@ class Vector3 {
 		return *this;
 	}
 	
+	void truncate(double max);
+
 	//Standard object maintence
 	bool operator ==(const Vector3 &a) const {
 		return x==a.x && y==a.y && z==a.z;
@@ -132,5 +134,4 @@ inline float distance(const Vector3 &a, const Vector3 &b){
 }
 
 extern const Vector3 kZeroVector;
-
 #endif

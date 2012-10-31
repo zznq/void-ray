@@ -3,15 +3,15 @@
 
 #include <string>
 #include <vector>
-#include "Entity.hpp"
+#include "BaseEntity.hpp"
 
-class Sprite : public Entity {
+class Sprite : public BaseEntity {
 protected:
 	std::string _path;
 	std::vector<float> _vertices;
 public:
-	Sprite(Entity* parent, std::string path, float vScale)
-	: Entity(parent) {
+	Sprite(BaseEntity* parent, std::string path, float vScale)
+	: BaseEntity(parent) {
 		float vertices[] = {
 			-vScale,  vScale, 0.0f,
 			 vScale,  vScale, 0.0f,
@@ -24,7 +24,7 @@ public:
 		this->_path =  path;
 	}
 	
-	Sprite(std::string path, float vScale) : Entity() {
+	Sprite(std::string path, float vScale) : BaseEntity() {
 		float vertices[] = {
 			-vScale,  vScale, 0.0f,
 			 vScale,  vScale, 0.0f,

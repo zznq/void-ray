@@ -8,7 +8,7 @@ add_executable(VOIDRAY
 				RenderManager.hpp RenderManager.cpp
 				Timer.hpp Timer.cpp
 				SteeringBehaviors.hpp SteeringBehaviors.cpp				
-				Entity.hpp Entity.cpp 
+				BaseEntity.hpp BaseEntity.cpp 
 				Sprite.hpp Sprite.cpp
 				Ship.hpp Ship.cpp				
 				ShipFlame.hpp ShipFlame.cpp

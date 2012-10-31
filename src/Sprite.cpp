@@ -3,7 +3,7 @@
 #include "Sprite.hpp"
 
 void Sprite::Render() {
-	Entity::Render();
+	BaseEntity::Render();
 	
 	RenderManager::DrawImage(this->_path, &this->_vertices[0]);
 }

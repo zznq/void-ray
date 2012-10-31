@@ -8,7 +8,7 @@
 #define ToDegrees (180 / M_PI)
 #define QuarterTurn (M_PI / 2)
 
-ShipFlame::ShipFlame(Entity* parent, float offsetx)
+ShipFlame::ShipFlame(BaseEntity* parent, float offsetx)
 	: Sprite(parent, "resources/flame.png", 14)
 {
 	this->_position = Vector3(offsetx, -28.0f, 0.0f);

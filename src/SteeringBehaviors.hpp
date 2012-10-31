@@ -10,16 +10,20 @@
 #define void_ray_SteeringBehaviors_h
 
 #include "util/Vector3.hpp"
-#include "Entity.hpp"
+#include "BaseEntity.hpp"
 
-class Entity;
+class BaseEntity;
 
 class SteeringBehaviors {
-    Entity *_vehicle;
+private:
+    BaseEntity *_vehicle;
+	Vector3    _steeringForce;
 public:
-    SteeringBehaviors(Entity* vehicle) : _vehicle(vehicle) {}
+    SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {}
     
-    Vector3 Seek(Vector3 target);
+	bool AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd);
+    
+	Vector3 Seek(Vector3 target);
     Vector3 Flee(Vector3 target);
     Vector3 Arrive(Vector3 target);
     

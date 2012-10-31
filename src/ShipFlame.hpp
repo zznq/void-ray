@@ -1,12 +1,12 @@
 #ifndef AI_SHIPFLAME
 #define AI_SHIPFLAME
 
-#include "Entity.hpp"
+#include "BaseEntity.hpp"
 #include "Sprite.hpp"
 
 class ShipFlame : public Sprite {
 public:
-	ShipFlame(Entity* parent, float offsetx);
+	ShipFlame(BaseEntity* parent, float offsetx);
 };
 
 #endif

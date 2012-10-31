@@ -22,8 +22,8 @@ Ship::Ship()
 	this->_side = Vector3(0.0f, 0.0f, 0.0f);
 
 	this->_mass = .1;
-	this->_maxSpeed = 70.0;
-	this->_maxForce = 10.0;
+	this->_maxSpeed = 150.0;
+	this->_maxForce = 2.0;
 	this->_maxTurnRate = 150.0;
 	this->_timeElapsed = 0.0;
 
@@ -37,23 +37,21 @@ void Ship::Update(double time_elapsed)
 	this->_timeElapsed = time_elapsed;
 
 	float _distance = distance(this->target, this->_position);
-
-	if(_distance < 0.5) {
-		this->_position = this->target;
-		return;
-	}
 	
 	Vector3 steeringForce = this->behaviors->Calculate();
 
 	Vector3 acceleration = steeringForce / this->_mass;
 
 	this->_velocity += (acceleration * this->_timeElapsed);
+	
+	this->_velocity.truncate(this->_maxSpeed);
 
 	this->_position += (this->_velocity * this->_timeElapsed);
 
 	if(vectorMagSq(this->_velocity) > 0.00000001){
-		this->_velocity.normalize();
-		//this->_heading = this->_velocity;
+		Vector3 newHeading = Vector3(this->_velocity);
+		newHeading.normalize();
+		this->_heading = newHeading;
 	}
 }
 
