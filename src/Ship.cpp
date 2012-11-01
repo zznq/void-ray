@@ -22,11 +22,10 @@ Ship::Ship()
 	this->_side = Vector3(0.0f, 0.0f, 0.0f);
 
 	this->_mass = .1;
-	this->_maxSpeed = 150.0;
-	this->_maxForce = 2.0;
+	this->_maxSpeed = 10.0;
+	this->_maxForce = 10.0;
 	this->_maxTurnRate = 150.0;
 	this->_timeElapsed = 0.0;
-
     
     this->behaviors = new SteeringBehaviors(this);
 	UpdateTarget(0,0);

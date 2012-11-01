@@ -42,6 +42,8 @@ private:
 	enum Deceleration{slow = 3, normal = 2, fast = 1};
 	Deceleration _deceleration;
 
+	static const double _panicDistance;
+
 	bool AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd);
 
 	Vector3 Seek(const Vector3 target);

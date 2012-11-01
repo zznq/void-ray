@@ -46,6 +46,7 @@ Vector3 SteeringBehaviors::Calculate() {
 	Vector3 force;
 
 	if(On(flee)) {
+		
 		force = Flee(_vehicle->target);
 
 		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
@@ -82,8 +83,18 @@ Vector3 SteeringBehaviors::Seek(const Vector3 target) {
 	return desiredVelocity - _vehicle->velocity();
 }
 
+const double SteeringBehaviors::_panicDistance = 50.0;
+
 Vector3 SteeringBehaviors::Flee(const Vector3 target) {
-     Vector3 desiredVelocity = (_vehicle->_position - target);
+	Vector3 toTarget = _vehicle->_position - target;
+
+	double dist = vectorMagSq(toTarget);
+
+	if(dist > SteeringBehaviors::_panicDistance * SteeringBehaviors::_panicDistance) {
+		return Vector3();
+	}
+
+    Vector3 desiredVelocity = (_vehicle->_position - target);
 	desiredVelocity.normalize();
 	desiredVelocity *= _vehicle->maxSpeed();
     
