@@ -24,11 +24,11 @@ public:
 
 		objects.push_back(new Target);
 		Ship* s = new Ship; 
-		
-		//ShipFlame* sf1 = new ShipFlame(s, 14);
-		//ShipFlame* sf2 = new ShipFlame(s, -14);
-		//objects.push_back(sf1);
-		//objects.push_back(sf2);
+		s->behaviors->arriveOn();
+
+		ShipFlame* sf1 = new ShipFlame(s, 14);
+		ShipFlame* sf2 = new ShipFlame(s, -14);
+
 		objects.push_back(s);
 	};
 

@@ -13,7 +13,7 @@ class Vector3 {
 	public:
 	float x,y,z;
 	
-	Vector3() : x(0), y(0), z(0) {}
+	Vector3() { zero(); }
 	
 	Vector3(const Vector3 &a) : x(a.x), y(a.y), z(a.z) {}
 	
@@ -100,7 +100,7 @@ class Vector3 {
 		}
 	}
 	
-    //Dot Product?
+    //Dot Product
 	float operator *(const Vector3 &a) const {
 		return x * a.x + y * a.y + z * a.z;
 	}
@@ -119,6 +119,15 @@ inline Vector3 crossProduct(const Vector3 &a, const Vector3 &b) {
 		a.y*b.z - a.z*b.y,
 		a.z*b.x - a.x*b.z,
 		a.x*b.y - a.y*b.x
+	);
+}
+
+//Only use for 2d calculations, otherwise use crossProduct
+inline Vector3 Perp(const Vector3 &a) {
+	return Vector3(
+		-a.y,
+		a.x,
+		0
 	);
 }
 

@@ -1,10 +1,5 @@
-//
-//  SteeringBehaviors.cpp
-//  void-ray
-//
-//  Created by Joe Buszkiewic on 2/14/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
+#include <algorithm>
+
 #include "SteeringBehaviors.hpp"
 
 //--------------------- AccumulateForce ----------------------------------
@@ -15,9 +10,6 @@
 //------------------------------------------------------------------------
 bool SteeringBehaviors::AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd)
 {
-	printf("ForceToAdd: (%d, %d, %d)\n", ForceToAdd.x, ForceToAdd.y, ForceToAdd.z);
-	printf("RunningTot: (%d, %d, %d)\n", RunningTot.x, RunningTot.y, RunningTot.z);
-
 	//calculate how much steering force the vehicle has used so far
 	double MagnitudeSoFar = vectorMag(RunningTot);
 
@@ -49,8 +41,40 @@ bool SteeringBehaviors::AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd)
 	return true;
 }
 
-Vector3 SteeringBehaviors::Seek(Vector3 target){
+Vector3 SteeringBehaviors::Calculate() {
+	this->_steeringForce.zero();
+	Vector3 force;
 
+	if(On(flee)) {
+		force = Flee(_vehicle->target);
+
+		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
+	}
+
+	if(On(seek)) {
+		force = Seek(_vehicle->target);
+
+		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
+	}
+
+	if(On(arrive)) {
+		force = Arrive(_vehicle->target, _deceleration);
+
+		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
+	}
+
+	return _steeringForce;
+}
+
+double SteeringBehaviors::ForwardComponent(){
+    return _vehicle->Heading() * _steeringForce;
+}
+
+double SteeringBehaviors::SideComponent(){
+    return _vehicle->Side() * _steeringForce;
+}
+
+Vector3 SteeringBehaviors::Seek(const Vector3 target) {
     Vector3 desiredVelocity = (target - _vehicle->_position);
 	desiredVelocity.normalize();
 	desiredVelocity *= _vehicle->maxSpeed();
@@ -58,7 +82,7 @@ Vector3 SteeringBehaviors::Seek(Vector3 target){
 	return desiredVelocity - _vehicle->velocity();
 }
 
-Vector3 SteeringBehaviors::Flee(Vector3 target){
+Vector3 SteeringBehaviors::Flee(const Vector3 target) {
      Vector3 desiredVelocity = (_vehicle->_position - target);
 	desiredVelocity.normalize();
 	desiredVelocity *= _vehicle->maxSpeed();
@@ -66,21 +90,21 @@ Vector3 SteeringBehaviors::Flee(Vector3 target){
 	return desiredVelocity - _vehicle->velocity();
 }
 
-Vector3 SteeringBehaviors::Arrive(Vector3 target) {
-    return this->Seek(this->_vehicle->target);
-}
+Vector3 SteeringBehaviors::Arrive(const Vector3 target, Deceleration deceleration) {
+	Vector3 toTarget = target - _vehicle->_position;
 
-Vector3 SteeringBehaviors::Calculate(){
-    Vector3 force;
-	this->_steeringForce += this->Seek(this->_vehicle->target);
+	double dist = vectorMag(toTarget);
 
-	if (!AccumulateForce(this->_steeringForce, force)) return this->_steeringForce;
+	if(dist > 0) {
+		const double decelerationTween = 0.3;
 
-	this->_steeringForce.truncate(this->_vehicle->MaxForce());
+		double speed = dist * ((double)deceleration * decelerationTween);
 
-	return this->_steeringForce;
-}
+		speed = std::min(speed, _vehicle->maxSpeed());
 
-Vector3 SteeringBehaviors::ForwardComponent(){
-    return this->Seek(this->_vehicle->target);
+		Vector3 desiredVelocity = toTarget * (speed / dist);
+		return desiredVelocity - _vehicle->velocity();
+	}
+
+	return Vector3();
 }

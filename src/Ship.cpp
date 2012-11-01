@@ -16,7 +16,7 @@ Ship::Ship()
 	this->_rotation = Vector3(0.0f, 0.0f, 0.0f);
 
 	this->_velocity = Vector3(1.0f, 1.0f, 0.0f);
-	this->_heading = Vector3(0.0f, -1.0f, 0.0f);
+	this->_heading = Vector3(this->_velocity);
 	this->_heading.normalize();
 
 	this->_side = Vector3(0.0f, 0.0f, 0.0f);
@@ -52,6 +52,8 @@ void Ship::Update(double time_elapsed)
 		Vector3 newHeading = Vector3(this->_velocity);
 		newHeading.normalize();
 		this->_heading = newHeading;
+
+		this->_side = Perp(this->_heading);
 	}
 }
 
