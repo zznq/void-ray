@@ -24,7 +24,7 @@ public:
 
 		objects.push_back(new Target);
 		Ship* s = new Ship; 
-		s->behaviors->fleeOn();
+		s->behaviors->arriveOn();
 
 		ShipFlame* sf1 = new ShipFlame(s, 14);
 		ShipFlame* sf2 = new ShipFlame(s, -14);

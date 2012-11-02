@@ -52,7 +52,7 @@ private:
 public:
     SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {
 		_flags = none;
-		_deceleration = slow;
+		_deceleration = fast;
 	}
     
     Vector3 Calculate();
