@@ -4,6 +4,8 @@
 #include "util/Vector3.hpp"
 #include "Ship.hpp"
 #include "SteeringBehaviors.hpp"
+#include "ShipFlame.hpp"
+
 //3.14159265359
 #define ToDegrees (180 / M_PI)
 #define QuarterTurn (M_PI / 2)
@@ -11,24 +13,31 @@
 Ship::Ship()
 	: Sprite("resources/wreck_out_ship.png", 24)
 {
+	ShipFlame* sf1 = new ShipFlame(this, 14);
+	ShipFlame* sf2 = new ShipFlame(this, -14);
+
 	this->_position = Vector3(-150.f, 150.f, 0.0f);
-	this->target = Vector3(0.0f, 0.0f, 0.0f);
-	this->_rotation = Vector3(0.0f, 0.0f, 0.0f);
-
-	this->_velocity = Vector3(1.0f, 1.0f, 0.0f);
-	this->_heading = Vector3(this->_velocity);
-	this->_heading.normalize();
-
-	this->_side = Vector3(0.0f, 0.0f, 0.0f);
-
+	
 	this->_mass = .1;
 	this->_maxSpeed = 150.0;
 	this->_maxForce = 2.0;
 	this->_maxTurnRate = 150.0;
 	this->_timeElapsed = 0.0;
-    
-    this->behaviors = new SteeringBehaviors(this);
-	UpdateTarget(0,0);
+}
+
+Ship::Ship(float x, float y)
+	: Sprite("resources/wreck_out_ship.png", 24)
+{
+	ShipFlame* sf1 = new ShipFlame(this, 14);
+	ShipFlame* sf2 = new ShipFlame(this, -14);
+
+	this->_position = Vector3(x, y, 0.0f);
+	
+	this->_mass = .1;
+	this->_maxSpeed = 150.0;
+	this->_maxForce = 2.0;
+	this->_maxTurnRate = 150.0;
+	this->_timeElapsed = 0.0;
 }
 
 void Ship::Update(double time_elapsed)
@@ -54,28 +63,21 @@ void Ship::Update(double time_elapsed)
 
 		this->_side = Perp(this->_heading);
 	}
+
+	UpdateRotation();
+}
+
+void Ship::UpdateRotation() {
+	//Determines if the heading is to the left or right of us
+	float sign = _copysignf(1.0f, this->_heading * this->_left);
+	float _radians = acos(this->_heading * this->_up);
+
+	this->_rotation.z = sign * _radians;
 }
 
 void Ship::UpdateTarget(int x, int y) {
-	
 	this->target.x = (float)x;
 	this->target.y = (float)y;
 
-	/******************
-	Rotation
-	******************/
-	// Target - Position
-	/*Vector3 tp = this->target - this->position;
-	tp.normalize();
-
-	float radians = acos(this->_heading * tp);
-
-	printf("Radians(acos): %f\n", radians);
-	*/
-
-	float deltay = this->target.y - this->_position.y;
-	float deltax = this->target.x - this->_position.x;
-
-    float radians = atan2(deltay, deltax);
-	this->_rotation.z = radians - QuarterTurn;
+	UpdateRotation();
 }

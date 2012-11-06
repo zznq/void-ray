@@ -15,3 +15,25 @@ float* BaseEntity::getViewModelMatrix() {
 
 	return &this->transform.viewMatrix[0];
 }
+
+void BaseEntity::loadDefaults() {
+	this->transform = Transform();
+	this->behaviors = new SteeringBehaviors(this);
+
+	this->target = Vector3();
+	this->_rotation = Vector3();
+	this->_velocity = Vector3();
+
+	this->_heading = Vector3(this->_velocity);
+	this->_heading.normalize();
+
+	this->_side = Perp(this->_heading);
+	this->_up = Vector3(0.0f, 1.0f, 0.0f);
+	this->_left = Vector3(-1.0f, 0.0f, 0.0f);
+
+	this->_mass = 0;
+	this->_maxSpeed = 0.0;
+	this->_maxForce = 0.0;
+	this->_maxTurnRate = 0.0;
+	this->_timeElapsed = 0.0;
+};

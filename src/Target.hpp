@@ -5,7 +5,7 @@
 
 class Target : public Sprite {
 public:
-	Target();
+	Target() : Sprite("resources/target.png", 16) { };
 	void UpdateTarget(int x, int y);
 };
 

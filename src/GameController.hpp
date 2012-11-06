@@ -5,7 +5,6 @@
 #include "RenderManager.hpp"
 #include "BaseEntity.hpp"
 #include "Ship.hpp"
-#include "ShipFlame.hpp"
 #include "Target.hpp"
 
 #define WIDTH 640
@@ -23,13 +22,14 @@ public:
 		RenderManager::Initialize(WIDTH, HEIGHT, WINDOW_TITLE);
 
 		objects.push_back(new Target);
-		Ship* s = new Ship; 
-		s->behaviors->arriveOn();
+		Ship* s = new Ship(-140., 150.); 
 
-		ShipFlame* sf1 = new ShipFlame(s, 14);
-		ShipFlame* sf2 = new ShipFlame(s, -14);
+		Ship* s2 = new Ship(150., 50.); 
+		s->behaviors->pursueOn(s2);
+		s2->behaviors->arriveOn();
 
 		objects.push_back(s);
+		objects.push_back(s2);
 	};
 
 	~GameController();

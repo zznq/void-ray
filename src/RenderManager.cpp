@@ -3,6 +3,8 @@
 #include "RenderManager.hpp"
 
 SDL_Surface* RenderManager::_screen = NULL;
+std::map<std::string, SDL_Surface*> RenderManager::images = std::map<std::string, SDL_Surface*>();
+std::map<std::string, GLuint> RenderManager::textures = std::map<std::string, GLuint>();
 
 void RenderManager::Initialize(int width, int height,std::string window_title) {
     // Initialize
@@ -35,6 +37,8 @@ void RenderManager::Initialize(int width, int height,std::string window_title) {
 	glEnable(GL_TEXTURE_2D);
 	 
 	glLoadIdentity();
+
+	RenderManager::Flush();
 }
 
 void RenderManager::ClearColorBitBuffer() {
@@ -181,53 +185,77 @@ void RenderManager::DrawLine(const GLfloat vertices[]){
 	//glColor3f(0.0f, 0.0f, 0.0f);
 }
 
-void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
-{
+SDL_Surface* RenderManager::LoadImage(const std::string& path) {
 	SDL_Surface* temp = NULL;
 	SDL_Surface* image = NULL;
 
-	GLuint texture;			// This is a handle to our texture object
-	GLenum texture_format;
-	GLint nOfColors;
+	std::map<std::string,SDL_Surface*>::iterator it;
+	it = RenderManager::images.find(path);
+
+	if(it != RenderManager::images.end()) {
+		//(*it) is a pair<std:string, SDL_Surface*> object
+		image = it->second;
+
+		return image;
+	}
 
 	temp = IMG_Load(path.c_str());
 	if(temp == NULL) {
 		printf("Error Loading Image : %s \n", path.c_str());
-		return;	
+		return NULL;	
 	}
-
-	/*Uint32 colorkey = SDL_MapRGB(temp->format, 0, 0, 0);
-	// now tell SDL to remeber our choice
-	SDL_SetColorKey(temp, SDL_SRCCOLORKEY, colorkey);*/
 
 	image = SDL_DisplayFormatAlpha(temp);
 	if(image == NULL){
+		SDL_FreeSurface(temp);
 		printf("Error Converting To Alpha : %s \n", SDL_GetError());
+		return NULL;
+	}
+
+	SDL_FreeSurface(temp);
+
+	RenderManager::images.insert(std::make_pair(path, image));
+	return image;
+}
+
+void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
+{
+	SDL_Surface* image = RenderManager::LoadImage(path);
+
+	if(image == NULL){
+		printf("Error Loading Image: %s \n", SDL_GetError());
 		return;
 	}
+	
+	GLuint texture;			// This is a handle to our texture object
+	GLenum texture_format;
+	GLint nOfColors;
 
 	nOfColors = image->format->BytesPerPixel;
 	
     texture_format = RenderManager::GetTextureFormat(image, nOfColors);
 
-	// Have OpenGL generate a texture object handle for us
-	glGenTextures( 1, &texture );
- 
+	//glGenTextures( 1, &texture );
+	std::map<std::string, GLuint>::iterator it = RenderManager::textures.find(path);
+	if(it == RenderManager::textures.end()) {
+		// Have OpenGL generate a texture object handle for us
+		glGenTextures( 1, &texture );
+		RenderManager::textures.insert(std::make_pair(path, texture));
+	} else {
+		texture = it->second;
+	}
+
 	// Bind the texture object
 	glBindTexture( GL_TEXTURE_2D, texture );
  
-	// Set the texture's stretching properties
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-	glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
- 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 	// Edit the texture object's image data using the information SDL_Surface gives us
 	glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, image->w, image->h, 0,
 		              texture_format, GL_UNSIGNED_BYTE, image->pixels );
-
-	// Bind the texture to which subsequent calls refer to
-	glBindTexture( GL_TEXTURE_2D, texture );
-
-	GLfloat squareTexCoord[] = {
+	
+	static GLfloat squareTexCoord[] = {
 		0, 0,
 		1, 0,
 		1, 1,
@@ -245,15 +273,14 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 	glVertexPointer(3, GL_FLOAT, 0, vertices);
 
 	glDrawArrays(GL_QUADS, 0, 4);
-
+	
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-	glDisable(GL_BLEND);
-
-	SDL_FreeSurface(temp);
-	SDL_FreeSurface(image);
 	
+	glDisable(GL_BLEND);
+	
+	//glDeleteTextures(1, &texture);
 }
 
 GLenum RenderManager::GetTextureFormat(SDL_Surface* surface, GLint nOfColors) {

@@ -64,6 +64,12 @@ Vector3 SteeringBehaviors::Calculate() {
 		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
 	}
 
+	if(On(pursue)){
+		force = Pursue(this->evador1);
+
+		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
+	}
+
 	return _steeringForce;
 }
 
@@ -83,21 +89,29 @@ Vector3 SteeringBehaviors::Seek(const Vector3 target) {
 	return desiredVelocity - _vehicle->velocity();
 }
 
-const double SteeringBehaviors::_panicDistance = 50.0;
+const double SteeringBehaviors::_panicDistance = 150.0;
 
 Vector3 SteeringBehaviors::Flee(const Vector3 target) {
 	Vector3 toTarget = _vehicle->_position - target;
 
 	double dist = vectorMagSq(toTarget);
 
+	Vector3 desiredVelocity;
+
 	if(dist > SteeringBehaviors::_panicDistance * SteeringBehaviors::_panicDistance) {
-		return Vector3();
+		const double decelerationTween = 0.3;
+
+		double speed = dist * ((double)normal * decelerationTween);
+
+		speed = std::min(speed, _vehicle->maxSpeed());
+
+		desiredVelocity = toTarget * (speed / dist);
+	} else {
+		desiredVelocity = (_vehicle->_position - target);
+		desiredVelocity.normalize();
+		desiredVelocity *= _vehicle->maxSpeed();
 	}
 
-    Vector3 desiredVelocity = (_vehicle->_position - target);
-	desiredVelocity.normalize();
-	desiredVelocity *= _vehicle->maxSpeed();
-    
 	return desiredVelocity - _vehicle->velocity();
 }
 
@@ -118,4 +132,18 @@ Vector3 SteeringBehaviors::Arrive(const Vector3 target, Deceleration deceleratio
 	}
 
 	return Vector3();
+}
+
+Vector3 SteeringBehaviors::Pursue(const BaseEntity *evador) {
+	Vector3 toEvador = evador->_position - this->_vehicle->_position;
+
+	double relativeHeader = (this->_vehicle->Heading() * evador->Heading());
+
+	if((toEvador * this->_vehicle->Heading()) > 0) {
+		return Seek(evador->_position);
+	}
+
+	double lookAheadTime = vectorMag(toEvador) / (this->_vehicle->maxSpeed() + evador->Speed());
+
+	return Seek(evador->_position + evador->velocity()  * lookAheadTime);
 }

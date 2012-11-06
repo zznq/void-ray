@@ -30,6 +30,8 @@ protected:
 	//Confused about how to set/use heading
 	Vector3 _heading;
 	Vector3 _side;
+	Vector3 _up;
+	Vector3 _left;
 	double _mass;
 	double _maxSpeed;
 	double _maxForce;
@@ -37,10 +39,13 @@ protected:
 	double _timeElapsed;
 
 	enum { default_entity_type };
+
+	void loadDefaults();
 public:
 	SteeringBehaviors *behaviors;
 	BaseEntity* parent;
-
+	
+	Vector3 target;
 	Vector3 _rotation;
 	Vector3 _position;
 	Vector3 _scale;
@@ -51,14 +56,16 @@ public:
 
     BaseEntity() : _id(NextValidID()) {
 		this->parent = NULL;
-		this->transform = Transform();
+
+		this->loadDefaults();
 	};
 
 	BaseEntity(BaseEntity* parent) : _id(NextValidID()) { 
 		this->parent = parent;
 		//Add myself to the children list of my new parent
 		this->parent->AddChild(this);
-		this->transform = Transform();
+
+		this->loadDefaults();
 	};
 
 	~BaseEntity() {
@@ -81,18 +88,20 @@ public:
 
 		RenderManager::LoadMatrix(this->getViewModelMatrix(), false);
 	};
+ 
+    double maxSpeed() const { return this->_maxSpeed; }
+    Vector3 velocity() const { return this->_velocity; }
+	double Speed()const{return vectorMag(this->_velocity);}
+	double SpeedSq()const{return vectorMagSq(this->_velocity);}
 
-	Vector3 target;    
-    double maxSpeed() { return this->_maxSpeed; }
-    Vector3 velocity() { return this->_velocity; }
 	float* getViewModelMatrix();
 
 	virtual void UpdateTarget(int x, int y) {}
 
-	double MaxForce() { return this->_maxForce; }
+	double MaxForce() const { return this->_maxForce; }
 
-	Vector3 Heading() { return this->_heading; }
-	Vector3 Side() { return this->_side; }
+	Vector3 Heading() const { return this->_heading; }
+	Vector3 Side() const { return this->_side; }
 };
 
 #endif

@@ -23,7 +23,8 @@ private:
 		none	= 0x00000,
 		seek	= 0x00002,
 		flee	= 0x00004,
-		arrive  = 0x00008
+		arrive  = 0x00008,
+		pursue	= 0x00020,
 	};
 
 	int _flags;
@@ -44,11 +45,14 @@ private:
 
 	static const double _panicDistance;
 
+	BaseEntity *evador1;
+
 	bool AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd);
 
 	Vector3 Seek(const Vector3 target);
     Vector3 Flee(const Vector3 target);
     Vector3 Arrive(const Vector3 target, Deceleration deceleration);
+	Vector3 Pursue(const BaseEntity *entity);
 public:
     SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {
 		_flags = none;
@@ -67,10 +71,15 @@ public:
 	void seekOn() { SetFlag(seek); }
 	void fleeOn() { SetFlag(flee); }
 	void arriveOn() { SetFlag(arrive); }
+	void pursueOn(BaseEntity *evador) { 
+		SetFlag(pursue);
+		this->evador1 = evador;
+	}
 
 	void seekOff() { RemoveFlag(seek); }
 	void fleeOff() { RemoveFlag(flee); }
 	void arriveOff() { RemoveFlag(arrive); }
+	void pursueOff() { RemoveFlag(pursue); }
 };
 
 #endif
