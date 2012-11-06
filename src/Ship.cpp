@@ -69,7 +69,7 @@ void Ship::Update(double time_elapsed)
 
 void Ship::UpdateRotation() {
 	//Determines if the heading is to the left or right of us
-	float sign = _copysignf(1.0f, this->_heading * this->_left);
+	float sign = (this->_heading * this->_left) > 0 ? 1.0 : -1.0;
 	float _radians = acos(this->_heading * this->_up);
 
 	this->_rotation.z = sign * _radians;
