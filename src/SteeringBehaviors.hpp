@@ -9,8 +9,13 @@
 #ifndef void_ray_SteeringBehaviors_h
 #define void_ray_SteeringBehaviors_h
 
+#include <cmath>
+#include <time.h>
+
 #include "util/Vector3.hpp"
 #include "BaseEntity.hpp"
+
+#define TwoPi (3.14159265359 * 2)
 
 class BaseEntity;
 
@@ -25,6 +30,8 @@ private:
 		flee	= 0x00004,
 		arrive  = 0x00008,
 		pursue	= 0x00020,
+		evade   = 0x00040,
+		wander  = 0x00080
 	};
 
 	int _flags;
@@ -46,17 +53,41 @@ private:
 	static const double _panicDistance;
 
 	BaseEntity *evador1;
+	BaseEntity *pursuer1;
+
+	double _wanderRadius;
+	double _wanderDistance;
+	double _wanderJitter;
+
+	Vector3 _wanderTarget;
 
 	bool AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd);
 
 	Vector3 Seek(const Vector3 target);
     Vector3 Flee(const Vector3 target);
     Vector3 Arrive(const Vector3 target, Deceleration deceleration);
-	Vector3 Pursue(const BaseEntity *entity);
+	Vector3 Pursue(const BaseEntity* evador);
+	Vector3 Evade(const BaseEntity* pursuer);
+	Vector3 Wander();
+
+	double LookAheadTime(const BaseEntity* entity, Vector3 targetPos);
 public:
     SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {
 		_flags = none;
 		_deceleration = fast;
+
+		_wanderRadius = 125;
+		_wanderDistance = 50;
+		_wanderJitter = 150;
+
+		srand(time(NULL));
+
+		//stuff for the wander behavior
+		double theta = (double)rand() * TwoPi;
+
+		//create a vector to a target position on the wander circle
+		this->_wanderTarget = Vector3(_wanderRadius * cos(theta),
+									_wanderRadius * sin(theta), 0);
 	}
     
     Vector3 Calculate();
@@ -75,11 +106,27 @@ public:
 		SetFlag(pursue);
 		this->evador1 = evador;
 	}
+	void wanderOn() { SetFlag(wander); }
+
+	void evadeOn(BaseEntity *pursuer) { 
+		SetFlag(evade);
+		this->pursuer1 = pursuer;
+	}
 
 	void seekOff() { RemoveFlag(seek); }
 	void fleeOff() { RemoveFlag(flee); }
 	void arriveOff() { RemoveFlag(arrive); }
-	void pursueOff() { RemoveFlag(pursue); }
+	void pursueOff() { 
+		RemoveFlag(pursue);
+		this->evador1 = NULL;
+	}
+	
+	void evadeOff() { 
+		RemoveFlag(evade); 
+		this->pursuer1 = NULL;
+	}
+	
+	void wanderOff() { RemoveFlag(wander); }
 };
 
 #endif

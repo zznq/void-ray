@@ -102,6 +102,7 @@ public:
 
 	Vector3 Heading() const { return this->_heading; }
 	Vector3 Side() const { return this->_side; }
+	double ElapsedTime() const { return this->_timeElapsed; }
 };
 
 #endif

@@ -64,10 +64,22 @@ Vector3 SteeringBehaviors::Calculate() {
 		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
 	}
 
-	if(On(pursue)){
+	if(On(pursue)) {
 		force = Pursue(this->evador1);
 
 		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
+	}
+
+	if(On(evade)) {
+		force = Evade(this->pursuer1);
+
+		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
+	}
+
+	if(On(wander)) {
+		force = Wander();
+		
+		if(!AccumulateForce(_steeringForce, force)) return _steeringForce;
 	}
 
 	return _steeringForce;
@@ -134,6 +146,17 @@ Vector3 SteeringBehaviors::Arrive(const Vector3 target, Deceleration deceleratio
 	return Vector3();
 }
 
+double SteeringBehaviors::LookAheadTime(const BaseEntity* entity, Vector3 targetPos) {
+	Vector3 toTargetNormal = targetPos - entity->_position;
+	toTargetNormal.normalize();
+
+	double dot = entity->Heading() * toTargetNormal;
+
+	const double coefficient = 0.5;
+
+	return (dot - 1) * -coefficient;
+}
+
 Vector3 SteeringBehaviors::Pursue(const BaseEntity *evador) {
 	Vector3 toEvador = evador->_position - this->_vehicle->_position;
 
@@ -145,5 +168,35 @@ Vector3 SteeringBehaviors::Pursue(const BaseEntity *evador) {
 
 	double lookAheadTime = vectorMag(toEvador) / (this->_vehicle->maxSpeed() + evador->Speed());
 
+	lookAheadTime += this->LookAheadTime(this->_vehicle, evador->_position);
+
 	return Seek(evador->_position + evador->velocity()  * lookAheadTime);
+}
+
+Vector3 SteeringBehaviors::Evade(const BaseEntity *pursuer) {
+	Vector3 toPursuer = pursuer->_position - this->_vehicle->_position;
+
+	double lookAheadTime = vectorMag(toPursuer) / (this->_vehicle->maxSpeed() + pursuer->Speed());
+
+	lookAheadTime += this->LookAheadTime(this->_vehicle, pursuer->_position);
+
+	return Flee(pursuer->_position + pursuer->velocity()  * lookAheadTime);
+}
+
+Vector3 SteeringBehaviors::Wander() {
+	double xRand = ((((rand() % 100) + 1.0) / 100.0) * 2.0) - 1.0;
+	double yRand = ((((rand() % 100) + 1.0) / 100.0) * 2.0) - 1.0;
+
+	
+	double JitterThisTimeSlice = this->_wanderJitter * this->_vehicle->ElapsedTime();
+
+	this->_wanderTarget += Vector3(xRand * JitterThisTimeSlice, yRand * JitterThisTimeSlice, 0);
+	this->_wanderTarget.normalize();
+
+	this->_wanderTarget *= this->_wanderRadius;
+
+	Vector3 targetLocal = this->_wanderTarget + Vector3(_wanderDistance, 0, 0);
+	Vector3 targetWorld = targetLocal + this->_vehicle->_position;
+
+	return targetWorld - this->_vehicle->_position;
 }

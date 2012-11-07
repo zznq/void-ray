@@ -22,14 +22,14 @@ public:
 		RenderManager::Initialize(WIDTH, HEIGHT, WINDOW_TITLE);
 
 		objects.push_back(new Target);
-		Ship* s = new Ship(-140., 150.); 
+		Ship* s = new Ship(-150.0, -140.0); 
 
-		Ship* s2 = new Ship(150., 50.); 
-		s->behaviors->pursueOn(s2);
-		s2->behaviors->arriveOn();
+		//Ship* s2 = new Ship(150., 50.); 
+		s->behaviors->wanderOn();
+		//s2->behaviors->arriveOn();
 
 		objects.push_back(s);
-		objects.push_back(s2);
+		//objects.push_back(s2);
 	};
 
 	~GameController();
