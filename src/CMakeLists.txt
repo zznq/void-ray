@@ -11,7 +11,7 @@ add_executable(VOIDRAY
 				BaseEntity.hpp BaseEntity.cpp 
 				Sprite.hpp Sprite.cpp
 				Ship.hpp Ship.cpp				
-				ShipFlame.hpp ShipFlame.cpp
+				ChildSprite.hpp ChildSprite.cpp
 				Target.hpp Target.cpp
 				GameController.hpp GameController.cpp
 				main.cpp)

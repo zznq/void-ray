@@ -1,5 +1,5 @@
-#ifndef AI_Target
-#define AI_Target
+#ifndef AI_TARGET
+#define AI_TARGET
 
 #include "Sprite.hpp"
 
@@ -8,5 +8,4 @@ public:
 	Target() : Sprite("resources/target.png", 16) { };
 	void UpdateTarget(int x, int y);
 };
-
 #endif

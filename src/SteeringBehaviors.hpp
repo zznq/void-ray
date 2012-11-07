@@ -68,7 +68,7 @@ private:
     Vector3 Arrive(const Vector3 target, Deceleration deceleration);
 	Vector3 Pursue(const BaseEntity* evador);
 	Vector3 Evade(const BaseEntity* pursuer);
-	Vector3 Wander();
+	Vector3 Wander(); //Broken :(
 
 	double LookAheadTime(const BaseEntity* entity, Vector3 targetPos);
 public:

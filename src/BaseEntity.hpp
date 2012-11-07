@@ -78,16 +78,9 @@ public:
     
 	void AddChild(BaseEntity* child) { this->children.push_back(child); };
 
-    virtual void Update(double time_elapsed) {};
-    virtual void Render() {
-		for(std::vector<BaseEntity*>::iterator it = this->children.begin(); it != this->children.end(); ++it) {
-			if((*it)) {
-				(*it)->Render();
-			}
-		}
+    virtual void Update(double time_elapsed);
 
-		RenderManager::LoadMatrix(this->getViewModelMatrix(), false);
-	};
+    virtual void Render();
  
     double maxSpeed() const { return this->_maxSpeed; }
     Vector3 velocity() const { return this->_velocity; }
@@ -102,7 +95,16 @@ public:
 
 	Vector3 Heading() const { return this->_heading; }
 	Vector3 Side() const { return this->_side; }
+
+	float Rotation() const { 
+		float sign = (this->_heading * this->_left) > 0 ? 1.0 : -1.0;
+		float _radians = acos(this->_heading * this->_up);
+
+		return sign * _radians;
+	}
+
 	double ElapsedTime() const { return this->_timeElapsed; }
+	void WrapWorld();
 };
 
 #endif

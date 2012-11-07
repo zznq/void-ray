@@ -4,12 +4,12 @@
 #include "Sprite.hpp"
 
 class Ship : public Sprite {
+private:
+	void _setup(float x, float y);
 public:
 	Ship();
 	Ship(float x, float y);
-	void Update(double time_elapsed);
 	void UpdateTarget(int x, int y);
-	void UpdateRotation();
 };
 
 #endif

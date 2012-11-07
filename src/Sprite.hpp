@@ -4,42 +4,48 @@
 #include <string>
 #include <vector>
 #include "BaseEntity.hpp"
+#include "util\Vector3.hpp"
 
 class Sprite : public BaseEntity {
 protected:
 	std::string _path;
 	std::vector<float> _vertices;
+
+	void _setup(std::string path, float vScale, Vector3 pos) {
+		float vertices[] = {
+			-vScale,  vScale, 0.0f,
+			 vScale,  vScale, 0.0f,
+			 vScale, -vScale, 0.0f,
+			-vScale, -vScale, 0.0f
+		};
+		std::vector<float> _v (vertices, vertices + 12);
+		this->_vertices = _v;
+
+		this->_path =  path;
+
+		this->_position = pos;
+	}
 public:
 	Sprite(BaseEntity* parent, std::string path, float vScale)
 	: BaseEntity(parent) {
-		float vertices[] = {
-			-vScale,  vScale, 0.0f,
-			 vScale,  vScale, 0.0f,
-			 vScale, -vScale, 0.0f,
-			-vScale, -vScale, 0.0f
-		};
-		std::vector<float> _v (vertices, vertices + 12);
-		this->_vertices = _v;
-
-		this->_path =  path;
+		this->_setup(path, vScale, Vector3());
 	}
 	
 	Sprite(std::string path, float vScale) : BaseEntity() {
-		float vertices[] = {
-			-vScale,  vScale, 0.0f,
-			 vScale,  vScale, 0.0f,
-			 vScale, -vScale, 0.0f,
-			-vScale, -vScale, 0.0f
-		};
-		std::vector<float> _v (vertices, vertices + 12);
-		this->_vertices = _v;
+		this->_setup(path, vScale, Vector3());
+	};
 
-		this->_path =  path;
+	Sprite(BaseEntity* parent, std::string path, float vScale, Vector3 pos) 
+		: BaseEntity(parent) {
+		this->_setup(path, vScale, pos);
+	};
+	
+	Sprite(std::string path, float vScale, Vector3 pos) : BaseEntity() {
+		this->_setup(path, vScale, pos);
 	};
 
 	virtual ~Sprite() {
     }
-	virtual void Update(double time_elapsed) {};
     virtual void Render();
 };
 

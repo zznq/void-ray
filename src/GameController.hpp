@@ -6,6 +6,7 @@
 #include "BaseEntity.hpp"
 #include "Ship.hpp"
 #include "Target.hpp"
+#include "Sprite.hpp"
 
 #define WIDTH 640
 #define HEIGHT 480
@@ -16,20 +17,24 @@ private:
 	void DrawEntity(BaseEntity s);
 public:
 	//Class Members
-	std::vector<BaseEntity*> objects;
+	std::vector<BaseEntity*> agents;
+	std::vector<BaseEntity*> obstacles;
 
 	GameController() {
 		RenderManager::Initialize(WIDTH, HEIGHT, WINDOW_TITLE);
 
-		objects.push_back(new Target);
+		agents.push_back(new Target);
 		Ship* s = new Ship(-150.0, -140.0); 
 
-		//Ship* s2 = new Ship(150., 50.); 
-		s->behaviors->wanderOn();
-		//s2->behaviors->arriveOn();
+		Ship* s2 = new Ship(150., 50.); 
+		s->behaviors->pursueOn(s2);
+		s2->behaviors->arriveOn();
 
-		objects.push_back(s);
-		//objects.push_back(s2);
+		agents.push_back(s);
+		agents.push_back(s2);
+
+		Sprite* obstacle1 = new Sprite("resources/asteroid.png", 16, Vector3(-250, 75, 0));
+		obstacles.push_back(obstacle1);
 	};
 
 	~GameController();
@@ -41,5 +46,9 @@ public:
 
 	//This is temperary, eventually we will have a messageing system
 	void UpdateTarget(int x, int y);
+
+	static double Height();
+
+	static double Width();
 };
 #endif

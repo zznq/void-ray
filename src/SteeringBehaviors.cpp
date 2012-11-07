@@ -184,9 +184,8 @@ Vector3 SteeringBehaviors::Evade(const BaseEntity *pursuer) {
 }
 
 Vector3 SteeringBehaviors::Wander() {
-	double xRand = ((((rand() % 100) + 1.0) / 100.0) * 2.0) - 1.0;
-	double yRand = ((((rand() % 100) + 1.0) / 100.0) * 2.0) - 1.0;
-
+	double xRand = ((((rand() % 1000) + 1.0) / 1000.0) * 2.0) - 1.0;
+	double yRand = ((((rand() % 1000) + 1.0) / 1000.0) * 2.0) - 1.0;
 	
 	double JitterThisTimeSlice = this->_wanderJitter * this->_vehicle->ElapsedTime();
 
@@ -196,7 +195,8 @@ Vector3 SteeringBehaviors::Wander() {
 	this->_wanderTarget *= this->_wanderRadius;
 
 	Vector3 targetLocal = this->_wanderTarget + Vector3(_wanderDistance, 0, 0);
-	Vector3 targetWorld = targetLocal + this->_vehicle->_position;
+
+	Vector3 targetWorld = targetLocal + this->_vehicle->_position + Vector3(cos(this->_vehicle->Rotation()), sin(this->_vehicle->Rotation()), 0);
 
 	return targetWorld - this->_vehicle->_position;
 }
