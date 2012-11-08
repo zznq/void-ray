@@ -75,7 +75,39 @@ void BaseEntity::Render() {
 		}
 	}
 
+	
+	if(this->_drawHelpers) {
+		RenderManager::LoadIdentity();
+
+		float _heading[] = {
+			this->_position.x,
+			this->_position.y,
+			this->_position.x + (this->_heading.x * this->_helperMagnitude),
+			this->_position.y + (this->_heading.y * this->_helperMagnitude)
+		};
+
+		float _headingColors[] = {
+			255,  0, 0, 255,
+			255,  0, 0, 255
+		};
+
+		RenderManager::DrawLine(_heading, _headingColors);
+
+		float _side[] = {
+			this->_position.x,   this->_position.y,
+			this->_position.x + (this->_side.x * this->_helperMagnitude), this->_position.y + (this->_side.y  * this->_helperMagnitude)
+		};
+
+		float _sideColors[] = {
+			0,  0, 255, 255,
+			0,  0, 255, 255
+		};
+
+		RenderManager::DrawLine(_side, _sideColors);
+	}
+
 	RenderManager::LoadMatrix(this->getViewModelMatrix(), false);
+
 };
 
 void BaseEntity::WrapWorld() {

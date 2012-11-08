@@ -70,8 +70,6 @@ void RenderManager::LoadMatrix(const GLfloat viewMatrix[], bool colMajor) {
 	
 	RenderManager::LoadIdentity();
 
-	//RenderManager:: PrintModelView();
-
 	if(!colMajor) {
 		float newMatrix[16];
 
@@ -96,26 +94,6 @@ void RenderManager::LoadMatrix(const GLfloat viewMatrix[], bool colMajor) {
 	} else {
 		glLoadMatrixf(viewMatrix);
 	}
-
-	//RenderManager:: PrintModelView();
-}
-
-void RenderManager::MoveAndRotate(Vector3 translation, float angle, int angleAxis) {
-	glMatrixMode(GL_MODELVIEW);
-
-	RenderManager::LoadIdentity();
-
-	RenderManager::Translate(translation);
-
-	/*if(angleAxis == ROTATEZ){ 
-		RenderManager::Roll(angle);
-	} else if(angleAxis == ROTATEY) {
-		RenderManager::Pitch(angle);
-	} else if(angleAxis == ROTATEX) {
-		RenderManager::Yaw(angle);
-	}*/
-
-	RenderManager:: PrintModelView();
 }
 
 void RenderManager:: PrintModelView() {
@@ -132,57 +110,43 @@ void RenderManager:: PrintModelView() {
 	}
 }
 
-void RenderManager::Translate(Vector3 translation) {
-	glTranslatef(translation.x, translation.y, translation.z);
-}
-
-// Rotation in Degrees
-void RenderManager::Roll(float angle) {
-	glRotatef(angle, 0, 0, 1);
-}
-
-void RenderManager::Pitch(float angle) {
-	glRotatef(angle, 0, 1, 0);
-}
-
-void RenderManager::Yaw(float angle) {
-	glRotatef(angle, 1, 0, 0);
-}
-
 void RenderManager::LoadIdentity() {
 	glLoadIdentity();
 }
 
-void RenderManager::DrawPoint(float x, float y) {
-	glBegin(GL_POINTS);
-		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex2f(x, y);
-	glEnd();
-
-	RenderManager::ClearColorBitBuffer();
+void RenderManager::DrawPoint(const GLfloat vertices[], const GLfloat colors[]) {
+	RenderManager::DrawArray(GL_POINTS, 1, 2, vertices, colors);
 }
 
-void RenderManager::DrawLine(const GLfloat vertices[]){
+void RenderManager::DrawSquare(const GLfloat vertices[], const GLfloat colors[], int vertexCount){
+    RenderManager::DrawArray(GL_TRIANGLE_STRIP, vertexCount, 2, vertices, colors);
+}
 
-	glEnable(GL_LINE_SMOOTH);
+void RenderManager::DrawLine(const GLfloat vertices[], const GLfloat colors[]){
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	glColor3f(1.0f, 0.0f, 0.0f);
+	glLineWidth(1);
 
-	glVertexPointer(2, GL_FLOAT, 0, vertices);
+	RenderManager::DrawArray(GL_LINE_STRIP, 2, 2, vertices, colors);
+}
 
-	// activate and specify pointer to vertex array
+void RenderManager::DrawArray(GLenum mode, GLint vcount, GLint vsize, const GLfloat vertices[], const GLfloat colors[]) {
+	glDisable(GL_TEXTURE_2D);
+	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
 	glEnableClientState(GL_VERTEX_ARRAY);
-
-	glDrawArrays(GL_LINES, 0, 2);
-
-	// deactivate vertex arrays after drawing
+    glEnableClientState(GL_COLOR_ARRAY);
+    
+    glVertexPointer(vsize, GL_FLOAT, 0, vertices);
+    glColorPointer(4, GL_FLOAT, 0, colors);
+    glDrawArrays(mode, 0, vcount);
+    
 	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
 
-	RenderManager::ClearColorBitBuffer();
-
-	//glColor3f(0.0f, 0.0f, 0.0f);
+	glEnableClientState(GL_TEXTURE_COORD_ARRAY) ;
+	glEnable(GL_TEXTURE_2D);
 }
 
 SDL_Surface* RenderManager::LoadImage(const std::string& path) {
@@ -279,8 +243,6 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	
 	glDisable(GL_BLEND);
-	
-	//glDeleteTextures(1, &texture);
 }
 
 GLenum RenderManager::GetTextureFormat(SDL_Surface* surface, GLint nOfColors) {

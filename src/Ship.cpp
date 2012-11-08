@@ -4,12 +4,14 @@
 Ship::Ship()
 	: Sprite("resources/wreck_out_ship.png", 24)
 {
+	this->_drawHelpers = true;
 	this->_setup(-150.f, 150.f);
 }
 
 Ship::Ship(float x, float y)
 	: Sprite("resources/wreck_out_ship.png", 24)
 {
+	this->_drawHelpers = true;
 	this->_setup(x, y);
 }
 

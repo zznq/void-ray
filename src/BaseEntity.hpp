@@ -21,25 +21,27 @@ class SteeringBehaviors;
 
 class BaseEntity {
 private:
-	int _id;
-	
 	//used by the constructor to give each entity a unique ID
 	int NextValidID(){static int NextID = 0; return NextID++;}
+
 protected:
+	bool _drawHelpers;
+	int _id;
+	enum { default_entity_type };
+	double _mass;
+	double _maxSpeed;
+	double _maxForce;
+	double _maxTurnRate;
+	double _timeElapsed;
+	float _helperMagnitude;
+
 	Vector3 _velocity;
 	//Confused about how to set/use heading
 	Vector3 _heading;
 	Vector3 _side;
 	Vector3 _up;
 	Vector3 _left;
-	double _mass;
-	double _maxSpeed;
-	double _maxForce;
-	double _maxTurnRate;
-	double _timeElapsed;
-
-	enum { default_entity_type };
-
+	
 	void loadDefaults();
 public:
 	SteeringBehaviors *behaviors;
@@ -54,13 +56,13 @@ public:
 
 	std::vector<BaseEntity*> children;
 
-    BaseEntity() : _id(NextValidID()) {
+    BaseEntity() : _id(NextValidID()), _drawHelpers(false), _helperMagnitude(40) {
 		this->parent = NULL;
 
 		this->loadDefaults();
 	};
 
-	BaseEntity(BaseEntity* parent) : _id(NextValidID()) { 
+	BaseEntity(BaseEntity* parent) : _id(NextValidID()), _drawHelpers(false), _helperMagnitude(40) { 
 		this->parent = parent;
 		//Add myself to the children list of my new parent
 		this->parent->AddChild(this);
