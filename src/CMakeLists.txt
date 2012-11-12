@@ -10,10 +10,10 @@ add_executable(VOIDRAY
 				SteeringBehaviors.hpp SteeringBehaviors.cpp				
 				BaseEntity.hpp BaseEntity.cpp 
 				Sprite.hpp Sprite.cpp
-				Ship.hpp Ship.cpp				
+				Agent.hpp Agent.cpp				
 				ChildSprite.hpp ChildSprite.cpp
 				Target.hpp Target.cpp
-				GameController.hpp GameController.cpp
+				GameWorld.hpp GameWorld.cpp
 				main.cpp)
 
 find_package(SDL REQUIRED)

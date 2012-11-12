@@ -1,29 +1,29 @@
 #include "BaseEntity.hpp"
-#include "GameController.hpp"
+#include "GameWorld.hpp"
 #include <stdio.h>
 #include <vector>
 #include <cmath>
 
-float* BaseEntity::getViewModelMatrix() {
+float* BaseEntity::ViewModelMatrix() {
 	this->transform.reset();
 	
 	if(this->parent != NULL) {
-		float* parent = this->parent->getViewModelMatrix();
+		float* parent = this->parent->ViewModelMatrix();
 		this->transform.viewMatrix = std::vector<float> (parent, parent + 16);
 	}
  
-	this->transform.translate(this->_position.x, this->_position.y, this->_position.z);
-	this->transform.rotate(this->_rotation.x, this->_rotation.y, this->_rotation.z);
+	this->transform.translate(this->position.x, this->position.y, this->position.z);
+	this->transform.rotate(this->rotation.x, this->rotation.y, this->rotation.z);
 
 	return &this->transform.viewMatrix[0];
 }
 
-void BaseEntity::loadDefaults() {
+void BaseEntity::_LoadDefaults() {
 	this->transform = Transform();
 	this->behaviors = new SteeringBehaviors(this);
 
 	this->target = Vector3();
-	this->_rotation = Vector3();
+	this->rotation = Vector3();
 	this->_velocity = Vector3();
 
 	this->_heading = Vector3(this->_velocity);
@@ -43,17 +43,17 @@ void BaseEntity::loadDefaults() {
 void BaseEntity::Update(double time_elapsed)  {
 	this->_timeElapsed = time_elapsed;
 
-	float _distance = distance(this->target, this->_position);
+	float _distance = distance(this->target, this->position);
 	
 	Vector3 steeringForce = this->behaviors->Calculate();
 
-	Vector3 acceleration = steeringForce / this->_mass;
+	Vector3 acceleration = steeringForce / (float)this->_mass;
 
-	this->_velocity += (acceleration * this->_timeElapsed);
+	this->_velocity += (acceleration * (float)this->_timeElapsed);
 	
 	this->_velocity.truncate(this->_maxSpeed);
 
-	this->_position += (this->_velocity * this->_timeElapsed);
+	this->position += (this->_velocity * (float)this->_timeElapsed);
 
 	if(vectorMagSq(this->_velocity) > 0.00000001){
 		Vector3 newHeading = Vector3(this->_velocity);
@@ -63,7 +63,7 @@ void BaseEntity::Update(double time_elapsed)  {
 		this->_side = Perp(this->_heading);
 	}
 
-	this->_rotation.z = this->Rotation();
+	this->rotation.z = this->Rotation();
 
 	this->WrapWorld();
 };
@@ -75,15 +75,14 @@ void BaseEntity::Render() {
 		}
 	}
 
-	
 	if(this->_drawHelpers) {
 		RenderManager::LoadIdentity();
 
 		float _heading[] = {
-			this->_position.x,
-			this->_position.y,
-			this->_position.x + (this->_heading.x * this->_helperMagnitude),
-			this->_position.y + (this->_heading.y * this->_helperMagnitude)
+			this->position.x,
+			this->position.y,
+			this->position.x + (this->_heading.x * this->_helperMagnitude),
+			this->position.y + (this->_heading.y * this->_helperMagnitude)
 		};
 
 		float _headingColors[] = {
@@ -94,8 +93,8 @@ void BaseEntity::Render() {
 		RenderManager::DrawLine(_heading, _headingColors);
 
 		float _side[] = {
-			this->_position.x,   this->_position.y,
-			this->_position.x + (this->_side.x * this->_helperMagnitude), this->_position.y + (this->_side.y  * this->_helperMagnitude)
+			this->position.x,   this->position.y,
+			this->position.x + (this->_side.x * this->_helperMagnitude), this->position.y + (this->_side.y  * this->_helperMagnitude)
 		};
 
 		float _sideColors[] = {
@@ -106,16 +105,15 @@ void BaseEntity::Render() {
 		RenderManager::DrawLine(_side, _sideColors);
 	}
 
-	RenderManager::LoadMatrix(this->getViewModelMatrix(), false);
-
+	RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
 };
 
 void BaseEntity::WrapWorld() {
-	if(abs(this->_position.x) > (GameController::Width() / 2)) {
-		this->_position.x = (GameController::Width() / 2) * (this->_position.x / -this->_position.x);
+	if(abs(this->position.x) > (GameWorld::Width() / 2)) {
+		this->position.x = (float)(GameWorld::Width() / 2) * (this->position.x / -this->position.x);
 	}
 
-	if(abs(this->_position.y) > (GameController::Height() / 2)) {
-		this->_position.y = (GameController::Height() / 2) * (this->_position.y / -this->_position.y);
+	if(abs(this->position.y) > (GameWorld::Height() / 2)) {
+		this->position.y = (float)(GameWorld::Height() / 2) * (this->position.y / -this->position.y);
 	}
 };

@@ -3,8 +3,8 @@
 
 #include <string>
 #include <vector>
-#include "BaseEntity.hpp"
 #include "util\Vector3.hpp"
+#include "BaseEntity.hpp"
 
 class Sprite : public BaseEntity {
 protected:
@@ -23,7 +23,7 @@ protected:
 
 		this->_path =  path;
 
-		this->_position = pos;
+		this->position = pos;
 	}
 public:
 	Sprite(BaseEntity* parent, std::string path, float vScale)

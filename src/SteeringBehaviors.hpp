@@ -71,6 +71,8 @@ private:
 	Vector3 Wander(); //Broken :(
 
 	double LookAheadTime(const BaseEntity* entity, Vector3 targetPos);
+
+	void ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles);
 public:
     SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {
 		_flags = none;
@@ -80,14 +82,14 @@ public:
 		_wanderDistance = 50;
 		_wanderJitter = 150;
 
-		srand(time(NULL));
+		srand((int)time(NULL));
 
 		//stuff for the wander behavior
 		double theta = (double)rand() * TwoPi;
 
 		//create a vector to a target position on the wander circle
-		this->_wanderTarget = Vector3(_wanderRadius * cos(theta),
-									_wanderRadius * sin(theta), 0);
+		this->_wanderTarget = Vector3((float)(_wanderRadius * cos(theta)),
+									(float)(_wanderRadius * sin(theta)), 0.0f);
 	}
     
     Vector3 Calculate();

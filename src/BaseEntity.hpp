@@ -42,32 +42,32 @@ protected:
 	Vector3 _up;
 	Vector3 _left;
 	
-	void loadDefaults();
+	void _LoadDefaults();
 public:
-	SteeringBehaviors *behaviors;
-	BaseEntity* parent;
-	
-	Vector3 target;
-	Vector3 _rotation;
-	Vector3 _position;
-	Vector3 _scale;
-
 	Transform transform;
+	Vector3 target;
+	Vector3 rotation;
+	Vector3 position;
+	Vector3 scale;
 
+	BaseEntity* parent;
 	std::vector<BaseEntity*> children;
+
+	SteeringBehaviors *behaviors;
 
     BaseEntity() : _id(NextValidID()), _drawHelpers(false), _helperMagnitude(40) {
 		this->parent = NULL;
 
-		this->loadDefaults();
+		this->_LoadDefaults();
 	};
 
 	BaseEntity(BaseEntity* parent) : _id(NextValidID()), _drawHelpers(false), _helperMagnitude(40) { 
 		this->parent = parent;
+
 		//Add myself to the children list of my new parent
 		this->parent->AddChild(this);
 
-		this->loadDefaults();
+		this->_LoadDefaults();
 	};
 
 	~BaseEntity() {
@@ -81,32 +81,28 @@ public:
 	void AddChild(BaseEntity* child) { this->children.push_back(child); };
 
     virtual void Update(double time_elapsed);
-
     virtual void Render();
  
-    double maxSpeed() const { return this->_maxSpeed; }
-    Vector3 velocity() const { return this->_velocity; }
+	Vector3 Velocity() const { return this->_velocity; }
+    double MaxSpeed() const { return this->_maxSpeed; }
 	double Speed()const{return vectorMag(this->_velocity);}
 	double SpeedSq()const{return vectorMagSq(this->_velocity);}
-
-	float* getViewModelMatrix();
-
-	virtual void UpdateTarget(int x, int y) {}
-
 	double MaxForce() const { return this->_maxForce; }
 
+	float* ViewModelMatrix();
 	Vector3 Heading() const { return this->_heading; }
 	Vector3 Side() const { return this->_side; }
 
 	float Rotation() const { 
-		float sign = (this->_heading * this->_left) > 0 ? 1.0 : -1.0;
-		float _radians = acos(this->_heading * this->_up);
+		float sign = (this->_heading * this->_left) > 0 ? 1.0f : -1.0f;
+		float radians = acos(this->_heading * this->_up);
 
-		return sign * _radians;
+		return sign * radians;
 	}
 
 	double ElapsedTime() const { return this->_timeElapsed; }
 	void WrapWorld();
+	virtual void UpdateTarget(int x, int y) {}
 };
 
 #endif

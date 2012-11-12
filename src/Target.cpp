@@ -1,6 +1,6 @@
 #include "Target.hpp"
 
 void Target::UpdateTarget(int x, int y) {
-	this->_position.x = (float)x;
-	this->_position.y = (float)y;
+	this->position.x = (float)x;
+	this->position.y = (float)y;
 }

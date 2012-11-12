@@ -1,12 +1,12 @@
 #include <stdlib.h>
 #include <SDL.h>
 
-#include "GameController.hpp"
+#include "GameWorld.hpp"
 #include "Timer.hpp"
 
 #define TICK_INTERVAL    30
 
-GameController *controller;
+GameWorld *world;
 
 void render();
 
@@ -15,7 +15,7 @@ void render();
  main()
 *****************************************************************************/
 int main(int argc, char *argv[]) {
-	controller = new GameController();
+	world = new GameWorld();
     
 	Timer::Initialize(true);
     
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 				case SDL_MOUSEBUTTONUP:
 					
 					if(event.button.state == SDL_RELEASED) {
-						controller->UpdateTarget(event.button.x, event.button.y);
+						world->UpdateTarget(event.button.x, event.button.y);
 					}
 					break;
                 case SDL_VIDEORESIZE:
@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 }
 
 void render() { 
-	controller->Update(Timer::TimerUpdate());
+	world->Update(Timer::TimerUpdate());
 	
-	controller->Render();
+	world->Render();
 }
