@@ -1,5 +1,5 @@
-#ifndef GAME_WORLD
-#define GAME_WORLD
+#ifndef VOID_RAY_GAME_WORLD
+#define VOID_RAY_GAME_WORLD
 
 #include <vector>
 #include "RenderManager.hpp"

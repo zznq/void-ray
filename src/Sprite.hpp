@@ -1,10 +1,10 @@
-#ifndef AI_SPRITE
-#define AI_SPRITE
+#ifndef VOID_RAY_SPRITE
+#define VOID_RAY_SPRITE
 
 #include <string>
 #include <vector>
-#include "util\Vector3.hpp"
 #include "BaseEntity.hpp"
+#include "util/Vector3.hpp"
 
 class Sprite : public BaseEntity {
 protected:

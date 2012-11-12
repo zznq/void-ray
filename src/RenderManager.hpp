@@ -1,5 +1,5 @@
-#ifndef RENDER_MANAGER
-#define RENDER_MANAGER
+#ifndef VOID_RAY_RENDER_MANAGER
+#define VOID_RAY_RENDER_MANAGER
 
 #include <SDL.h>
 #include <SDL/SDL_opengl.h>

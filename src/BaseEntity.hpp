@@ -1,13 +1,5 @@
-//
-//  MovingEntity.h
-//  void-ray
-//
-//  Created by Joe Buszkiewic on 2/14/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
-#ifndef void_ray_BaseEntity_h
-#define void_ray_BaseEntity_h
+#ifndef VOID_RAY_BASE_ENTITY
+#define VOID_RAY_BASE_ENTITY
 
 #include <vector>
 #include <cstddef>
@@ -33,6 +25,7 @@ protected:
 	double _maxForce;
 	double _maxTurnRate;
 	double _timeElapsed;
+	double _radius;
 	float _helperMagnitude;
 
 	Vector3 _velocity;
@@ -88,8 +81,10 @@ public:
 	double Speed()const{return vectorMag(this->_velocity);}
 	double SpeedSq()const{return vectorMagSq(this->_velocity);}
 	double MaxForce() const { return this->_maxForce; }
+	double Radius() const { return this->_radius; }
 
 	float* ViewModelMatrix();
+	Vector3 Position();
 	Vector3 Heading() const { return this->_heading; }
 	Vector3 Side() const { return this->_side; }
 

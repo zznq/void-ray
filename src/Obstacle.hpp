@@ -1,5 +1,5 @@
-#ifndef AI_OBSTACLE
-#define AI_OBSTACLE
+#ifndef VOID_RAY_OBSTACLE
+#define VOID_RAY_OBSTACLE
 
 #include "Sprite.hpp"
 

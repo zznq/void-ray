@@ -1,5 +1,5 @@
-#ifndef AI_TARGET
-#define AI_TARGET
+#ifndef VOID_RAY_TARGET
+#define VOID_RAY_TARGET
 
 #include "Sprite.hpp"
 

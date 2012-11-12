@@ -1,5 +1,5 @@
-#ifndef AI_CHILDSPRITE
-#define AI_CHILDSPRITE
+#ifndef VOID_RAY_CHILD_SPRITE
+#define VOID_RAY_CHILD_SPRITE
 
 #include <string>
 #include "BaseEntity.hpp"

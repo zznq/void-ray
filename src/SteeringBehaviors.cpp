@@ -45,7 +45,48 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 	double minDetectionBox = 10;
 	double _detectionBox = minDetectionBox + (this->_vehicle->Speed() / this->_vehicle->MaxSpeed()) * minDetectionBox;
 
+	((Agent)this->_vehicle)->world->TagObstaclesWithinViewRange(this->_vehicle, minDetectionBox);
 
+	//Closest Intersecting Obstacle (CIB)
+	BaseEntity* closestIntersectingObstacle = NULL;
+
+	//Distance to CIB
+	double distToClosestIP = 100000;//maxDouble;
+
+	Vector3 localPosOfCIB;
+
+	std::vector<BaseEntity*>::const_iterator curObstacle = obstacles.begin();
+
+	while(curObstacle != obstacles.end()) {
+		if((*curObstacle)->IsTagged())) {
+			//Transform the curObstacle position into local coods in relation to the _vehicle
+			//This needs to take into account rotation!!!!
+			Vector3 localPos = this->_vehicle->Position() - (*curObstacle)->Position();
+
+			//if x is negative it is behind us and we don't need to worry about it 
+			if(localPos.x >= 0) {
+				double expandedRadius = (*curObstacle)->Radius() + this->_vehicle->Radius();
+
+				if(fabs(localPos.y) < expandedRadius) {
+					/*
+					 * 	Line/Circle intersection:
+					 *  The intersection points are given by the folowing formula
+					 *  x = cX +/-sqrt(r^2-cY^2) for y=0
+					 */
+					 double cX = localPos.x;
+					 double cY = localPos.y;
+					 
+					 double sqrtPart = sqrt(ExpandedRadius*ExpandedRadius - cY*cY);
+					 
+					 double ip = cX - sqrtPart;
+					 
+					 if(ip <= 0) {
+					 	ip = cX + sqrtPart;
+					 }
+				}
+			}
+		}
+	}
 }
 
 Vector3 SteeringBehaviors::Calculate() {

@@ -1,5 +1,5 @@
-#ifndef AI_AGENT
-#define AI_AGENT
+#ifndef VOID_RAY_AGENT
+#define VOID_RAY_AGENT
 
 #include <string>
 #include "Sprite.hpp"

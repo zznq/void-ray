@@ -1,5 +1,5 @@
-#ifndef AI_TIMER
-#define AI_TIMER
+#ifndef VOID_RAY_TIMER
+#define VOID_RAY_TIMER
 
 #include <vector>
 #include <SDL.h>

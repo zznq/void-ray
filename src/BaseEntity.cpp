@@ -18,6 +18,16 @@ float* BaseEntity::ViewModelMatrix() {
 	return &this->transform.viewMatrix[0];
 }
 
+Vector3 BaseEntity::Position() {
+	Vector3 pos = Vector3(this->position);
+		
+	if(this->parent != NULL) {
+		pos += this->parent->Position();
+	}
+ 
+	return pos;
+}
+
 void BaseEntity::_LoadDefaults() {
 	this->transform = Transform();
 	this->behaviors = new SteeringBehaviors(this);
