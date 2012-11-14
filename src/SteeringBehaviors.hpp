@@ -1,12 +1,19 @@
-#ifndef VOID_RAY_STEERING_BEHAVIORS
-#define VOID_RAY_STEERING_BEHAVIORS
+//
+//  SteeringBehaviors.h
+//  void-ray
+//
+//  Created by Joe Buszkiewic on 2/14/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#ifndef void_ray_SteeringBehaviors_h
+#define void_ray_SteeringBehaviors_h
 
 #include <cmath>
 #include <time.h>
 
 #include "util/Vector3.hpp"
 #include "BaseEntity.hpp"
-#include "Agent.hpp"
 
 #define TwoPi (3.14159265359 * 2)
 
@@ -65,7 +72,7 @@ private:
 
 	double LookAheadTime(const BaseEntity* entity, Vector3 targetPos);
 
-	//void ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles);
+	void ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles);
 public:
     SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {
 		_flags = none;

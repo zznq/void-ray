@@ -16,7 +16,7 @@ private:
 	//used by the constructor to give each entity a unique ID
 	int NextValidID(){static int NextID = 0; return NextID++;}
 
-	/*enum entity_flag {
+	enum entity_flag {
 		entity_none = 0x00000,
 		entity_near = 0x00002
 	};
@@ -26,10 +26,10 @@ private:
 	};
 	void RemoveFlag(entity_flag flag) {
 		_flags ^= flag;
-	};*/
+	};
 protected:
 	bool _drawHelpers;
-	//int _flags;
+	int _flags;
 	int _id;
 	enum { default_entity_type };
 	double _mass;
@@ -113,18 +113,18 @@ public:
 	virtual void UpdateTarget(int x, int y) {}
 
 	void SetEntityNearViewRange() {
-		//SetFlag(entity_near);
+		SetFlag(entity_near);
 	}
 
 	void ClearEntityNearViewRange() {
-		//RemoveFlag(entity_near);
+		RemoveFlag(entity_near);
 	}
 
 	bool IsTagged() {
-		return false;//return this->_flags != entity_none;
+		return this->_flags != entity_none;
 	}
 
-	//Vector3 ConvertToLocal(Vector3 pos);
+	Vector3 ConvertToLocal(Vector3 pos);
 };
 
 #endif

@@ -50,7 +50,7 @@ void BaseEntity::_LoadDefaults() {
 	this->_maxTurnRate = 0.0;
 	this->_timeElapsed = 0.0;
 
-	//this->_flags = entity_none;
+	this->_flags = entity_none;
 };
 
 void BaseEntity::Update(double time_elapsed)  {
@@ -135,15 +135,14 @@ void BaseEntity::Render() {
 	RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
 };
 
-/*
 Vector3 BaseEntity::ConvertToLocal(Vector3 pos) {
 	Vector3 delta = pos - this->position;
 
-	double mag = vectorMag(delta);
+	float mag = (float)vectorMag(delta);
 
-	return Vector3(-sin(this->Rotation()) * mag, cos(this->Rotation()) * mag, 0);
+	return Vector3(-sinf(this->Rotation()) * mag, cosf(this->Rotation()) * mag, 0.0f);
 	
-}*/
+}
 
 void BaseEntity::WrapWorld() {
 	if(abs(this->position.x) > (GameWorld::Width() / 2)) {
