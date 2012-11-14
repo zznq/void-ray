@@ -41,6 +41,7 @@ bool SteeringBehaviors::AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd)
 	return true;
 }
 
+/*
 void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles) {
 	double minDetectionBox = 10;
 	double _detectionBox = minDetectionBox + (this->_vehicle->Speed() / this->_vehicle->MaxSpeed()) * minDetectionBox;
@@ -72,7 +73,7 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 					 * 	Line/Circle intersection:
 					 *  The intersection points are given by the folowing formula
 					 *  x = cX +/-sqrt(r^2-cY^2) for y=0
-					 */
+					 * /
 					 double cX = localPos.x;
 					 double cY = localPos.y;
 					 
@@ -87,7 +88,7 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 			}
 		}
 	}
-}
+} */
 
 Vector3 SteeringBehaviors::Calculate() {
 	this->_steeringForce.zero();

@@ -16,7 +16,7 @@ float* BaseEntity::ViewModelMatrix() {
 	this->transform.rotate(this->rotation.x, this->rotation.y, this->rotation.z);
 
 	return &this->transform.viewMatrix[0];
-}
+};
 
 Vector3 BaseEntity::Position() {
 	Vector3 pos = Vector3(this->position);
@@ -26,7 +26,7 @@ Vector3 BaseEntity::Position() {
 	}
  
 	return pos;
-}
+};
 
 void BaseEntity::_LoadDefaults() {
 	this->transform = Transform();

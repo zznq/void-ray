@@ -64,7 +64,7 @@ private:
 
 	double LookAheadTime(const BaseEntity* entity, Vector3 targetPos);
 
-	void ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles);
+	//void ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles);
 public:
     SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {
 		_flags = none;
