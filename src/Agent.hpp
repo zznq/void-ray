@@ -10,9 +10,9 @@ class GameWorld;
 class Agent : public Sprite {
 private:
 	void _setup(GameWorld *world, float x, float y);
-protected:
-	GameWorld *world;
 public:
+	GameWorld *world;
+
 	Agent(GameWorld *world);
 	Agent(GameWorld *world, float x, float y);
 	Agent(std::string path, GameWorld *world);

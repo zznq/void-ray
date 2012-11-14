@@ -46,7 +46,7 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 	double minDetectionBox = 10;
 	double _detectionBox = minDetectionBox + (this->_vehicle->Speed() / this->_vehicle->MaxSpeed()) * minDetectionBox;
 
-	((Agent)this->_vehicle)->world->TagObstaclesWithinViewRange(this->_vehicle, minDetectionBox);
+	((Agent*)this->_vehicle)->world->TagObstaclesWithinViewRange(this->_vehicle, minDetectionBox);
 
 	//Closest Intersecting Obstacle (CIB)
 	BaseEntity* closestIntersectingObstacle = NULL;
@@ -59,7 +59,7 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 	std::vector<BaseEntity*>::const_iterator curObstacle = obstacles.begin();
 
 	while(curObstacle != obstacles.end()) {
-		if((*curObstacle)->IsTagged())) {
+		if((*curObstacle)->IsTagged()) {
 			//Transform the curObstacle position into local coods in relation to the _vehicle
 			//This needs to take into account rotation!!!!
 			Vector3 localPos = this->_vehicle->Position() - (*curObstacle)->Position();
@@ -77,7 +77,7 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 					 double cX = localPos.x;
 					 double cY = localPos.y;
 					 
-					 double sqrtPart = sqrt(ExpandedRadius*ExpandedRadius - cY*cY);
+					 double sqrtPart = sqrt(expandedRadius*expandedRadius - cY*cY);
 					 
 					 double ip = cX - sqrtPart;
 					 

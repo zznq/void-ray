@@ -16,8 +16,20 @@ private:
 	//used by the constructor to give each entity a unique ID
 	int NextValidID(){static int NextID = 0; return NextID++;}
 
+	/*enum entity_flag {
+		entity_none = 0x00000,
+		entity_near = 0x00002
+	};
+
+	void SetFlag(entity_flag flag) {
+		_flags |= flag;
+	};
+	void RemoveFlag(entity_flag flag) {
+		_flags ^= flag;
+	};*/
 protected:
 	bool _drawHelpers;
+	//int _flags;
 	int _id;
 	enum { default_entity_type };
 	double _mass;
@@ -84,6 +96,7 @@ public:
 	double Radius() const { return this->_radius; }
 
 	float* ViewModelMatrix();
+
 	Vector3 Position();
 	Vector3 Heading() const { return this->_heading; }
 	Vector3 Side() const { return this->_side; }
@@ -98,6 +111,20 @@ public:
 	double ElapsedTime() const { return this->_timeElapsed; }
 	void WrapWorld();
 	virtual void UpdateTarget(int x, int y) {}
+
+	void SetEntityNearViewRange() {
+		//SetFlag(entity_near);
+	}
+
+	void ClearEntityNearViewRange() {
+		//RemoveFlag(entity_near);
+	}
+
+	bool IsTagged() {
+		return false;//return this->_flags != entity_none;
+	}
+
+	//Vector3 ConvertToLocal(Vector3 pos);
 };
 
 #endif

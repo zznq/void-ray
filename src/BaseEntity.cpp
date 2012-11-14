@@ -1,8 +1,9 @@
-#include "BaseEntity.hpp"
-#include "GameWorld.hpp"
+#include <cmath>
 #include <stdio.h>
 #include <vector>
-#include <cmath>
+
+#include "BaseEntity.hpp"
+#include "GameWorld.hpp"
 
 float* BaseEntity::ViewModelMatrix() {
 	this->transform.reset();
@@ -48,6 +49,8 @@ void BaseEntity::_LoadDefaults() {
 	this->_maxForce = 0.0;
 	this->_maxTurnRate = 0.0;
 	this->_timeElapsed = 0.0;
+
+	//this->_flags = entity_none;
 };
 
 void BaseEntity::Update(double time_elapsed)  {
@@ -113,10 +116,34 @@ void BaseEntity::Render() {
 		};
 
 		RenderManager::DrawLine(_side, _sideColors);
+
+		/*Vector3 obsLocal = this->ConvertToLocal(Vector3(-250, 75, 0));
+
+		float _obs[] = {
+			this->position.x, this->position.y,
+			obsLocal.x, obsLocal.y
+		};
+
+		float _obsColors[] = {
+			0, 255,  0, 255,
+			0, 255,  0, 255
+		};
+
+		RenderManager::DrawLine(_obs, _obsColors);*/
 	}
 
 	RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
 };
+
+/*
+Vector3 BaseEntity::ConvertToLocal(Vector3 pos) {
+	Vector3 delta = pos - this->position;
+
+	double mag = vectorMag(delta);
+
+	return Vector3(-sin(this->Rotation()) * mag, cos(this->Rotation()) * mag, 0);
+	
+}*/
 
 void BaseEntity::WrapWorld() {
 	if(abs(this->position.x) > (GameWorld::Width() / 2)) {

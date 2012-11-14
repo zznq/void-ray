@@ -6,6 +6,7 @@
 
 #include "util/Vector3.hpp"
 #include "BaseEntity.hpp"
+#include "Agent.hpp"
 
 #define TwoPi (3.14159265359 * 2)
 
