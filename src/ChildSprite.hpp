@@ -7,7 +7,9 @@
 
 class ChildSprite : public Sprite {
 public:
-	ChildSprite(BaseEntity* parent, std::string path, float offsetx);
+	ChildSprite(std::string path, float offsetx, float offsety);
+	ChildSprite(BaseEntity* parent, std::string path, float offsetx, float offsety);
+	void Update(double time_elapsed);
 };
 
 #endif

@@ -1,5 +1,4 @@
 #include "Agent.hpp"
-#include "ChildSprite.hpp"
 
 Agent::Agent(GameWorld *world)
 	: Sprite("resources/wreck_out_ship.png", 24)
@@ -27,9 +26,6 @@ Agent::Agent(std::string path,GameWorld *world, float x, float y)
 
 void Agent::_setup(GameWorld *world, float x, float y) {
 	this->world = world;
-
-	ChildSprite* sf1 = new ChildSprite(this, "resources/flame.png", 14);
-	ChildSprite* sf2 = new ChildSprite(this, "resources/flame.png", -14);
 
 	this->_drawHelpers = true;
 

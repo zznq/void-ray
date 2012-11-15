@@ -15,23 +15,18 @@ class BaseEntity {
 private:
 	//used by the constructor to give each entity a unique ID
 	int NextValidID(){static int NextID = 0; return NextID++;}
-
-	enum entity_flag {
-		entity_none = 0x00000,
-		entity_near = 0x00002
-	};
-
-	void SetFlag(entity_flag flag) {
-		_flags |= flag;
-	};
-	void RemoveFlag(entity_flag flag) {
-		_flags ^= flag;
-	};
 protected:
 	bool _drawHelpers;
 	int _flags;
 	int _id;
+
 	enum { default_entity_type };
+	enum entity_flag {
+		entity_none		  = 0x00000,
+		entity_near		  = 0x00002,
+		entity_propulsion = 0x00004
+	};
+	
 	double _mass;
 	double _maxSpeed;
 	double _maxForce;
@@ -46,8 +41,18 @@ protected:
 	Vector3 _side;
 	Vector3 _up;
 	Vector3 _left;
-	
+
 	void _LoadDefaults();
+	void SetFlag(entity_flag flag) {
+		_flags |= flag;
+	};
+	void RemoveFlag(entity_flag flag) {
+		_flags ^= flag;
+	};
+
+	bool HasFlag(entity_flag flag) {
+		return (entity_flag)(_flags & flag) == flag;
+	};
 public:
 	Transform transform;
 	Vector3 target;
@@ -83,7 +88,10 @@ public:
 		}
 	};
     
-	void AddChild(BaseEntity* child) { this->children.push_back(child); };
+	void AddChild(BaseEntity* child) { 
+		this->children.push_back(child);
+		child->parent = this;
+	};
 
     virtual void Update(double time_elapsed);
     virtual void Render();

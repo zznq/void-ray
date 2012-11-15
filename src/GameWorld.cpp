@@ -1,18 +1,22 @@
 #include "GameWorld.hpp"
+#include "ChildSprite.hpp"
 
 GameWorld::GameWorld()
 {
 	RenderManager::Initialize(WIDTH, HEIGHT, WINDOW_TITLE);
 
-	Agent* a = new Agent("resources/wreck_out_ship.png", this, -150.0, -140.0);
-	Agent* a2 = new Agent("resources/wreck_out_ship.png", this, 150., 50.); 
-	a->behaviors->pursueOn(a2);
+	//Agent* a = new Agent("resources/wreck_out_ship.png", this, -150.0, -140.0);
+	Agent* a2 = new Agent("resources/wreck_out_ship.png", this, 60.f, 60.f); 
+	//a->behaviors->pursueOn(a2);
 	a2->behaviors->arriveOn();
 
-	agents.push_back(a);
+	a2->AddChild(new ChildSprite("resources/flame.png", 14, -28.0f));
+	a2->AddChild(new ChildSprite("resources/flame.png", -14, -28.0f));
+	
+	//agents.push_back(a);
 	agents.push_back(a2);
 
-	obstacles.push_back(new Sprite("resources/asteroid.png", 16, Vector3(-250, 75, 0)));
+	obstacles.push_back(new Sprite("resources/asteroid.png", 16, Vector3(20.0f, 60.0f, 0)));
 	obstacles.push_back(new Target);
 }
 
@@ -48,13 +52,13 @@ void GameWorld::Render()
 {
 	RenderManager::ClearColorBitBuffer();
 
-	for(std::vector<Agent*>::iterator it = this->agents.begin(); it != this->agents.end(); ++it) {
+	for(std::vector<BaseEntity*>::iterator it = this->obstacles.begin(); it != this->obstacles.end(); ++it) {
 		if((*it)) {
 			(*it)->Render();
 		}
 	}
 
-	for(std::vector<BaseEntity*>::iterator it = this->obstacles.begin(); it != this->obstacles.end(); ++it) {
+	for(std::vector<Agent*>::iterator it = this->agents.begin(); it != this->agents.end(); ++it) {
 		if((*it)) {
 			(*it)->Render();
 		}

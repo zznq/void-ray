@@ -24,8 +24,12 @@ protected:
 		this->_path =  path;
 
 		this->position = pos;
+		this->_opacity = 1.0f;
 	}
+	
+	float _opacity;
 public:
+
 	Sprite(BaseEntity* parent, std::string path, float vScale)
 	: BaseEntity(parent) {
 		this->_setup(path, vScale, Vector3());

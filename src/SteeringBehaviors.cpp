@@ -26,27 +26,68 @@ bool SteeringBehaviors::AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd)
 	//does not exceed the maximum force available to this vehicle, just
 	//add together. Otherwise add as much of the ForceToAdd vector is
 	//possible without going over the max.
-	if (MagnitudeToAdd < MagnitudeRemaining)
-	{
-	RunningTot += ForceToAdd;
+	if (MagnitudeToAdd < MagnitudeRemaining) {
+		RunningTot += ForceToAdd;
 	}
 	else
 	{
-	Vector3 forceNormal = Vector3(ForceToAdd);
-	forceNormal.normalize();
-	//add it to the steering force
-	RunningTot += (forceNormal * MagnitudeRemaining); 
+		Vector3 forceNormal = Vector3(ForceToAdd);
+		forceNormal.normalize();
+		//add it to the steering force
+		RunningTot += (forceNormal * MagnitudeRemaining); 
 	}
 
 	return true;
-}
+};
+
 
 void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles) {
 	double minDetectionBox = 10;
 	double _detectionBox = minDetectionBox + (this->_vehicle->Speed() / this->_vehicle->MaxSpeed()) * minDetectionBox;
+	/*
+	this->_vehicle->world->TagObstaclesWithinViewRange(this->_vehicle, minDetectionBox);
 
+	//Closest Intersecting Obstacle (CIB)
+	BaseEntity* closestIntersectingObstacle = NULL;
 
-}
+	//Distance to CIB
+	double distToClosestIP = 100000;//maxDouble;
+
+	Vector3 localPosOfCIB;
+
+	std::vector<BaseEntity*>::const_iterator curObstacle = obstacles.begin();
+
+	while(curObstacle != obstacles.end()) {
+		if((*curObstacle)->IsTagged()) {
+			//Transform the curObstacle position into local coods in relation to the _vehicle
+			//This needs to take into account rotation!!!!
+			Vector3 localPos = this->_vehicle->Position() - (*curObstacle)->Position();
+
+			//if x is negative it is behind us and we don't need to worry about it 
+			if(localPos.x >= 0) {
+				double expandedRadius = (*curObstacle)->Radius() + this->_vehicle->Radius();
+
+				if(fabs(localPos.y) < expandedRadius) {
+					/*
+					 * 	Line/Circle intersection:
+					 *  The intersection points are given by the folowing formula
+					 *  x = cX +/-sqrt(r^2-cY^2) for y=0
+					 * /
+					 double cX = localPos.x;
+					 double cY = localPos.y;
+					 
+					 double sqrtPart = sqrt(expandedRadius*expandedRadius - cY*cY);
+					 
+					 double ip = cX - sqrtPart;
+					 
+					 if(ip <= 0) {
+					 	ip = cX + sqrtPart;
+					 }
+				}
+			}
+		}
+	} */
+};
 
 Vector3 SteeringBehaviors::Calculate() {
 	this->_steeringForce.zero();
@@ -90,15 +131,15 @@ Vector3 SteeringBehaviors::Calculate() {
 	}
 
 	return _steeringForce;
-}
+};
 
 double SteeringBehaviors::ForwardComponent(){
     return _vehicle->Heading() * _steeringForce;
-}
+};
 
 double SteeringBehaviors::SideComponent(){
     return _vehicle->Side() * _steeringForce;
-}
+};
 
 Vector3 SteeringBehaviors::Seek(const Vector3 target) {
     Vector3 desiredVelocity = (target - _vehicle->position);
@@ -106,7 +147,7 @@ Vector3 SteeringBehaviors::Seek(const Vector3 target) {
 	desiredVelocity *= _vehicle->MaxSpeed();
     
 	return desiredVelocity - _vehicle->Velocity();
-}
+};
 
 const double SteeringBehaviors::_panicDistance = 150.0;
 
@@ -132,7 +173,7 @@ Vector3 SteeringBehaviors::Flee(const Vector3 target) {
 	}
 
 	return desiredVelocity - _vehicle->Velocity();
-}
+};
 
 Vector3 SteeringBehaviors::Arrive(const Vector3 target, Deceleration deceleration) {
 	Vector3 toTarget = target - _vehicle->position;
@@ -151,7 +192,7 @@ Vector3 SteeringBehaviors::Arrive(const Vector3 target, Deceleration deceleratio
 	}
 
 	return Vector3();
-}
+};
 
 double SteeringBehaviors::LookAheadTime(const BaseEntity* entity, Vector3 targetPos) {
 	Vector3 toTargetNormal = targetPos - entity->position;
@@ -162,7 +203,7 @@ double SteeringBehaviors::LookAheadTime(const BaseEntity* entity, Vector3 target
 	const double coefficient = 0.5;
 
 	return (dot - 1) * -coefficient;
-}
+};
 
 Vector3 SteeringBehaviors::Pursue(const BaseEntity *evador) {
 	Vector3 toEvador = evador->position - this->_vehicle->position;
@@ -178,7 +219,7 @@ Vector3 SteeringBehaviors::Pursue(const BaseEntity *evador) {
 	lookAheadTime += this->LookAheadTime(this->_vehicle, evador->position);
 
 	return Seek(evador->position + evador->Velocity()  * lookAheadTime);
-}
+};
 
 Vector3 SteeringBehaviors::Evade(const BaseEntity *pursuer) {
 	Vector3 toPursuer = pursuer->position - this->_vehicle->position;
@@ -188,7 +229,7 @@ Vector3 SteeringBehaviors::Evade(const BaseEntity *pursuer) {
 	lookAheadTime += this->LookAheadTime(this->_vehicle, pursuer->position);
 
 	return Flee(pursuer->position + pursuer->Velocity()  * lookAheadTime);
-}
+};
 
 Vector3 SteeringBehaviors::Wander() {
 	double xRand = ((((rand() % 1000) + 1.0) / 1000.0) * 2.0) - 1.0;
@@ -206,4 +247,4 @@ Vector3 SteeringBehaviors::Wander() {
 	Vector3 targetWorld = targetLocal + this->_vehicle->position + Vector3(cos(this->_vehicle->Rotation()), sin(this->_vehicle->Rotation()), 0);
 
 	return targetWorld - this->_vehicle->position;
-}
+};

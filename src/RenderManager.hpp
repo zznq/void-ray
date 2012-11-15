@@ -51,6 +51,7 @@ public:
 	static void DrawSquare(const GLfloat vertices[], const GLfloat colors[], int vertexCount);
 	static SDL_Surface* LoadImage(const std::string& path);
 	static void DrawImage(const std::string& path, const GLfloat vertices[]);
+	static void DrawImage(const std::string& path, const GLfloat vertices[], const GLfloat colors[]);
 };
 
 #endif

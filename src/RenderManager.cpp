@@ -182,8 +182,18 @@ SDL_Surface* RenderManager::LoadImage(const std::string& path) {
 	return image;
 }
 
-void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) 
-{
+void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[]) {
+	float _colors[] = {
+		255.0f, 255.0f,  255.0f, 1.0f,
+		255.0f, 255.0f,  255.0f, 1.0f,
+		255.0f, 255.0f,  255.0f, 1.0f,
+		255.0f, 255.0f,  255.0f, 1.0f
+	};
+
+	RenderManager::DrawImage(path, vertices, _colors);
+}
+
+void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[], const GLfloat colors[]) {
 	SDL_Surface* image = RenderManager::LoadImage(path);
 
 	if(image == NULL){
@@ -218,7 +228,7 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 	// Edit the texture object's image data using the information SDL_Surface gives us
 	glTexImage2D( GL_TEXTURE_2D, 0, nOfColors, image->w, image->h, 0,
 		              texture_format, GL_UNSIGNED_BYTE, image->pixels );
-	
+
 	static GLfloat squareTexCoord[] = {
 		0, 0,
 		1, 0,
@@ -231,15 +241,18 @@ void RenderManager::DrawImage(const std::string& path, const GLfloat vertices[])
 
 	// activate and specify pointer to vertex array
 	glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_COLOR_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	glTexCoordPointer(2, GL_FLOAT, 0, squareTexCoord);
 	glVertexPointer(3, GL_FLOAT, 0, vertices);
 
+	glColorPointer(4, GL_FLOAT, 0, colors);
 	glDrawArrays(GL_QUADS, 0, 4);
 	
 	// deactivate vertex arrays after drawing
 	glDisableClientState(GL_VERTEX_ARRAY);
+	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	
 	glDisable(GL_BLEND);

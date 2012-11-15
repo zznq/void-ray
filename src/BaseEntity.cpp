@@ -37,13 +37,13 @@ void BaseEntity::_LoadDefaults() {
 	this->rotation = Vector3();
 	this->_velocity = Vector3();
 
-	this->_heading = Vector3(this->_velocity);
-	this->_heading.normalize();
-
-	this->_side = Perp(this->_heading);
 	this->_up = Vector3(0.0f, 1.0f, 0.0f);
 	this->_left = Vector3(-1.0f, 0.0f, 0.0f);
 
+	this->_heading = Vector3(Vector3(-1.0f, 1.0f, 0.0f));
+	this->_heading.normalize();
+
+	this->_side = Perp(this->_heading);
 	this->_mass = 0;
 	this->_maxSpeed = 0.0;
 	this->_maxForce = 0.0;
@@ -79,6 +79,12 @@ void BaseEntity::Update(double time_elapsed)  {
 	this->rotation.z = this->Rotation();
 
 	this->WrapWorld();
+
+	for(std::vector<BaseEntity*>::iterator it = this->children.begin(); it != this->children.end(); ++it) {
+		if((*it)) {
+			(*it)->Update(time_elapsed);
+		}
+	}
 };
 
 void BaseEntity::Render() {
@@ -117,10 +123,10 @@ void BaseEntity::Render() {
 
 		RenderManager::DrawLine(_side, _sideColors);
 
-		/*Vector3 obsLocal = this->ConvertToLocal(Vector3(-250, 75, 0));
+		Vector3 obsLocal = this->ConvertToLocal(Vector3(20.0f, 60.0f, 0.0f));
 
 		float _obs[] = {
-			this->position.x, this->position.y,
+			0,   0,
 			obsLocal.x, obsLocal.y
 		};
 
@@ -129,19 +135,25 @@ void BaseEntity::Render() {
 			0, 255,  0, 255
 		};
 
-		RenderManager::DrawLine(_obs, _obsColors);*/
+		RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
+
+		RenderManager::DrawLine(_obs, _obsColors);
+
+		RenderManager::LoadIdentity();
 	}
 
 	RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
 };
 
 Vector3 BaseEntity::ConvertToLocal(Vector3 pos) {
-	Vector3 delta = pos - this->position;
+	Vector3 delta = pos - this->Position();
 
-	float mag = (float)vectorMag(delta);
+	float r = -(this->Rotation());
+	Vector3 result = Vector3(cosf(r) * delta.x + -sinf(r) * delta.y, sinf(r) * delta.x + cosf(r) * delta.y, 0.0f);
 
-	return Vector3(-sinf(this->Rotation()) * mag, cosf(this->Rotation()) * mag, 0.0f);
-	
+	//printf("result x: %f y: %f z: %f\n", result.x, result.y, result.z);
+
+	return result;
 }
 
 void BaseEntity::WrapWorld() {
