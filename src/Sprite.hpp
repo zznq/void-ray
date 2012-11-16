@@ -10,7 +10,7 @@ class Sprite : public BaseEntity {
 protected:
 	std::string _path;
 	std::vector<float> _vertices;
-
+	float _scale;
 	void _setup(std::string path, float vScale, Vector3 pos) {
 		float vertices[] = {
 			-vScale,  vScale, 0.0f,
@@ -25,6 +25,7 @@ protected:
 
 		this->position = pos;
 		this->_opacity = 1.0f;
+		this->_scale = vScale;
 	}
 	
 	float _opacity;

@@ -16,6 +16,8 @@ float* BaseEntity::ViewModelMatrix() {
 	this->transform.translate(this->position.x, this->position.y, this->position.z);
 	this->transform.rotate(this->rotation.x, this->rotation.y, this->rotation.z);
 
+	this->transform.scale(this->scale.x, this->scale.y, this->scale.z);
+
 	return &this->transform.viewMatrix[0];
 };
 
@@ -36,6 +38,8 @@ void BaseEntity::_LoadDefaults() {
 	this->target = Vector3();
 	this->rotation = Vector3();
 	this->_velocity = Vector3();
+
+	this->scale = Vector3(1.0f,1.0f,1.0f);
 
 	this->_up = Vector3(0.0f, 1.0f, 0.0f);
 	this->_left = Vector3(-1.0f, 0.0f, 0.0f);
