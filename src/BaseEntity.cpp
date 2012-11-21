@@ -54,6 +54,8 @@ void BaseEntity::_LoadDefaults() {
 	this->_maxTurnRate = 0.0;
 	this->_timeElapsed = 0.0;
 
+  this->_radius = 0.0;
+
 	this->_flags = entity_none;
 };
 
@@ -127,7 +129,7 @@ void BaseEntity::Render() {
 
 		RenderManager::DrawLine(_side, _sideColors);
 
-		Vector3 obsLocal = this->ConvertToLocal(Vector3(20.0f, 60.0f, 0.0f));
+/*		Vector3 obsLocal = this->ConvertToLocal(Vector3(20.0f, 60.0f, 0.0f));
 
 		float _obs[] = {
 			0,   0,
@@ -143,7 +145,7 @@ void BaseEntity::Render() {
 
 		RenderManager::DrawLine(_obs, _obsColors);
 
-		RenderManager::LoadIdentity();
+		RenderManager::LoadIdentity(); */
 	}
 
 	RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
@@ -155,9 +157,18 @@ Vector3 BaseEntity::ConvertToLocal(Vector3 pos) {
 	float r = -(this->Rotation());
 	Vector3 result = Vector3(cosf(r) * delta.x + -sinf(r) * delta.y, sinf(r) * delta.x + cosf(r) * delta.y, 0.0f);
 
-	//printf("result x: %f y: %f z: %f\n", result.x, result.y, result.z);
-
 	return result;
+}
+
+Vector3 BaseEntity::ConvertToWorld(Vector3 pos) {
+  float r = this->Rotation();
+
+	Vector3 result = Vector3(cosf(r) * pos.x + -sinf(r) * pos.y, sinf(r) * pos.x + cosf(r) * pos.y, 0.0f);
+
+  result.x = result.x + this->Position().x;
+  result.y = result.y + this->Position().y;
+
+  return result;
 }
 
 void BaseEntity::WrapWorld() {

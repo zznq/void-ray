@@ -1,6 +1,7 @@
 #include <algorithm>
 
 #include "SteeringBehaviors.hpp"
+#include "Agent.hpp"
 
 //--------------------- AccumulateForce ----------------------------------
 //
@@ -41,11 +42,11 @@ bool SteeringBehaviors::AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd)
 };
 
 
-void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles) {
-	double minDetectionBox = 10;
+Vector3 SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles) {
+	double minDetectionBox = 40;
 	double _detectionBox = minDetectionBox + (this->_vehicle->Speed() / this->_vehicle->MaxSpeed()) * minDetectionBox;
-	/*
-	this->_vehicle->world->TagObstaclesWithinViewRange(this->_vehicle, minDetectionBox);
+	
+	((Agent*)this->_vehicle)->world->TagObstaclesWithinViewRange(this->_vehicle, minDetectionBox);
 
 	//Closest Intersecting Obstacle (CIB)
 	BaseEntity* closestIntersectingObstacle = NULL;
@@ -57,8 +58,9 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 
 	std::vector<BaseEntity*>::const_iterator curObstacle = obstacles.begin();
 
+  //Find Closest Obstacle
 	while(curObstacle != obstacles.end()) {
-		if((*curObstacle)->IsTagged()) {
+		if((*curObstacle)->IsNear()) {
 			//Transform the curObstacle position into local coods in relation to the _vehicle
 			//This needs to take into account rotation!!!!
 			Vector3 localPos = this->_vehicle->Position() - (*curObstacle)->Position();
@@ -68,30 +70,62 @@ void SteeringBehaviors::ObstacleAvoidance(const std::vector<BaseEntity*> &obstac
 				double expandedRadius = (*curObstacle)->Radius() + this->_vehicle->Radius();
 
 				if(fabs(localPos.y) < expandedRadius) {
-					/*
+				  /*
 					 * 	Line/Circle intersection:
 					 *  The intersection points are given by the folowing formula
 					 *  x = cX +/-sqrt(r^2-cY^2) for y=0
-					 * /
-					 double cX = localPos.x;
-					 double cY = localPos.y;
-					 
-					 double sqrtPart = sqrt(expandedRadius*expandedRadius - cY*cY);
-					 
-					 double ip = cX - sqrtPart;
-					 
-					 if(ip <= 0) {
-					 	ip = cX + sqrtPart;
-					 }
+					 */
+				  double cX = localPos.x;
+				  double cY = localPos.y;
+					
+          double sqrtPart = sqrt(expandedRadius*expandedRadius - cY*cY);
+				
+          double ip = cX - sqrtPart;
+					
+					if(ip <= 0) {
+					  ip = cX + sqrtPart;
+					}
+
+          if(ip < distToClosestIP) {
+            distToClosestIP = ip;
+
+            closestIntersectingObstacle = *curObstacle;
+            localPosOfCIB = localPos;
+          }
 				}
 			}
 		}
-	} */
+
+    curObstacle++;
+	}
+
+  Vector3 steeringForce;
+
+  if(closestIntersectingObstacle) {
+    double multiplier = 1.0 + (_detectionBox- localPosOfCIB.x) / _detectionBox;
+
+    steeringForce.y = (closestIntersectingObstacle->Radius() - localPosOfCIB.y) * multiplier;
+
+    const double breakingWeight = 0.2;
+
+    steeringForce.x = (closestIntersectingObstacle->Radius() - localPosOfCIB.x) * breakingWeight;
+  }
+
+  return this->_vehicle->ConvertToWorld(steeringForce);
+
 };
 
 Vector3 SteeringBehaviors::Calculate() {
 	this->_steeringForce.zero();
 	Vector3 force;
+
+  if(On(obstacle_avoidance)) {
+    double weightObstacleAvoidance = 10;
+    force = ObstacleAvoidance(((Agent*)this->_vehicle)->world->obstacles) *
+              weightObstacleAvoidance;
+
+		if (!AccumulateForce(_steeringForce, force)) return _steeringForce;
+  }
 
 	if(On(flee)) {
 		

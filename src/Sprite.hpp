@@ -26,6 +26,8 @@ protected:
 		this->position = pos;
 		this->_opacity = 1.0f;
 		this->_scale = vScale;
+
+    this->_radius = vScale / 2;
 	}
 	
 	float _opacity;

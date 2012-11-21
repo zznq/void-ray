@@ -87,7 +87,7 @@ public:
 			}
 		}
 	};
-    
+
 	void AddChild(BaseEntity* child) { 
 		this->children.push_back(child);
 		child->parent = this;
@@ -95,9 +95,9 @@ public:
 
     virtual void Update(double time_elapsed);
     virtual void Render();
- 
+
 	Vector3 Velocity() const { return this->_velocity; }
-    double MaxSpeed() const { return this->_maxSpeed; }
+  double MaxSpeed() const { return this->_maxSpeed; }
 	double Speed()const{return vectorMag(this->_velocity);}
 	double SpeedSq()const{return vectorMagSq(this->_velocity);}
 	double MaxForce() const { return this->_maxForce; }
@@ -128,11 +128,12 @@ public:
 		RemoveFlag(entity_near);
 	}
 
-	bool IsTagged() {
-		return this->_flags != entity_none;
+	bool IsNear() {
+		return HasFlag(entity_near);
 	}
 
 	Vector3 ConvertToLocal(Vector3 pos);
+  Vector3 ConvertToWorld(Vector3 pos);
 };
 
 #endif

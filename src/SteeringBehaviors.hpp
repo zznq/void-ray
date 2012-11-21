@@ -13,17 +13,18 @@ class BaseEntity;
 
 class SteeringBehaviors {
 private:
-    BaseEntity* _vehicle;
+  BaseEntity* _vehicle;
 	Vector3    _steeringForce;
 
 	enum behavior_type {
-		none	= 0x00000,
-		seek	= 0x00002,
-		flee	= 0x00004,
-		arrive  = 0x00008,
-		pursue	= 0x00020,
-		evade   = 0x00040,
-		wander  = 0x00080
+		none	              = 0x00000,
+		seek	              = 0x00002,
+		flee	              = 0x00004,
+		arrive              = 0x00008,
+		pursue	            = 0x00010,
+		evade               = 0x00020,
+		wander              = 0x00040,
+    obstacle_avoidance  = 0x00080
 	};
 
 	int _flags;
@@ -56,15 +57,14 @@ private:
 	bool AccumulateForce(Vector3 &RunningTot, Vector3 ForceToAdd);
 
 	Vector3 Seek(const Vector3 target);
-    Vector3 Flee(const Vector3 target);
-    Vector3 Arrive(const Vector3 target, Deceleration deceleration);
+  Vector3 Flee(const Vector3 target);
+  Vector3 Arrive(const Vector3 target, Deceleration deceleration);
 	Vector3 Pursue(const BaseEntity* evador);
 	Vector3 Evade(const BaseEntity* pursuer);
 	Vector3 Wander(); //Broken :(
+	Vector3 ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles);
 
 	double LookAheadTime(const BaseEntity* entity, Vector3 targetPos);
-
-	void ObstacleAvoidance(const std::vector<BaseEntity*> &obstacles);
 public:
     SteeringBehaviors(BaseEntity* vehicle) : _vehicle(vehicle) {
 		_flags = none;
@@ -106,6 +106,7 @@ public:
 		SetFlag(evade);
 		this->pursuer1 = pursuer;
 	}
+  void obstacleAvoidanceOn() { SetFlag(obstacle_avoidance); }
 
 	void seekOff() { RemoveFlag(seek); }
 	void fleeOff() { RemoveFlag(flee); }
@@ -121,6 +122,7 @@ public:
 	}
 	
 	void wanderOff() { RemoveFlag(wander); }
+  void obstacleAvoidanceOff() { RemoveFlag(obstacle_avoidance); }
 };
 
 #endif

@@ -22,11 +22,10 @@ ChildSprite::ChildSprite(std::string path, float offsetx, float offsety)
 void ChildSprite::Update(double time_elapsed) {
 	if(parent != NULL && HasFlag(entity_propulsion)) {
 		float unitSpeed = (this->parent->Speed() / this->parent->MaxSpeed());
-		printf("Speed: %f \tMax: %f\n",this->parent->Speed(), this->parent->MaxSpeed());
 
-		this->_opacity = unitSpeed * 10;
+		this->_opacity = unitSpeed * 3;
 
-		float unitScale = unitSpeed * 10;
+		float unitScale = unitSpeed * 3;
 
 		if(unitScale > 1.0f) {
 			unitScale = 1.0f;
@@ -40,9 +39,7 @@ void ChildSprite::Update(double time_elapsed) {
 			this->position.x = this->_origPosition.x - (delta / 2);
 		}*/
 		this->position.y = this->_origPosition.y + delta;
-
-		printf("Orig: %f \tScale: %f\n",this->_scale, unitScale);
-		
+	
 		this->scale = Vector3(unitScale, unitScale, 1);
 	}
 }

@@ -31,11 +31,13 @@ void Agent::_setup(GameWorld *world, float x, float y) {
 
 	this->position = Vector3(x, y, 0.0f);
 	
-	this->_mass = .1;
-	this->_maxSpeed = 150.0;
-	this->_maxForce = 2.0;
-	this->_maxTurnRate = 150.0;
+	this->_mass = 0.5;
+	this->_maxSpeed = 50.0;
+	this->_maxForce = 35.0;
+	this->_maxTurnRate = 10.0;
 	this->_timeElapsed = 0.0;
+
+  this->_radius = 12;
 }
 
 void Agent::UpdateTarget(int x, int y) {
