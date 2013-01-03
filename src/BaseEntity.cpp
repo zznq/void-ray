@@ -129,7 +129,7 @@ void BaseEntity::Render() {
 
 		RenderManager::DrawLine(_side, _sideColors);
 
-/*		Vector3 obsLocal = this->ConvertToLocal(Vector3(20.0f, 60.0f, 0.0f));
+		Vector3 obsLocal = this->ConvertToLocal(Vector3(20.0f, 60.0f, 0.0f));
 
 		float _obs[] = {
 			0,   0,
@@ -143,9 +143,23 @@ void BaseEntity::Render() {
 
 		RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
 
-		RenderManager::DrawLine(_obs, _obsColors);
+//		RenderManager::DrawLine(_obs, _obsColors);
 
-		RenderManager::LoadIdentity(); */
+		RenderManager::LoadIdentity();
+
+    Vector3 obsWorld = this->ConvertToWorld(obsLocal);
+
+    float _obsWorld[] = {
+      this->position.x, this->position.y,
+      obsWorld.x, obsWorld.y
+    };
+
+    float _obsWorldColor[] = {
+      100, 255, 0, 255,
+      100, 255, 0, 255
+    };
+
+    RenderManager::DrawLine(_obsWorld, _obsWorldColor);
 	}
 
 	RenderManager::LoadMatrix(this->ViewModelMatrix(), false);
@@ -157,6 +171,7 @@ Vector3 BaseEntity::ConvertToLocal(Vector3 pos) {
 	float r = -(this->Rotation());
 	Vector3 result = Vector3(cosf(r) * delta.x + -sinf(r) * delta.y, sinf(r) * delta.x + cosf(r) * delta.y, 0.0f);
 
+  printf("Local x: %f  y: %f  z: %f\n", result.x, result.y, result.z);
 	return result;
 }
 
@@ -168,6 +183,7 @@ Vector3 BaseEntity::ConvertToWorld(Vector3 pos) {
   result.x = result.x + this->Position().x;
   result.y = result.y + this->Position().y;
 
+  printf("World x: %f  y: %f  z: %f\n", result.x, result.y, result.z);
   return result;
 }
 

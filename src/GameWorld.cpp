@@ -21,6 +21,7 @@ GameWorld::GameWorld()
 	obstacles.push_back(new Sprite("resources/asteroid.png", 16, Vector3(125.0f, 20.0f, 0)));
 	obstacles.push_back(new Sprite("resources/asteroid.png", 16, Vector3(90.0f, 620.0f, 0)));
 	obstacles.push_back(new Sprite("resources/asteroid.png", 16, Vector3(62.0f, -10.0f, 0)));
+	obstacles.push_back(new Sprite("resources/asteroid.png", 16, Vector3(20.0f, 60.0f, 0)));
 	obstacles.push_back(new Target);
 }
 
